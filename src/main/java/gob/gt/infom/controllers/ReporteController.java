@@ -96,14 +96,6 @@ public class ReporteController {
       xlsEexporter.setExporterInput(new SimpleExporterInput(empReport));
       xlsEexporter.setExporterOutput(new SimpleOutputStreamExporterOutput(byteArrayOutputStream));
       SimpleXlsxReportConfiguration config = new SimpleXlsxReportConfiguration();
-      // config.setOnePagePerSheet(false);
-      // config.setDetectCellType(true);
-      // config.setIgnoreCellBackground(true);
-      // config.setIgnoreCellBorder(false);
-      // config.setWhitePageBackground(false);
-      // config.setWrapText(false);
-      // config.setRemoveEmptySpaceBetweenRows(true);
-      // config.setCollapseRowSpan(true);
       xlsEexporter.setConfiguration(config);
       xlsEexporter.exportReport();
 
