@@ -49,7 +49,7 @@ public class ReporteController {
 
       JasperPrint empReport = JasperFillManager.fillReport(
           JasperCompileManager.compileReport(
-              ResourceUtils.getFile("classpath:reports/departamentos.jrxml").getAbsolutePath()),
+              ResourceUtils.getFile("classpath:departamentos.jrxml").getAbsolutePath()),
           empParams, new JREmptyDataSource());
 
       HttpHeaders headers = new HttpHeaders();
@@ -78,7 +78,7 @@ public class ReporteController {
 
       JasperPrint empReport = JasperFillManager.fillReport(
           JasperCompileManager.compileReport(
-              ResourceUtils.getFile("classpath:reports/departamentos.jrxml").getAbsolutePath()),
+              ResourceUtils.getFile("classpath:departamentos.jrxml").getAbsolutePath()),
           empParams, new JREmptyDataSource());
 
       HttpHeaders headers = new HttpHeaders();
