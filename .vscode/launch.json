@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-InfomApplication<infom>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "gob.gt.infom.InfomApplication",
+      "projectName": "infom",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
