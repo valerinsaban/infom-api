@@ -34,12 +34,17 @@ public class MunicipioController {
     return repository.findById(id);
   }
 
+  @GetMapping("/municipios/departamento/{id}")
+  public Iterable<Municipio> allByDepartamento(@PathVariable Long id) {
+    return repository.findByDepartamentoId(id);
+  }
+
   @PostMapping("/municipios")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Municipio m) {
     Municipio municipio = Municipio.builder()
         .codigo(m.getCodigo())
-        .descripcion(m.getDescripcion())
+        .nombre(m.getNombre())
         .id_departamento(m.getId_departamento())
         .departamento(m.getDepartamento())
         .build();
@@ -53,7 +58,7 @@ public class MunicipioController {
     if (data.isPresent()) {
       Municipio municipio = data.get();
       municipio.setCodigo(m.getCodigo());
-      municipio.setDescripcion(m.getDescripcion());
+      municipio.setNombre(m.getNombre());
       repository.save(municipio);
       return ResponseController.success("Municipio Actualizado Correctamente", municipio);
     } else {

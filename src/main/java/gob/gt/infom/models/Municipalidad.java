@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,18 +19,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "municipios")
-public class Municipio {
+@Table(name = "municipalidades")
+public class Municipalidad {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String codigo;
-  private String nombre;
+  private String direccion;
+  @NotNull
   private Integer id_departamento;
+  @NotNull
+  private Integer id_municipio;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_departamento", insertable = false, updatable = false)
   private Departamento departamento;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_municipio", insertable = false, updatable = false)
+  private Municipio municipio;
 
 }

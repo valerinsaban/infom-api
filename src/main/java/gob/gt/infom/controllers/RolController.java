@@ -14,57 +14,55 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import gob.gt.infom.models.Region;
-import gob.gt.infom.repositories.RegionRepository;
+import gob.gt.infom.models.Rol;
+import gob.gt.infom.repositories.RolRepository;
 import jakarta.validation.Valid;
 
 @RestController
-public class RegionController {
+public class RolController {
 
   @Autowired
-  private RegionRepository repository;
+  private RolRepository repository;
 
-  @GetMapping("/regiones")
-  public Iterable<Region> all() {
+  @GetMapping("/roles")
+  public Iterable<Rol> all() {
     return repository.findAll();
   }
 
-  @GetMapping("/regiones/{id}")
-  public Optional<Region> one(@PathVariable Long id) {
+  @GetMapping("/roles/{id}")
+  public Optional<Rol> one(@PathVariable Long id) {
     return repository.findById(id);
   }
 
-  @PostMapping("/regiones")
+  @PostMapping("/roles")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid Region r) {
-    Region region = Region.builder()
-        .codigo(r.getCodigo())
+  public ResponseEntity<Object> create(@RequestBody @Valid Rol r) {
+    Rol rol = Rol.builder()
         .nombre(r.getNombre())
         .build();
-    repository.save(region);
-    return ResponseController.success("Region Agregado Correctamente", region);
+    repository.save(rol);
+    return ResponseController.success("Rol Agregado Correctamente", rol);
   }
 
-  @PutMapping("/regiones/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Region r) {
-    Optional<Region> data = repository.findById(id);
+  @PutMapping("/roles/{id}")
+  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Rol r) {
+    Optional<Rol> data = repository.findById(id);
     if (data.isPresent()) {
-      Region region = data.get();
-      region.setCodigo(r.getCodigo());
-      region.setNombre(r.getNombre());
-      repository.save(region);
-      return ResponseController.success("Region Actualizado Correctamente", region);
+      Rol rol = data.get();
+      rol.setNombre(r.getNombre());
+      repository.save(rol);
+      return ResponseController.success("Rol Actualizado Correctamente", rol);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
 
-  @DeleteMapping("/regiones/{id}")
+  @DeleteMapping("/roles/{id}")
   public ResponseEntity<?> delete(@PathVariable Long id) {
-    Optional<Region> region = repository.findById(id);
-    if (region.isPresent()) {
+    Optional<Rol> rol = repository.findById(id);
+    if (rol.isPresent()) {
       repository.deleteById(id);
-      return ResponseController.success("Region Eliminado Correctamente", region);
+      return ResponseController.success("Rol Eliminado Correctamente", rol);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

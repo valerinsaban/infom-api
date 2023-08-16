@@ -14,57 +14,59 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import gob.gt.infom.models.Puesto;
-import gob.gt.infom.repositories.PuestoRepository;
+import gob.gt.infom.models.Banco;
+import gob.gt.infom.repositories.BancoRepository;
 import jakarta.validation.Valid;
 
 @RestController
-public class PuestoController {
+public class BancoController {
 
   @Autowired
-  private PuestoRepository repository;
+  private BancoRepository repository;
 
-  @GetMapping("/puestos")
-  public Iterable<Puesto> all() {
+  @GetMapping("/bancos")
+  public Iterable<Banco> all() {
     return repository.findAll();
   }
 
-  @GetMapping("/puestos/{id}")
-  public Optional<Puesto> one(@PathVariable Long id) {
+  @GetMapping("/bancos/{id}")
+  public Optional<Banco> one(@PathVariable Long id) {
     return repository.findById(id);
   }
 
-  @PostMapping("/puestos")
+  @PostMapping("/bancos")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid Puesto p) {
-    Puesto puesto = Puesto.builder()
+  public ResponseEntity<Object> create(@RequestBody @Valid Banco p) {
+    Banco banco = Banco.builder()
         .codigo(p.getCodigo())
         .nombre(p.getNombre())
+        .siglas(p.getSiglas())
         .build();
-    repository.save(puesto);
-    return ResponseController.success("Puesto Agregado Correctamente", puesto);
+    repository.save(banco);
+    return ResponseController.success("Banco Agregado Correctamente", banco);
   }
 
-  @PutMapping("/puestos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Puesto p) {
-    Optional<Puesto> data = repository.findById(id);
+  @PutMapping("/bancos/{id}")
+  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Banco p) {
+    Optional<Banco> data = repository.findById(id);
     if (data.isPresent()) {
-      Puesto puesto = data.get();
-      puesto.setCodigo(p.getCodigo());
-      puesto.setNombre(p.getNombre());
-      repository.save(puesto);
-      return ResponseController.success("Puesto Actualizado Correctamente", puesto);
+      Banco banco = data.get();
+      banco.setCodigo(p.getCodigo());
+      banco.setNombre(p.getNombre());
+      banco.setSiglas(p.getSiglas());
+      repository.save(banco);
+      return ResponseController.success("Banco Actualizado Correctamente", banco);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
 
-  @DeleteMapping("/puestos/{id}")
+  @DeleteMapping("/bancos/{id}")
   public ResponseEntity<?> delete(@PathVariable Long id) {
-    Optional<Puesto> puesto = repository.findById(id);
-    if (puesto.isPresent()) {
+    Optional<Banco> banco = repository.findById(id);
+    if (banco.isPresent()) {
       repository.deleteById(id);
-      return ResponseController.success("Puesto Eliminado Correctamente", puesto);
+      return ResponseController.success("Banco Eliminado Correctamente", banco);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

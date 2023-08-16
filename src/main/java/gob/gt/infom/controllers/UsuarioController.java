@@ -38,12 +38,21 @@ public class UsuarioController {
     return repository.findById(id);
   }
 
+  @GetMapping("/usuarios/usuario/{usuario}")
+  public Optional<Usuario> oneByUsuario(@PathVariable String usuario) {
+    return repository.findByUsuario(usuario);
+  }
+
   @PostMapping("/usuarios")
   @ResponseBody
   public ResponseEntity<?> create(@RequestBody @Valid Usuario u) {
     Usuario usuario = Usuario.builder()
+        .nombre(u.getNombre())
+        .apellido(u.getApellido())
+        .dpi(u.getDpi())
         .usuario(u.getUsuario())
         .clave(passwordEncoder.encode(u.getClave()))
+        .id_regional(u.getId_regional())
         .build();
     repository.save(usuario);
     return ResponseController.success("Usuario Agregado Correctamente", usuario);
@@ -54,8 +63,12 @@ public class UsuarioController {
     Optional<Usuario> data = repository.findById(id);
     if (data.isPresent()) {
       Usuario usuario = data.get();
+      usuario.setNombre(u.getNombre());
+      usuario.setApellido(u.getApellido());
+      usuario.setDpi(u.getDpi());
       usuario.setUsuario(u.getUsuario());
       // usuario.setClave(passwordEncoder.encode(u.getClave()));
+      usuario.setId_regional(u.getId_regional());
       repository.save(usuario);
       return ResponseController.success("Usuario Actualizado Correctamente", usuario);
     } else {

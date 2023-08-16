@@ -36,22 +36,22 @@ public class EstadoCivilController {
 
   @PostMapping("/estados_civiles")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid EstadoCivil d) {
+  public ResponseEntity<Object> create(@RequestBody @Valid EstadoCivil e) {
     EstadoCivil estado_civil = EstadoCivil.builder()
-        .codigo(d.getCodigo())
-        .descripcion(d.getDescripcion())
+        .codigo(e.getCodigo())
+        .nombre(e.getNombre())
         .build();
     repository.save(estado_civil);
     return ResponseController.success("EstadoCivil Agregado Correctamente", estado_civil);
   }
 
   @PutMapping("/estados_civiles/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody EstadoCivil d) {
+  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody EstadoCivil e) {
     Optional<EstadoCivil> data = repository.findById(id);
     if (data.isPresent()) {
       EstadoCivil estado_civil = data.get();
-      estado_civil.setCodigo(d.getCodigo());
-      estado_civil.setDescripcion(d.getDescripcion());
+      estado_civil.setCodigo(e.getCodigo());
+      estado_civil.setNombre(e.getNombre());
       repository.save(estado_civil);
       return ResponseController.success("EstadoCivil Actualizado Correctamente", estado_civil);
     } else {

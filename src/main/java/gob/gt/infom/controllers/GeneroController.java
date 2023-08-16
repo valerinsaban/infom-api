@@ -36,22 +36,22 @@ public class GeneroController {
 
   @PostMapping("/generos")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid Genero d) {
+  public ResponseEntity<Object> create(@RequestBody @Valid Genero g) {
     Genero genero = Genero.builder()
-        .codigo(d.getCodigo())
-        .descripcion(d.getDescripcion())
+        .codigo(g.getCodigo())
+        .nombre(g.getNombre())
         .build();
     repository.save(genero);
     return ResponseController.success("Genero Agregado Correctamente", genero);
   }
 
   @PutMapping("/generos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Genero d) {
+  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Genero g) {
     Optional<Genero> data = repository.findById(id);
     if (data.isPresent()) {
       Genero genero = data.get();
-      genero.setCodigo(d.getCodigo());
-      genero.setDescripcion(d.getDescripcion());
+      genero.setCodigo(g.getCodigo());
+      genero.setNombre(g.getNombre());
       repository.save(genero);
       return ResponseController.success("Genero Actualizado Correctamente", genero);
     } else {

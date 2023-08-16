@@ -24,23 +24,16 @@ public class Aporte {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-
   private Integer anio;
-
-  private Integer id_departamento;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_departamento", insertable = false, updatable = false)
-  private Departamento departamento;
-
-  private Integer id_municipio;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_municipio", insertable = false, updatable = false)
-  private Municipio municipio;
-
+  private Integer mes;
+  private Integer monto;
+  private Integer id_municipalidad;
   private Integer id_garantia;
 
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)
+  private Municipalidad municipalidad;
+  
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_garantia", insertable = false, updatable = false)
   private Garantia garantia;

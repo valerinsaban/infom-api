@@ -4,8 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,14 +17,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tipos_empleados")
-public class TipoEmpleado {
+@Table(name = "submenus")
+public class Submenu {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-
-  @NotBlank
   private String nombre;
+  private String url;
+  private Integer orden;
+  private Integer id_menu;
+
+  // @ManyToOne()
+  // @JoinColumn(name = "id_menu", insertable = false, updatable = false)
+  // private Menu menu;
 
 }

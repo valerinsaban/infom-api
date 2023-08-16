@@ -1,12 +1,15 @@
 package gob.gt.infom.models;
 
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,18 +20,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "destinos_prestamos")
-public class DestinoPrestamo {
+@Table(name = "menus")
+public class Menu {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  private String nombre;
+  private String url;
+  private String icono;
+  private Integer orden;
 
-  @NotBlank
-  @Size(max = 80)
-  private String codigo;
-
-  @NotBlank
-  private String descripcion;
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name = "id_menu")
+  public Set<Submenu> submenus;
 
 }

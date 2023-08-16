@@ -36,22 +36,22 @@ public class GarantiaController {
 
   @PostMapping("/garantias")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid Garantia d) {
+  public ResponseEntity<Object> create(@RequestBody @Valid Garantia g) {
     Garantia garantia = Garantia.builder()
-        .codigo(d.getCodigo())
-        .descripcion(d.getDescripcion())
+        .codigo(g.getCodigo())
+        .nombre(g.getNombre())
         .build();
     repository.save(garantia);
     return ResponseController.success("Garantia Agregado Correctamente", garantia);
   }
 
   @PutMapping("/garantias/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Garantia d) {
+  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Garantia g) {
     Optional<Garantia> data = repository.findById(id);
     if (data.isPresent()) {
       Garantia garantia = data.get();
-      garantia.setCodigo(d.getCodigo());
-      garantia.setDescripcion(d.getDescripcion());
+      garantia.setCodigo(g.getCodigo());
+      garantia.setNombre(g.getNombre());
       repository.save(garantia);
       return ResponseController.success("Garantia Actualizado Correctamente", garantia);
     } else {

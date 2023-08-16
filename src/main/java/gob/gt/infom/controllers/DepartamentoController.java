@@ -39,7 +39,7 @@ public class DepartamentoController {
   public ResponseEntity<Object> create(@RequestBody @Valid Departamento d) {
     Departamento departamento = Departamento.builder()
         .codigo(d.getCodigo())
-        .descripcion(d.getDescripcion())
+        .nombre(d.getNombre())
         .build();
     repository.save(departamento);
     return ResponseController.success("Departamento Agregado Correctamente", departamento);
@@ -51,7 +51,7 @@ public class DepartamentoController {
     if (data.isPresent()) {
       Departamento departamento = data.get();
       departamento.setCodigo(d.getCodigo());
-      departamento.setDescripcion(d.getDescripcion());
+      departamento.setNombre(d.getNombre());
       repository.save(departamento);
       return ResponseController.success("Departamento Actualizado Correctamente", departamento);
     } else {
