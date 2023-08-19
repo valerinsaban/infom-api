@@ -24,9 +24,10 @@ public class Permiso {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String nombre;
-  private String id_rol;
-  private String id_menu;
+  private String accion;
+  private Integer id_rol;
+  private Integer id_menu;
+  private Integer id_submenu;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_rol", insertable = false, updatable = false)
@@ -35,5 +36,9 @@ public class Permiso {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_menu", insertable = false, updatable = false)
   private Menu menu;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_submenu", insertable = false, updatable = false)
+  private Submenu submenu;
 
 }

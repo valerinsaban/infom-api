@@ -39,6 +39,7 @@ public class RolController {
   public ResponseEntity<Object> create(@RequestBody @Valid Rol r) {
     Rol rol = Rol.builder()
         .nombre(r.getNombre())
+        .color(r.getColor())
         .build();
     repository.save(rol);
     return ResponseController.success("Rol Agregado Correctamente", rol);
@@ -50,6 +51,7 @@ public class RolController {
     if (data.isPresent()) {
       Rol rol = data.get();
       rol.setNombre(r.getNombre());
+      rol.setColor(r.getColor());
       repository.save(rol);
       return ResponseController.success("Rol Actualizado Correctamente", rol);
     } else {

@@ -1,5 +1,6 @@
 package gob.gt.infom.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,16 +35,30 @@ public class PermisoController {
     return repository.findById(id);
   }
 
+  @GetMapping("/permisos/{accion}/{id_rol}/{id_menu}/{id_submenu}")
+  public List<Permiso> oneByRol(@PathVariable String accion, Integer id_rol, Integer id_menu, Integer id_submenu) {
+    return repository.findOneByAccionAndRolIdAndMenuIdAndSubmenuId(accion, id_rol, id_menu, id_submenu);
+  }
+
   @PostMapping("/permisos")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid Permiso r) {
-    Permiso permiso = Permiso.builder()
-        .nombre(r.getNombre())
-        .id_rol(r.getId_rol())
-        .id_menu(r.getId_menu())
-        .build();
-    repository.save(permiso);
-    return ResponseController.success("Permiso Agregado Correctamente", permiso);
+  public ResponseEntity<?> create(@RequestBody @Valid Permiso r) {
+    List<Permiso> data = repository.findOneByAccionAndRolIdAndMenuIdAndSubmenuId(r.getAccion(), r.getId_rol(),
+        r.getId_menu(), r.getId_submenu());
+    if (data.isEmpty()) {
+      Permiso permiso = Permiso.builder()
+          .accion(r.getAccion())
+          .id_rol(r.getId_rol())
+          .id_menu(r.getId_menu())
+          .id_submenu(r.getId_submenu())
+          .build();
+      repository.save(permiso);
+      return ResponseController.success("Permiso habilitado", permiso);
+    } else {
+      Long id = Long.valueOf(data.get(0).getId());
+      repository.deleteById(id);
+      return ResponseController.success("Permiso deshabilitado", data);
+    }
   }
 
   @PutMapping("/permisos/{id}")
@@ -51,9 +66,10 @@ public class PermisoController {
     Optional<Permiso> data = repository.findById(id);
     if (data.isPresent()) {
       Permiso permiso = data.get();
-      permiso.setNombre(r.getNombre());
+      permiso.setAccion(r.getAccion());
       permiso.setId_rol(r.getId_rol());
       permiso.setId_menu(r.getId_menu());
+      permiso.setId_submenu(r.getId_submenu());
       repository.save(permiso);
       return ResponseController.success("Permiso Actualizado Correctamente", permiso);
     } else {

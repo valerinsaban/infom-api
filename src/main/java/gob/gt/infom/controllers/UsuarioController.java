@@ -53,6 +53,7 @@ public class UsuarioController {
         .usuario(u.getUsuario())
         .clave(passwordEncoder.encode(u.getClave()))
         .id_regional(u.getId_regional())
+        .id_rol(u.getId_rol())
         .build();
     repository.save(usuario);
     return ResponseController.success("Usuario Agregado Correctamente", usuario);
@@ -69,6 +70,7 @@ public class UsuarioController {
       usuario.setUsuario(u.getUsuario());
       // usuario.setClave(passwordEncoder.encode(u.getClave()));
       usuario.setId_regional(u.getId_regional());
+      usuario.setId_rol(u.getId_rol());
       repository.save(usuario);
       return ResponseController.success("Usuario Actualizado Correctamente", usuario);
     } else {

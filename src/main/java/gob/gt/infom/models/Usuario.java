@@ -35,10 +35,15 @@ public class Usuario {
   private String usuario;
   private String clave;
   private Integer id_regional;
+  private Integer id_rol;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_regional", insertable = false, updatable = false)
   private Regional regional;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_rol", insertable = false, updatable = false)
+  private Rol rol;
   
   @ManyToMany(fetch = FetchType.EAGER, targetEntity = Rol.class, cascade = CascadeType.PERSIST)
   @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
