@@ -45,7 +45,7 @@ public class Prestamo {
   private String autorizacion;
   private Date certficacion;
   private Date oficioaj;
-  private Date oficioaj2;
+  private String oficioaj2;
   private Integer id_tipo_prestamo;
   private Integer id_municipalidad;
   private Integer id_funcionario;

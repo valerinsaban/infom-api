@@ -10,4 +10,6 @@ public interface PermisoRepository extends CrudRepository<Permiso, Long> {
 
   List<Permiso> findOneByAccionAndRolIdAndMenuIdAndSubmenuId(String accion, Integer id_rol, Integer id_menu, Integer id_submenu);
 
+  List<Permiso> findAllByRolId(Integer id_rol);
+
 }
