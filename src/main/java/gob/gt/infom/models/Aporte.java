@@ -23,7 +23,7 @@ public class Aporte {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
   private Integer anio;
   private Integer mes;
   private Integer monto;

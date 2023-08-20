@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class Funcionario {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
   private String nombre;
   private String apellido;
   private Date fecha_nacimiento;
@@ -36,13 +37,13 @@ public class Funcionario {
   private String acta_toma_posecion;
   private Date fecha_acta_toma_posecion;
   private String estado;
-  @Column(columnDefinition = "LONGTEXT")
+  @Lob
   private String imagen_carnet;
-  @Column(columnDefinition = "LONGTEXT")
+  @Lob
   private String imagen_acta_toma_posecion;
-  @Column(columnDefinition = "LONGTEXT")
+  @Lob
   private String imagen_fotografia;
-  @Column(columnDefinition = "LONGTEXT")
+  @Lob
   private String imagen_firma;
   private Integer id_municipalidad;
   private Integer id_puesto;

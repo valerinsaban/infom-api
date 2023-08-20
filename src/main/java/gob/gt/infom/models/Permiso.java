@@ -23,7 +23,7 @@ public class Permiso {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
   private String accion;
   private Integer id_rol;
   private Integer id_menu;

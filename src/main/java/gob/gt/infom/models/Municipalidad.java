@@ -24,7 +24,7 @@ public class Municipalidad {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
   private String direccion;
   @NotNull
   private Integer id_departamento;

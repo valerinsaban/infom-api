@@ -20,7 +20,7 @@ public class Puesto {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
   private String codigo;
   private String nombre;
 
