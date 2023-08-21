@@ -1,12 +1,15 @@
 package gob.gt.infom.controllers;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,7 +23,10 @@ import gob.gt.infom.models.Departamento;
 import gob.gt.infom.models.Municipio;
 import gob.gt.infom.repositories.DepartamentoRepository;
 import gob.gt.infom.repositories.MunicipioRepository;
+import io.jsonwebtoken.io.IOException;
+import lombok.Value;
 import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -36,13 +42,16 @@ import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 public class ReporteController {
 
   @Autowired
+  private ResourceLoader resourceLoader;
+
+  @Autowired
   private DepartamentoRepository departamentoRepository;
 
   @Autowired
   private MunicipioRepository municipioRepository;
 
   @GetMapping("/reportes/departamentos/PDF")
-  public ResponseEntity<byte[]> reporteDepartamentosPDF() {
+  public ResponseEntity<byte[]> reporteDepartamentosPDF() throws JRException, IOException {
     try {
 
       Iterable<Departamento> departamentos = departamentoRepository.findAll();
@@ -52,18 +61,32 @@ public class ReporteController {
       Map<String, Object> params = new HashMap<String, Object>();
       params.put("reporte", "Reporte de Departamentos");
       params.put("data", new JRBeanCollectionDataSource(dList));
-      String source = "classpath:WEB-INF/reports/departamentos.jrxml";
 
-      JasperPrint empReport = JasperFillManager.fillReport(
-          JasperCompileManager.compileReport(
-              ResourceUtils.getFile(source).getAbsolutePath()),
-          params, new JREmptyDataSource());
+      // File file = ResourceUtils.getFile("classpath:reports/departamentos.jrxml");
+      Resource resource = resourceLoader.getResource("classpath:reports/departamentos.jrxml");
+
+      JasperReport jr = JasperCompileManager.compileReport(resource.getInputStream());
+      JasperPrint report = JasperFillManager.fillReport(jr, params, new JREmptyDataSource());
+
+      final ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+      JasperExportManager.exportReportToPdfStream(report, outStream);
 
       HttpHeaders headers = new HttpHeaders();
-      headers.setContentType(MediaType.APPLICATION_PDF);
-      headers.setContentDispositionFormData("filename", "departamentos.pdf");
 
-      return new ResponseEntity<byte[]>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
+      headers.setContentType(MediaType.parseMediaType("application/pdf"));
+      String filename = "departamentos.pdf";
+
+      headers.add("content-disposition", "inline;filename=" + filename);
+
+      return new ResponseEntity<byte[]>(outStream.toByteArray(), headers, HttpStatus.OK);
+
+      // HttpHeaders headers = new HttpHeaders();
+      // headers.setContentType(MediaType.APPLICATION_PDF);
+      // headers.setContentDispositionFormData("filename", "departamentos.pdf");
+
+      // return new
+      // ResponseEntity<byte[]>(JasperExportManager.exportReportToPdf(report),
+      // headers, HttpStatus.OK);
 
     } catch (Exception e) {
       return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
