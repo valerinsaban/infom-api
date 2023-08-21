@@ -25,6 +25,7 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
@@ -51,10 +52,11 @@ public class ReporteController {
       Map<String, Object> params = new HashMap<String, Object>();
       params.put("reporte", "Reporte de Departamentos");
       params.put("data", new JRBeanCollectionDataSource(dList));
+      String source = "classpath:WEB-INF/reports/departamentos.jrxml";
 
       JasperPrint empReport = JasperFillManager.fillReport(
           JasperCompileManager.compileReport(
-              ResourceUtils.getFile("classpath:reports/departamentos.jrxml").getAbsolutePath()),
+              ResourceUtils.getFile(source).getAbsolutePath()),
           params, new JREmptyDataSource());
 
       HttpHeaders headers = new HttpHeaders();
