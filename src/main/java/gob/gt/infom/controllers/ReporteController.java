@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import gob.gt.infom.models.Departamento;
+import gob.gt.infom.models.Municipio;
 import gob.gt.infom.repositories.DepartamentoRepository;
+import gob.gt.infom.repositories.MunicipioRepository;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -33,24 +35,27 @@ import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 public class ReporteController {
 
   @Autowired
-  private DepartamentoRepository repository;
+  private DepartamentoRepository departamentoRepository;
+
+  @Autowired
+  private MunicipioRepository municipioRepository;
 
   @GetMapping("/reportes/departamentos/PDF")
   public ResponseEntity<byte[]> reporteDepartamentosPDF() {
     try {
 
-      Iterable<Departamento> departamentos = repository.findAll();
+      Iterable<Departamento> departamentos = departamentoRepository.findAll();
       List<Departamento> dList = new ArrayList<Departamento>();
       departamentos.forEach(dList::add);
 
-      Map<String, Object> empParams = new HashMap<String, Object>();
-      empParams.put("reporte", "Reporte de Departamentos");
-      empParams.put("data", new JRBeanCollectionDataSource(dList));
+      Map<String, Object> params = new HashMap<String, Object>();
+      params.put("reporte", "Reporte de Departamentos");
+      params.put("data", new JRBeanCollectionDataSource(dList));
 
       JasperPrint empReport = JasperFillManager.fillReport(
           JasperCompileManager.compileReport(
-              ResourceUtils.getFile("classpath:departamentos.jrxml").getAbsolutePath()),
-          empParams, new JREmptyDataSource());
+              ResourceUtils.getFile("classpath:reports/departamentos.jrxml").getAbsolutePath()),
+          params, new JREmptyDataSource());
 
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_PDF);
@@ -68,17 +73,17 @@ public class ReporteController {
   public ResponseEntity<byte[]> reporteDepartamentosXLS() {
     try {
 
-      Iterable<Departamento> departamentos = repository.findAll();
+      Iterable<Departamento> departamentos = departamentoRepository.findAll();
       List<Departamento> dList = new ArrayList<Departamento>();
       departamentos.forEach(dList::add);
 
       Map<String, Object> empParams = new HashMap<String, Object>();
-      empParams.put("reporte", "Reporte de Departamentos");
+      empParams.put("reporte", "Reportes de Departamentos");
       empParams.put("data", new JRBeanCollectionDataSource(dList));
 
       JasperPrint empReport = JasperFillManager.fillReport(
           JasperCompileManager.compileReport(
-              ResourceUtils.getFile("classpath:departamentos.jrxml").getAbsolutePath()),
+              ResourceUtils.getFile("classpath:reports/departamentos.jrxml").getAbsolutePath()),
           empParams, new JREmptyDataSource());
 
       HttpHeaders headers = new HttpHeaders();
@@ -104,6 +109,35 @@ public class ReporteController {
     } catch (Exception e) {
       throw new RuntimeException(e);
 
+    }
+
+  }
+
+  @GetMapping("/reportes/municipios/PDF")
+  public ResponseEntity<byte[]> reporteMunicipiosPDF() {
+    try {
+
+      Iterable<Municipio> municipios = municipioRepository.findAll();
+      List<Municipio> list = new ArrayList<Municipio>();
+      municipios.forEach(list::add);
+
+      Map<String, Object> params = new HashMap<String, Object>();
+      params.put("reporte", "Reporte de Municipios");
+      params.put("data", new JRBeanCollectionDataSource(list));
+
+      JasperPrint report = JasperFillManager.fillReport(
+          JasperCompileManager.compileReport(
+              ResourceUtils.getFile("classpath:reports/municipios.jrxml").getAbsolutePath()),
+          params, new JREmptyDataSource());
+
+      HttpHeaders headers = new HttpHeaders();
+      headers.setContentType(MediaType.APPLICATION_PDF);
+      headers.setContentDispositionFormData("filename", "municipios.pdf");
+
+      return new ResponseEntity<byte[]>(JasperExportManager.exportReportToPdf(report), headers, HttpStatus.OK);
+
+    } catch (Exception e) {
+      return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
   }
