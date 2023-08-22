@@ -1,7 +1,6 @@
 package gob.gt.infom.controllers;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +23,6 @@ import gob.gt.infom.models.Municipio;
 import gob.gt.infom.repositories.DepartamentoRepository;
 import gob.gt.infom.repositories.MunicipioRepository;
 import io.jsonwebtoken.io.IOException;
-import lombok.Value;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -62,9 +60,7 @@ public class ReporteController {
       params.put("reporte", "Reporte de Departamentos");
       params.put("data", new JRBeanCollectionDataSource(dList));
 
-      // File file = ResourceUtils.getFile("classpath:reports/departamentos.jrxml");
       Resource resource = resourceLoader.getResource("classpath:reports/departamentos.jrxml");
-
       JasperReport jr = JasperCompileManager.compileReport(resource.getInputStream());
       JasperPrint report = JasperFillManager.fillReport(jr, params, new JREmptyDataSource());
 
@@ -72,11 +68,8 @@ public class ReporteController {
       JasperExportManager.exportReportToPdfStream(report, outStream);
 
       HttpHeaders headers = new HttpHeaders();
-
       headers.setContentType(MediaType.parseMediaType("application/pdf"));
-      String filename = "departamentos.pdf";
-
-      headers.add("content-disposition", "inline;filename=" + filename);
+      headers.add("content-disposition", "inline;filename=departamentos.pdf");
 
       return new ResponseEntity<byte[]>(outStream.toByteArray(), headers, HttpStatus.OK);
 
