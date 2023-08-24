@@ -111,7 +111,7 @@
       <artifactId>jasperreports</artifactId>
       <version>6.20.5</version>
     </dependency>
-    
+
   </dependencies>
 
   <build>
@@ -136,7 +136,7 @@
       <id>Jasper Reports</id>
       <url>http://jaspersoft.artifactoryonline.com/jaspersoft/jr-ce-releases</url>
       <snapshots>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </snapshots>
     </repository>
   </repositories>
@@ -146,7 +146,7 @@
       <id>Jasper Reports</id>
       <url>http://jaspersoft.artifactoryonline.com/jaspersoft/jr-ce-releases</url>
       <snapshots>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </snapshots>
     </pluginRepository>
   </pluginRepositories>

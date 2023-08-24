@@ -1,5 +1,7 @@
 package gob.gt.infom.controllers;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,9 @@ public class PrestamoController {
   @Autowired
   private PrestamoRepository repository;
 
-  @GetMapping("/prestamos")
-  public Iterable<Prestamo> all() {
-    return repository.findAll();
+  @GetMapping("/prestamos/{fecha_inicio}/{fecha_fin}")
+  public List<Prestamo> all(@PathVariable Date fecha_inicio, Date fecha_fin) {
+    return repository.findAllByFechaBetween(fecha_inicio, fecha_fin);
   }
 
   @GetMapping("/prestamos/{id}")
@@ -58,6 +60,7 @@ public class PrestamoController {
         .certficacion(p.getCertficacion())
         .oficioaj(p.getOficioaj())
         .oficioaj2(p.getOficioaj2())
+        .estado(p.getEstado())
         .id_tipo_prestamo(p.getId_tipo_prestamo())
         .id_municipalidad(p.getId_municipalidad())
         .id_funcionario(p.getId_funcionario())
@@ -94,6 +97,7 @@ public class PrestamoController {
       prestamo.setCertficacion(p.getCertficacion());
       prestamo.setOficioaj(p.getOficioaj());
       prestamo.setOficioaj2(p.getOficioaj2());
+      prestamo.setEstado(p.getEstado());
       prestamo.setId_tipo_prestamo(p.getId_tipo_prestamo());
       prestamo.setId_municipalidad(p.getId_municipalidad());
       prestamo.setId_funcionario(p.getId_funcionario());
