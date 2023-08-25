@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,6 +30,7 @@ public class Prestamo {
   private Long id;
   private String no_dictamen;
   private String no_pagare;
+  @Temporal(TemporalType.DATE)
   private Date fecha;
   private Date fecha_vencimiento;
   private Double monto;
