@@ -1,7 +1,5 @@
 package gob.gt.infom.models;
 
-import java.util.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -29,22 +27,22 @@ public class Prestamo {
   private String no_dictamen;
   private String no_pagare;
   private String fecha;
-  private Date fecha_vencimiento;
+  private String fecha_vencimiento;
   private Double monto;
   private Integer plazo_meses;
-  private Date fecha_acta;
+  private String fecha_acta;
   private Double deposito_intereses;
   private Double intereses;
-  private Date intereses_fecha_fin;
+  private String intereses_fecha_fin;
   private Integer tiempo_gracia;
   private String destino_prestamo;
   private Boolean cobro_intereses;
   private String acta;
   private String punto;
-  private Date fecha_memorial;
+  private String fecha_memorial;
   private String autorizacion;
-  private Date certficacion;
-  private Date oficioaj;
+  private String certficacion;
+  private String oficioaj;
   private String oficioaj2;
   private String estado;
   private Integer id_tipo_prestamo;

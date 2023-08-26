@@ -40,6 +40,14 @@ public class PrestamoController {
     return repository.findAllByEstadoAndFechaBetween(estado, fecha_inicio, fecha_fin);
   }
 
+  @GetMapping("/prestamos/count/{estado}/{fecha_inicio}/{fecha_fin}")
+  public Optional<Prestamo> countByEstado(
+      @PathVariable String estado,
+      @PathVariable String fecha_inicio,
+      @PathVariable String fecha_fin) {
+    return repository.countByEstadoAndFechaBetween(estado, fecha_inicio, fecha_fin);
+  }
+
   @GetMapping("/prestamos/{id}")
   public Optional<Prestamo> one(@PathVariable Long id) {
     return repository.findById(id);
