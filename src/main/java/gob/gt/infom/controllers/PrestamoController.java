@@ -1,10 +1,9 @@
 package gob.gt.infom.controllers;
 
-import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,9 +25,19 @@ public class PrestamoController {
   @Autowired
   private PrestamoRepository repository;
 
+  @GetMapping("/prestamos/{fecha_inicio}/{fecha_fin}")
+  public List<Prestamo> all(
+      @PathVariable String fecha_inicio,
+      @PathVariable String fecha_fin) {
+  return repository.findAllByFechaBetween(fecha_inicio, fecha_fin);
+  }
+
   @GetMapping("/prestamos/{estado}/{fecha_inicio}/{fecha_fin}")
-  public Iterable<Prestamo> all(@Param("estado") String estado, @Param("fecha_inicio") Date start, @Param("fecha_fin") Date end) {
-    return repository.findAllByEstadoAndFechaBetween(estado, start, end);
+  public List<Prestamo> allByEstado(
+      @PathVariable String estado,
+      @PathVariable String fecha_inicio,
+      @PathVariable String fecha_fin) {
+    return repository.findAllByEstadoAndFechaBetween(estado, fecha_inicio, fecha_fin);
   }
 
   @GetMapping("/prestamos/{id}")
