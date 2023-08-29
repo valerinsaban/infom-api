@@ -26,6 +26,7 @@ public class Amortizacion {
   private Long id;
   private String capital;
   private String intereses;
+  private String iva_intereses;
   private String cuota;
   private String saldo;
   private String fecha_inicio;

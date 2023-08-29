@@ -210,6 +210,7 @@ CREATE TABLE [dbo].[amortizaciones] (
   [dias] int,
   [capital] varchar(255),
   [intereses] varchar(255),
+  [iva_intereses] varchar(255),
   [cuota] varchar(255),
   [saldo] varchar(255),
   [id_prestamo] int,

@@ -45,6 +45,7 @@ public class AmortizacionController {
     Amortizacion amortizacion = Amortizacion.builder()
         .capital(a.getCapital())
         .intereses(a.getIntereses())
+        .iva_intereses(a.getIva_intereses())
         .cuota(a.getCuota())
         .saldo(a.getSaldo())
         .fecha_inicio(a.getFecha_inicio())
@@ -63,6 +64,7 @@ public class AmortizacionController {
       Amortizacion amortizacion = data.get();
       amortizacion.setCapital(a.getCapital());
       amortizacion.setIntereses(a.getIntereses());
+      amortizacion.setIva_intereses(a.getIva_intereses());
       amortizacion.setCuota(a.getCuota());
       amortizacion.setSaldo(a.getSaldo());
       amortizacion.setFecha_inicio(a.getFecha_inicio());

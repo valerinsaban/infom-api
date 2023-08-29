@@ -65,14 +65,10 @@
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="20" isBold="true" isItalic="false" isUnderline="false"/>
+						<font size="20" isBold="true" isItalic="false" isUnderline="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{reporte}]]></textFieldExpression>
 				</textField>
-				<image>
-					<reportElement x="10" y="5" width="80" height="40" uuid="97d71afc-1966-4591-adcd-65270006a2a5"/>
-					<imageExpression><![CDATA["http://45.79.218.175/assets/images/logo/logo.png"]]></imageExpression>
-				</image>
 			</frame>
 		</band>
 	</title>
