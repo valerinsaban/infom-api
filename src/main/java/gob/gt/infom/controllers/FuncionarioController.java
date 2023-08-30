@@ -38,6 +38,7 @@ public class FuncionarioController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Funcionario p) {
     Funcionario funcionario = Funcionario.builder()
+        .codigo(p.getCodigo())
         .nombre(p.getNombre())
         .apellido(p.getApellido())
         .fecha_nacimiento(p.getFecha_nacimiento())
@@ -65,6 +66,7 @@ public class FuncionarioController {
     Optional<Funcionario> data = repository.findById(id);
     if (data.isPresent()) {
       Funcionario funcionario = data.get();
+      funcionario.setCodigo(p.getCodigo());
       funcionario.setNombre(p.getNombre());
       funcionario.setApellido(p.getApellido());
       funcionario.setFecha_nacimiento(p.getFecha_nacimiento());

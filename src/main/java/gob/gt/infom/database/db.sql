@@ -145,6 +145,7 @@ CREATE TABLE [dbo].[aportes] (
 
 CREATE TABLE [dbo].[funcionarios] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [codigo] varchar(255),
   [nombre] varchar(255),
   [apellido] varchar(255),
   [fecha_nacimiento] date,
