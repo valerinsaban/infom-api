@@ -23,19 +23,18 @@ public class Aporte {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
   private Integer anio;
   private Integer mes;
-  private Integer monto;
+  private Integer constitucional;
+  private Integer iva_paz;
+  private Integer vehiculos;
+  private Integer petroleo;
+  private Integer total;
   private Integer id_municipalidad;
-  private Integer id_garantia;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)
   private Municipalidad municipalidad;
-  
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_garantia", insertable = false, updatable = false)
-  private Garantia garantia;
 
 }

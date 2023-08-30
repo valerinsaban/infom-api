@@ -78,7 +78,22 @@ public class ReporteController {
       Optional<Prestamo> prestamo = prestamoRepository.findById(id);
       
       Map<String, Object> params = new HashMap<String, Object>();
-      params.put("data", prestamo.map(p -> new Prestamo()));
+      params.put("data", prestamo);
+      // params.put("no_dictamen", prestamo.get().getNo_dictamen());
+      // params.put("no_pagare", prestamo.get().getNo_pagare());
+      params.put("fecha", prestamo.get().getFecha());
+      params.put("pagina", "01");
+      params.put("resolucion", "3424242");
+      params.put("convenio", "89787");
+
+      // params.put("fecha_vencimiento", prestamo.get().getFecha_vencimiento());
+      // params.put("monto", prestamo.get().getMonto());
+      // params.put("plazo_meses", prestamo.get().getPlazo_meses());
+      // params.put("fecha_acta", prestamo.get().getFecha_acta());
+      // params.put("deposito_intereses", prestamo.get().getDeposito_intereses());
+      // params.put("intereses", prestamo.get().getIntereses());
+      // params.put("intereses_fecha_fin", prestamo.get().getIntereses_fecha_fin());
+
 
       Resource resource = resourceLoader.getResource("classpath:reports/prestamo-resumen.jrxml");
       JasperReport jr = JasperCompileManager.compileReport(resource.getInputStream());

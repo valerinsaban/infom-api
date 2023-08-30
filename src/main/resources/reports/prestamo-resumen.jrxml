@@ -168,7 +168,7 @@
 		<parameterDescription><![CDATA[fecha]]></parameterDescription>
 	</parameter>
 	<parameter name="pagina" class="java.lang.String">
-		<parameterDescription><![CDATA[data.pagina]]></parameterDescription>
+		<parameterDescription><![CDATA[pagina]]></parameterDescription>
 	</parameter>
 	<parameter name="tipo_prestamo" class="java.lang.String">
 		<parameterDescription><![CDATA[data.tipo_prestamo.nombre]]></parameterDescription>
@@ -221,7 +221,6 @@
 	<parameter name="departamento" class="java.lang.String">
 		<parameterDescription><![CDATA[data.departamento.nombre]]></parameterDescription>
 	</parameter>
-	<parameter name="data" class="java.util.Optional"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -262,10 +261,6 @@
 				<reportElement x="520" y="20" width="53" height="19" uuid="f7984437-df66-4976-9737-5bc034b70f16"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="20" y="20" width="100" height="30" uuid="54bdd33d-980e-4ab5-a4c3-d9a9d04ad4a5"/>
-				<textFieldExpression><![CDATA[$P{data}.get()]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

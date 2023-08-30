@@ -136,11 +136,13 @@ CREATE TABLE [dbo].[aportes] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [anio] int,
   [mes] int,
-  [monto] varchar(255),
+  [constitucional] varchar(255),
+  [iva_paz] varchar(255),
+  [vehiculos] varchar(255),
+  [petroleo] varchar(255),
+  [total] varchar(255),
   [id_municipalidad] int,
-  [id_garantia] int,
-  CONSTRAINT [fk_aportes_municipalidades] FOREIGN KEY ([id_municipalidad]) REFERENCES [dbo].[municipalidades] ([id]),
-  CONSTRAINT [fk_aportes_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id])
+  CONSTRAINT [fk_aportes_municipalidades] FOREIGN KEY ([id_municipalidad]) REFERENCES [dbo].[municipalidades] ([id])
 );
 
 CREATE TABLE [dbo].[funcionarios] (

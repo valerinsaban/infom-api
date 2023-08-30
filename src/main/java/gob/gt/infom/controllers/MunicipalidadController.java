@@ -34,6 +34,11 @@ public class MunicipalidadController {
     return repository.findById(id);
   }
 
+  @GetMapping("/municipalidades/{codigo_departamento}/{codigo_municipio}")
+  public Optional<Municipalidad> findOneByDepartamentoCodigoAndMunicipioCodigo(@PathVariable String codigo_departamento, @PathVariable String codigo_municipio) {
+    return repository.findOneByDepartamentoCodigoAndMunicipioCodigo(codigo_departamento, codigo_municipio);
+  }
+
   @PostMapping("/municipalidades")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Municipalidad m) {
