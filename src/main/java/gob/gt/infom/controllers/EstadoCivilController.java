@@ -30,7 +30,7 @@ public class EstadoCivilController {
   }
 
   @GetMapping("/estados_civiles/{id}")
-  public Optional<EstadoCivil> one(@PathVariable Long id) {
+  public Optional<EstadoCivil> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class EstadoCivilController {
   }
 
   @PutMapping("/estados_civiles/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody EstadoCivil e) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody EstadoCivil e) {
     Optional<EstadoCivil> data = repository.findById(id);
     if (data.isPresent()) {
       EstadoCivil estado_civil = data.get();
@@ -60,7 +60,7 @@ public class EstadoCivilController {
   }
 
   @DeleteMapping("/estados_civiles/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<EstadoCivil> estado_civil = repository.findById(id);
     if (estado_civil.isPresent()) {
       repository.deleteById(id);

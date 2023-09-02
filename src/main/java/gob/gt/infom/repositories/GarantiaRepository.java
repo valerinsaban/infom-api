@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import gob.gt.infom.models.Garantia;
 
-public interface GarantiaRepository extends CrudRepository<Garantia, Long> {
+public interface GarantiaRepository extends CrudRepository<Garantia, Integer> {
   
 }

@@ -23,7 +23,7 @@ public class Amortizacion {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
   private String capital;
   private String intereses;
   private String iva_intereses;
@@ -32,7 +32,7 @@ public class Amortizacion {
   private String fecha_inicio;
   private String fecha_fin;
   private Integer dias;
-  private Long id_prestamo;
+  private Integer id_prestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_prestamo", insertable = false, updatable = false)

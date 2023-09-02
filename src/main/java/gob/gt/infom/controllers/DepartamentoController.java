@@ -30,7 +30,7 @@ public class DepartamentoController {
   }
 
   @GetMapping("/departamentos/{id}")
-  public Optional<Departamento> one(@PathVariable Long id) {
+  public Optional<Departamento> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class DepartamentoController {
   }
 
   @PutMapping("/departamentos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Departamento d) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Departamento d) {
     Optional<Departamento> data = repository.findById(id);
     if (data.isPresent()) {
       Departamento departamento = data.get();
@@ -60,7 +60,7 @@ public class DepartamentoController {
   }
 
   @DeleteMapping("/departamentos/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Departamento> departamento = repository.findById(id);
     if (departamento.isPresent()) {
       repository.deleteById(id);

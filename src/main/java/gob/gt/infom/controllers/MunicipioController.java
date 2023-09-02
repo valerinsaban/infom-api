@@ -30,12 +30,12 @@ public class MunicipioController {
   }
 
   @GetMapping("/municipios/{id}")
-  public Optional<Municipio> one(@PathVariable Long id) {
+  public Optional<Municipio> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
   @GetMapping("/municipios/departamento/{id}")
-  public Iterable<Municipio> allByDepartamento(@PathVariable Long id) {
+  public Iterable<Municipio> allByDepartamento(@PathVariable Integer id) {
     return repository.findByDepartamentoId(id);
   }
 
@@ -53,7 +53,7 @@ public class MunicipioController {
   }
 
   @PutMapping("/municipios/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Municipio m) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Municipio m) {
     Optional<Municipio> data = repository.findById(id);
     if (data.isPresent()) {
       Municipio municipio = data.get();
@@ -67,7 +67,7 @@ public class MunicipioController {
   }
 
   @DeleteMapping("/municipios/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Municipio> municipio = repository.findById(id);
     if (municipio.isPresent()) {
       repository.deleteById(id);

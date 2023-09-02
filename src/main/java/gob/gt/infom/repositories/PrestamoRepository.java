@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import gob.gt.infom.models.Prestamo;
 
-public interface PrestamoRepository extends CrudRepository<Prestamo, Long> {
+public interface PrestamoRepository extends CrudRepository<Prestamo, Integer> {
 
   List<Prestamo> findAllByFechaBetween(String start, String end);
 

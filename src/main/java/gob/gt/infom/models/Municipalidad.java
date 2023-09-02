@@ -24,12 +24,14 @@ public class Municipalidad {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
   private String direccion;
-  @NotNull
+  private String correo;
+  private String telefono;
+  private String no_cuenta;
   private Integer id_departamento;
-  @NotNull
   private Integer id_municipio;
+  private Integer id_banco;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_departamento", insertable = false, updatable = false)
@@ -38,5 +40,9 @@ public class Municipalidad {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_municipio", insertable = false, updatable = false)
   private Municipio municipio;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_banco", insertable = false, updatable = false)
+  private Banco banco;
 
 }

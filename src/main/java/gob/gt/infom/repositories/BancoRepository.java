@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import gob.gt.infom.models.Banco;
 
-public interface BancoRepository extends CrudRepository<Banco, Long> {
+public interface BancoRepository extends CrudRepository<Banco, Integer> {
   
 }

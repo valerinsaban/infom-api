@@ -30,7 +30,7 @@ public class FuncionarioController {
   }
 
   @GetMapping("/funcionarios/{id}")
-  public Optional<Funcionario> one(@PathVariable Long id) {
+  public Optional<Funcionario> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -62,7 +62,7 @@ public class FuncionarioController {
   }
 
   @PutMapping("/funcionarios/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Funcionario p) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Funcionario p) {
     Optional<Funcionario> data = repository.findById(id);
     if (data.isPresent()) {
       Funcionario funcionario = data.get();
@@ -92,7 +92,7 @@ public class FuncionarioController {
   }
 
   @DeleteMapping("/funcionarios/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Funcionario> funcionario = repository.findById(id);
     if (funcionario.isPresent()) {
       repository.deleteById(id);

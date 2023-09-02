@@ -4,6 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import gob.gt.infom.models.Aporte;
 
-public interface AporteRepository extends CrudRepository<Aporte, Long> {
+public interface AporteRepository extends CrudRepository<Aporte, Integer> {
+
+  Iterable<Aporte> findAllByMesBetweenAndCodigoDepartamentoAndCodigoMunicipio(String mes_inicio, String mes_fin, String codigo_departamento, String codigo_municipio);
 
 }

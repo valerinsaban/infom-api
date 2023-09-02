@@ -25,7 +25,7 @@ public class Menu {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
   private String nombre;
   private String url;
   private String icono;

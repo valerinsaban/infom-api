@@ -18,27 +18,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "permisos")
-public class Permiso {
+@Table(name = "importes")
+public class Importe {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String accion;
-  private Integer id_rol;
-  private Integer id_menu;
-  private Integer id_submenu;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_rol", insertable = false, updatable = false)
-  private Rol rol;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_menu", insertable = false, updatable = false)
-  private Menu menu;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_submenu", insertable = false, updatable = false)
-  private Submenu submenu;
+  private String mes;
+  private String fecha;
+  private String observaciones;
+  private String constitucional;
+  private String iva_paz;
+  private String vehiculos;
+  private String petroleo;
+  private String total;
 
 }

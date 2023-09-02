@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import gob.gt.infom.models.Usuario;
 
-public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
+public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
   
   Optional<Usuario> findByUsuario(String usuario);
 

@@ -30,7 +30,7 @@ public class TipoPrestamoController {
   }
 
   @GetMapping("/tipos_prestamos/{id}")
-  public Optional<TipoPrestamo> one(@PathVariable Long id) {
+  public Optional<TipoPrestamo> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class TipoPrestamoController {
   }
 
   @PutMapping("/tipos_prestamos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody TipoPrestamo p) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody TipoPrestamo p) {
     Optional<TipoPrestamo> data = repository.findById(id);
     if (data.isPresent()) {
       TipoPrestamo tipo_prestamo = data.get();
@@ -60,7 +60,7 @@ public class TipoPrestamoController {
   }
 
   @DeleteMapping("/tipos_prestamos/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<TipoPrestamo> tipo_prestamo = repository.findById(id);
     if (tipo_prestamo.isPresent()) {
       repository.deleteById(id);

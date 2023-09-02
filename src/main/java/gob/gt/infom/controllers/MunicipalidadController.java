@@ -29,36 +29,42 @@ public class MunicipalidadController {
     return repository.findAll();
   }
 
-  @GetMapping("/municipalidades/{id}")
-  public Optional<Municipalidad> one(@PathVariable Long id) {
-    return repository.findById(id);
-  }
-
   @GetMapping("/municipalidades/{codigo_departamento}/{codigo_municipio}")
   public Optional<Municipalidad> findOneByDepartamentoCodigoAndMunicipioCodigo(@PathVariable String codigo_departamento, @PathVariable String codigo_municipio) {
     return repository.findOneByDepartamentoCodigoAndMunicipioCodigo(codigo_departamento, codigo_municipio);
+  }
+
+  @GetMapping("/municipalidades/{codigo_departamento}")
+  public Iterable<Municipalidad> findAllByDepartamentoCodigo(@PathVariable String codigo_departamento) {
+    return repository.findAllByDepartamentoCodigo(codigo_departamento);
   }
 
   @PostMapping("/municipalidades")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Municipalidad m) {
     Municipalidad municipalidad = Municipalidad.builder()
+        .direccion(m.getDireccion())
+        .correo(m.getCorreo())
+        .telefono(m.getTelefono())
+        .no_cuenta(m.getNo_cuenta())
         .id_departamento(m.getId_departamento())
         .id_municipio(m.getId_municipio())
-        .direccion(m.getDireccion())
         .build();
     repository.save(municipalidad);
     return ResponseController.success("Municipalidad Agregado Correctamente", municipalidad);
   }
 
   @PutMapping("/municipalidades/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Municipalidad m) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Municipalidad m) {
     Optional<Municipalidad> data = repository.findById(id);
     if (data.isPresent()) {
       Municipalidad municipalidad = data.get();
+      municipalidad.setDireccion(m.getDireccion());
+      municipalidad.setCorreo(m.getCorreo());
+      municipalidad.setTelefono(m.getTelefono());
+      municipalidad.setNo_cuenta(m.getNo_cuenta());
       municipalidad.setId_departamento(m.getId_departamento());
       municipalidad.setId_municipio(m.getId_municipio());
-      municipalidad.setDireccion(m.getDireccion());
       repository.save(municipalidad);
       return ResponseController.success("Municipalidad Actualizado Correctamente", municipalidad);
     } else {
@@ -67,7 +73,7 @@ public class MunicipalidadController {
   }
 
   @DeleteMapping("/municipalidades/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Municipalidad> municipalidad = repository.findById(id);
     if (municipalidad.isPresent()) {
       repository.deleteById(id);

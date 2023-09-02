@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface PermisoRepository extends CrudRepository<Permiso, Long> {
+public interface PermisoRepository extends CrudRepository<Permiso, Integer> {
 
   List<Permiso> findOneByAccionAndRolIdAndMenuIdAndSubmenuId(String accion, Integer id_rol, Integer id_menu, Integer id_submenu);
 

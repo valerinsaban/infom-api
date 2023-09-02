@@ -30,7 +30,7 @@ public class RolController {
   }
 
   @GetMapping("/roles/{id}")
-  public Optional<Rol> one(@PathVariable Long id) {
+  public Optional<Rol> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class RolController {
   }
 
   @PutMapping("/roles/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Rol r) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Rol r) {
     Optional<Rol> data = repository.findById(id);
     if (data.isPresent()) {
       Rol rol = data.get();
@@ -60,7 +60,7 @@ public class RolController {
   }
 
   @DeleteMapping("/roles/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Rol> rol = repository.findById(id);
     if (rol.isPresent()) {
       repository.deleteById(id);

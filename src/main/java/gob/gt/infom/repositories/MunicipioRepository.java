@@ -4,8 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import gob.gt.infom.models.Municipio;
 
-public interface MunicipioRepository extends CrudRepository<Municipio, Long> {
+public interface MunicipioRepository extends CrudRepository<Municipio, Integer> {
 
-  Iterable<Municipio> findByDepartamentoId(Long id);
+  Iterable<Municipio> findByDepartamentoId(Integer id);
   
 }

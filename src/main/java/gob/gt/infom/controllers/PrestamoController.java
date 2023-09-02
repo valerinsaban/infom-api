@@ -49,7 +49,7 @@ public class PrestamoController {
   }
 
   @GetMapping("/prestamos/{id}")
-  public Optional<Prestamo> one(@PathVariable Long id) {
+  public Optional<Prestamo> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -90,7 +90,7 @@ public class PrestamoController {
   }
 
   @PutMapping("/prestamos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Prestamo p) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Prestamo p) {
     Optional<Prestamo> data = repository.findById(id);
     if (data.isPresent()) {
       Prestamo prestamo = data.get();
@@ -128,7 +128,7 @@ public class PrestamoController {
   }
 
   @DeleteMapping("/prestamos/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Prestamo> prestamo = repository.findById(id);
     if (prestamo.isPresent()) {
       repository.deleteById(id);

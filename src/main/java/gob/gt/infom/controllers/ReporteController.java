@@ -72,7 +72,7 @@ public class ReporteController {
   }
 
   @GetMapping("/reportes/{formato}/prestamo/resumen/{id}")
-  public ResponseEntity<?> reportePrestamoResumen(@PathVariable String formato, @PathVariable Long id) throws JRException, IOException {
+  public ResponseEntity<?> reportePrestamoResumen(@PathVariable String formato, @PathVariable Integer id) throws JRException, IOException {
     try {
 
       Optional<Prestamo> prestamo = prestamoRepository.findById(id);

@@ -31,7 +31,7 @@ public class PermisoController {
   }
 
   @GetMapping("/permisos/{id}")
-  public Optional<Permiso> one(@PathVariable Long id) {
+  public Optional<Permiso> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -60,14 +60,14 @@ public class PermisoController {
       repository.save(permiso);
       return ResponseController.success("Permiso habilitado", permiso);
     } else {
-      Long id = Long.valueOf(data.get(0).getId());
+      Integer id = Integer.valueOf(data.get(0).getId());
       repository.deleteById(id);
       return ResponseController.success("Permiso deshabilitado", data);
     }
   }
 
   @PutMapping("/permisos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Permiso r) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Permiso r) {
     Optional<Permiso> data = repository.findById(id);
     if (data.isPresent()) {
       Permiso permiso = data.get();
@@ -83,7 +83,7 @@ public class PermisoController {
   }
 
   @DeleteMapping("/permisos/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Permiso> permiso = repository.findById(id);
     if (permiso.isPresent()) {
       repository.deleteById(id);

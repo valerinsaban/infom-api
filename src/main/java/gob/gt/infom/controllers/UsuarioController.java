@@ -34,7 +34,7 @@ public class UsuarioController {
   }
 
   @GetMapping("/usuarios/{id}")
-  public Optional<Usuario> one(@PathVariable Long id) {
+  public Optional<Usuario> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -60,7 +60,7 @@ public class UsuarioController {
   }
 
   @PutMapping("/usuarios/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Usuario u) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Usuario u) {
     Optional<Usuario> data = repository.findById(id);
     if (data.isPresent()) {
       Usuario usuario = data.get();
@@ -79,7 +79,7 @@ public class UsuarioController {
   }
 
   @DeleteMapping("/usuarios/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Usuario> data = repository.findById(id);
     if (data.isPresent()) {
       repository.deleteById(id);

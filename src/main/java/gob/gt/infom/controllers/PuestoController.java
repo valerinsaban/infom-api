@@ -30,7 +30,7 @@ public class PuestoController {
   }
 
   @GetMapping("/puestos/{id}")
-  public Optional<Puesto> one(@PathVariable Long id) {
+  public Optional<Puesto> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class PuestoController {
   }
 
   @PutMapping("/puestos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Puesto p) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Puesto p) {
     Optional<Puesto> data = repository.findById(id);
     if (data.isPresent()) {
       Puesto puesto = data.get();
@@ -60,7 +60,7 @@ public class PuestoController {
   }
 
   @DeleteMapping("/puestos/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Puesto> puesto = repository.findById(id);
     if (puesto.isPresent()) {
       repository.deleteById(id);

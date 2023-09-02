@@ -30,7 +30,7 @@ public class SubmenuController {
   }
 
   @GetMapping("/submenus/{id}")
-  public Optional<Submenu> one(@PathVariable Long id) {
+  public Optional<Submenu> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class SubmenuController {
   }
 
   @PutMapping("/submenus/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Submenu r) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Submenu r) {
     Optional<Submenu> data = repository.findById(id);
     if (data.isPresent()) {
       Submenu submenu = data.get();
@@ -60,7 +60,7 @@ public class SubmenuController {
   }
 
   @DeleteMapping("/submenus/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Submenu> submenu = repository.findById(id);
     if (submenu.isPresent()) {
       repository.deleteById(id);

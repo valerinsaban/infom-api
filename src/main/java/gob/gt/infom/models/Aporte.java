@@ -1,5 +1,6 @@
 package gob.gt.infom.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,17 +25,20 @@ public class Aporte {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private Integer anio;
-  private Integer mes;
-  private Integer constitucional;
-  private Integer iva_paz;
-  private Integer vehiculos;
-  private Integer petroleo;
-  private Integer total;
-  private Integer id_municipalidad;
+  private String mes;
+  private String constitucional;
+  private String iva_paz;
+  private String vehiculos;
+  private String petroleo;
+  private String total;
+  @Column(name="codigo_departamento")
+  private String codigoDepartamento;
+  @Column(name="codigo_municipio")
+  private String codigoMunicipio;
+  private Integer id_importe;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)
-  private Municipalidad municipalidad;
+  @JoinColumn(name = "id_importe", insertable = false, updatable = false)
+  private Importe importe;
 
 }

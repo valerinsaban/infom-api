@@ -30,7 +30,7 @@ public class ProfesionController {
   }
 
   @GetMapping("/profesiones/{id}")
-  public Optional<Profesion> one(@PathVariable Long id) {
+  public Optional<Profesion> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class ProfesionController {
   }
 
   @PutMapping("/profesiones/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Profesion p) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Profesion p) {
     Optional<Profesion> data = repository.findById(id);
     if (data.isPresent()) {
       Profesion profesion = data.get();
@@ -60,7 +60,7 @@ public class ProfesionController {
   }
 
   @DeleteMapping("/profesiones/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Profesion> profesion = repository.findById(id);
     if (profesion.isPresent()) {
       repository.deleteById(id);

@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import gob.gt.infom.models.Departamento;
 
-public interface DepartamentoRepository extends CrudRepository<Departamento, Long> {
+public interface DepartamentoRepository extends CrudRepository<Departamento, Integer> {
   
 }

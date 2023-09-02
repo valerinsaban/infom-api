@@ -30,12 +30,12 @@ public class AmortizacionController {
   }
 
   @GetMapping("/amortizaciones/{id}")
-  public Optional<Amortizacion> one(@PathVariable Long id) {
+  public Optional<Amortizacion> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
   @GetMapping("/amortizaciones/prestamo/{id_prestamo}")
-  public Iterable<Amortizacion> findAllById_prestamo(@PathVariable Long id_prestamo) {
+  public Iterable<Amortizacion> findAllById_prestamo(@PathVariable Integer id_prestamo) {
     return repository.findAllByPrestamoId(id_prestamo);
   }
 
@@ -58,7 +58,7 @@ public class AmortizacionController {
   }
 
   @PutMapping("/amortizaciones/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Amortizacion a) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Amortizacion a) {
     Optional<Amortizacion> data = repository.findById(id);
     if (data.isPresent()) {
       Amortizacion amortizacion = data.get();
@@ -79,7 +79,7 @@ public class AmortizacionController {
   }
 
   @DeleteMapping("/amortizaciones/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Amortizacion> amortizacion = repository.findById(id);
     if (amortizacion.isPresent()) {
       repository.deleteById(id);

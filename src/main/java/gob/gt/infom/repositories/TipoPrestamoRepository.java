@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import gob.gt.infom.models.TipoPrestamo;
 
-public interface TipoPrestamoRepository extends CrudRepository<TipoPrestamo, Long> {
+public interface TipoPrestamoRepository extends CrudRepository<TipoPrestamo, Integer> {
   
 }

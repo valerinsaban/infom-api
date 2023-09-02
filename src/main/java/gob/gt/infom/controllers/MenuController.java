@@ -30,7 +30,7 @@ public class MenuController {
   }
 
   @GetMapping("/menus/{id}")
-  public Optional<Menu> one(@PathVariable Long id) {
+  public Optional<Menu> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -45,7 +45,7 @@ public class MenuController {
   }
 
   @PutMapping("/menus/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Menu r) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Menu r) {
     Optional<Menu> data = repository.findById(id);
     if (data.isPresent()) {
       Menu menu = data.get();
@@ -58,7 +58,7 @@ public class MenuController {
   }
 
   @DeleteMapping("/menus/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Menu> menu = repository.findById(id);
     if (menu.isPresent()) {
       repository.deleteById(id);

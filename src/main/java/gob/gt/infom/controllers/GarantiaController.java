@@ -30,7 +30,7 @@ public class GarantiaController {
   }
 
   @GetMapping("/garantias/{id}")
-  public Optional<Garantia> one(@PathVariable Long id) {
+  public Optional<Garantia> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class GarantiaController {
   }
 
   @PutMapping("/garantias/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Garantia g) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Garantia g) {
     Optional<Garantia> data = repository.findById(id);
     if (data.isPresent()) {
       Garantia garantia = data.get();
@@ -60,7 +60,7 @@ public class GarantiaController {
   }
 
   @DeleteMapping("/garantias/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Garantia> garantia = repository.findById(id);
     if (garantia.isPresent()) {
       repository.deleteById(id);

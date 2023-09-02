@@ -29,8 +29,13 @@ public class AporteController {
     return repository.findAll();
   }
 
+  @GetMapping("/aportes/{mes_inicio}/{mes_fin}/{codigo_departamento}/{codigo_municipio}")
+  public Iterable<Aporte> findAllByMesBetweenAndCodigoDepartamentoAndCodigoMunicipio(@PathVariable String mes_inicio, @PathVariable String mes_fin, @PathVariable String codigo_departamento, @PathVariable String codigo_municipio) {
+    return repository.findAllByMesBetweenAndCodigoDepartamentoAndCodigoMunicipio(mes_inicio, mes_fin, codigo_departamento, codigo_municipio);
+  }
+
   @GetMapping("/aportes/{id}")
-  public Optional<Aporte> one(@PathVariable Long id) {
+  public Optional<Aporte> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -38,32 +43,34 @@ public class AporteController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Aporte a) {
     Aporte aporte = Aporte.builder()
-        .anio(a.getAnio())
         .mes(a.getMes())
         .constitucional(a.getConstitucional())
         .iva_paz(a.getIva_paz())
         .vehiculos(a.getVehiculos())
         .petroleo(a.getPetroleo())
-        .petroleo(a.getPetroleo())
-        .id_municipalidad(a.getId_municipalidad())
+        .total(a.getTotal())
+        .codigoDepartamento(a.getCodigoDepartamento())
+        .codigoMunicipio(a.getCodigoMunicipio())
+        .id_importe(a.getId_importe())
         .build();
     repository.save(aporte);
     return ResponseController.success("Aporte Agregado Correctamente", aporte);
   }
 
   @PutMapping("/aportes/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Aporte a) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Aporte a) {
     Optional<Aporte> data = repository.findById(id);
     if (data.isPresent()) {
       Aporte aporte = data.get();
-      aporte.setAnio(a.getAnio());
       aporte.setMes(a.getMes());
       aporte.setConstitucional(a.getConstitucional());
       aporte.setIva_paz(a.getIva_paz());
       aporte.setVehiculos(a.getVehiculos());
       aporte.setPetroleo(a.getPetroleo());
       aporte.setTotal(a.getTotal());
-      aporte.setId_municipalidad(a.getId_municipalidad());
+      aporte.setCodigoDepartamento(a.getCodigoDepartamento());
+      aporte.setCodigoMunicipio(a.getCodigoMunicipio());
+      aporte.setId_importe(a.getId_importe());
       repository.save(aporte);
       return ResponseController.success("Aporte Actualizado Correctamente", aporte);
     } else {
@@ -72,7 +79,7 @@ public class AporteController {
   }
 
   @DeleteMapping("/aportes/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Aporte> aporte = repository.findById(id);
     if (aporte.isPresent()) {
       repository.deleteById(id);

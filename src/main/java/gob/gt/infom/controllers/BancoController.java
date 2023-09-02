@@ -30,7 +30,7 @@ public class BancoController {
   }
 
   @GetMapping("/bancos/{id}")
-  public Optional<Banco> one(@PathVariable Long id) {
+  public Optional<Banco> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -47,7 +47,7 @@ public class BancoController {
   }
 
   @PutMapping("/bancos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Banco p) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Banco p) {
     Optional<Banco> data = repository.findById(id);
     if (data.isPresent()) {
       Banco banco = data.get();
@@ -62,7 +62,7 @@ public class BancoController {
   }
 
   @DeleteMapping("/bancos/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Banco> banco = repository.findById(id);
     if (banco.isPresent()) {
       repository.deleteById(id);

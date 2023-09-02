@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import gob.gt.infom.models.Profesion;
 
-public interface ProfesionRepository extends CrudRepository<Profesion, Long> {
+public interface ProfesionRepository extends CrudRepository<Profesion, Integer> {
   
 }

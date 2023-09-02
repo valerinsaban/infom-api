@@ -30,7 +30,7 @@ public class RegionalController {
   }
 
   @GetMapping("/regionales/{id}")
-  public Optional<Regional> one(@PathVariable Long id) {
+  public Optional<Regional> one(@PathVariable Integer id) {
     return repository.findById(id);
   }
 
@@ -50,7 +50,7 @@ public class RegionalController {
   }
 
   @PutMapping("/regionales/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Regional r) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Regional r) {
     Optional<Regional> data = repository.findById(id);
     if (data.isPresent()) {
       Regional regional = data.get();
@@ -68,7 +68,7 @@ public class RegionalController {
   }
 
   @DeleteMapping("/regionales/{id}")
-  public ResponseEntity<?> delete(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Regional> regional = repository.findById(id);
     if (regional.isPresent()) {
       repository.deleteById(id);

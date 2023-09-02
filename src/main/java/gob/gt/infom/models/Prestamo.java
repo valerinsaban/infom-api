@@ -23,7 +23,7 @@ public class Prestamo {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
   private String no_dictamen;
   private String no_pagare;
   private String fecha;
