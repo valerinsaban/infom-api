@@ -18,30 +18,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "municipalidades")
-public class Municipalidad {
+@Table(name = "bitacoras")
+public class Bitacora {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String direccion;
-  private String correo;
-  private String telefono;
-  private String no_cuenta;
-  private Integer id_departamento;
-  private Integer id_municipio;
-  private Integer id_banco;
+  private String fecha;
+  private String tipo;
+  private String accion;
+  private String descripcion;
+  private String body;
+  private String id_usuario;
+  private String id_menu;
+  private String id_submenu;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_departamento", insertable = false, updatable = false)
-  private Departamento departamento;
+  @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+  private Usuario usuario;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_municipio", insertable = false, updatable = false)
-  private Municipio municipio;
+  @JoinColumn(name = "id_menu", insertable = false, updatable = false)
+  private Menu menu;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_banco", insertable = false, updatable = false)
-  private Bitacora banco;
+  @JoinColumn(name = "id_submenu", insertable = false, updatable = false)
+  private Submenu submenu;
 
 }

@@ -121,6 +121,17 @@ CREATE TABLE [dbo].[permisos] (
   CONSTRAINT [fk_permisos_submenus] FOREIGN KEY ([id_submenu]) REFERENCES [dbo].[submenus] ([id])
 );
 
+CREATE TABLE [dbo].[bitacoras] (
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [fecha] datetime,
+  [tipo] varchar(255),
+  [accion] varchar(255),
+  [descripcion] varchar(255),
+  [body] varchar(255),
+  [id_usuario] int,
+  CONSTRAINT [fk_bitacoras_usuarios] FOREIGN KEY ([id_usuario]) REFERENCES [dbo].[usuarios] ([id])
+);
+
 -- Generales
 
 CREATE TABLE [dbo].[municipalidades] (
@@ -624,7 +635,7 @@ INSERT INTO [regionales] ([codigo], [nombre], [direccion], [telefono], [correo],
 ('01', 'INFOM CENTRAL', NULL, NULL, NULL, NULL);
 
 INSERT INTO [roles] ([nombre], [color]) VALUES 
-('ADMIN', '#008fc7'),
+('ADMINISTRADOR', '#008fc7'),
 ('RECEPCION', '#0ebe4c'),
 ('OPERATIVO', '#36ab97');
 
