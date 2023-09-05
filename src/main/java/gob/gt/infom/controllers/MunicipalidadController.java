@@ -49,6 +49,7 @@ public class MunicipalidadController {
         .no_cuenta(m.getNo_cuenta())
         .id_departamento(m.getId_departamento())
         .id_municipio(m.getId_municipio())
+        .id_banco(m.getId_banco())
         .build();
     repository.save(municipalidad);
     return ResponseController.success("Municipalidad Agregado Correctamente", municipalidad);
@@ -65,6 +66,7 @@ public class MunicipalidadController {
       municipalidad.setNo_cuenta(m.getNo_cuenta());
       municipalidad.setId_departamento(m.getId_departamento());
       municipalidad.setId_municipio(m.getId_municipio());
+      municipalidad.setId_banco(m.getId_banco());
       repository.save(municipalidad);
       return ResponseController.success("Municipalidad Actualizado Correctamente", municipalidad);
     } else {

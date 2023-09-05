@@ -42,6 +42,6 @@ public class Municipalidad {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_banco", insertable = false, updatable = false)
-  private Bitacora banco;
+  private Banco banco;
 
 }

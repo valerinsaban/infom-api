@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class Bitacora {
   private String tipo;
   private String accion;
   private String descripcion;
+  @Lob
   private String body;
   private String id_usuario;
   private String id_menu;

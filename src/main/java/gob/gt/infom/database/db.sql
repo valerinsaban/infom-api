@@ -127,7 +127,7 @@ CREATE TABLE [dbo].[bitacoras] (
   [tipo] varchar(255),
   [accion] varchar(255),
   [descripcion] varchar(255),
-  [body] varchar(255),
+  [body] varchar(max),
   [id_usuario] int,
   CONSTRAINT [fk_bitacoras_usuarios] FOREIGN KEY ([id_usuario]) REFERENCES [dbo].[usuarios] ([id])
 );
@@ -204,7 +204,7 @@ CREATE TABLE [dbo].[prestamos] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [no_dictamen] varchar(255),
   [no_pagare] varchar(255),
-  [fecha] date,
+  [fecha] datetime,
   [fecha_vencimiento] date,
   [monto] varchar(255),
   [plazo_meses] int,
@@ -645,10 +645,10 @@ INSERT INTO [usuarios] ([nombre], [apellido], [dpi], [usuario], [clave], [id_reg
 INSERT INTO [menus] ([nombre], [url], [icono], [orden]) VALUES 
 ('Municipalidades', 'municipalidades', 'fad fa-house-building', 1),
 ('Funcionarios', 'funcionarios', 'fad fa-user-group-crown', 2),
-('Prestamos', 'prestamos', 'fad fa-money-check-dollar-pen', 3),
+('Aportes', 'aportes', 'fad fa-coins', 3);
 ('Catalogos', NULL, 'fad fa-house-building', 9),
 ('Seguridad', NULL, 'fad fa-shield-check', 10),
-('Aportes', 'aportes', 'fad fa-coins', 4);
+('Prestamos', 'prestamos', 'fad fa-money-check-dollar-pen', 4),
 
 INSERT INTO [submenus] ([nombre], [url], [orden], [id_menu]) VALUES 
 ('Departamentos', 'departamentos', 1, 4),
@@ -664,3 +664,4 @@ INSERT INTO [submenus] ([nombre], [url], [orden], [id_menu]) VALUES
 ('Usuarios', 'usuarios', 1, 5),
 ('Roles', 'roles', 2, 5),
 ('Permisos', 'permisos', 3, 5);
+('Bitacora', 'bitacoras', 4, 5);

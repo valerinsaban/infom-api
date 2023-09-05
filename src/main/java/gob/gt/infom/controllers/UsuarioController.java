@@ -78,6 +78,19 @@ public class UsuarioController {
     }
   }
 
+  @PutMapping("/usuarios/clave/{id}")
+  public ResponseEntity<?> updateClave(@PathVariable("id") Integer id, @RequestBody Usuario u) {
+    Optional<Usuario> data = repository.findById(id);
+    if (data.isPresent()) {
+      Usuario usuario = data.get();
+      usuario.setClave(passwordEncoder.encode(u.getClave())); 
+      repository.save(usuario);
+      return ResponseController.success("Usuario Actualizado Correctamente", usuario);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
   @DeleteMapping("/usuarios/{id}")
   public ResponseEntity<?> delete(@PathVariable Integer id) {
     Optional<Usuario> data = repository.findById(id);

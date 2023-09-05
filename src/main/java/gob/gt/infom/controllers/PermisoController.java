@@ -40,7 +40,7 @@ public class PermisoController {
     return repository.findOneByAccionAndRolIdAndMenuIdAndSubmenuId(accion, id_rol, id_menu, id_submenu);
   }
 
-  @GetMapping("/permisos/role/{id_rol}")
+  @GetMapping("/permisos/rol/{id_rol}")
   public List<Permiso> oneAllByRol(@PathVariable Integer id_rol) {
     return repository.findAllByRolId(id_rol);
   }
