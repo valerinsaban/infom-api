@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "funcionarios")
-public class Funcionario {
+@Table(name = "representantes")
+public class Representante {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,27 +30,33 @@ public class Funcionario {
   private String apellido;
   private String fecha_nacimiento;
   private String dpi;
-  private String carnet;
-  private String fecha_carnet;
+  private String resolucion;
+  private String fecha_resolucion;
+  private String acuerdo;
+  private String fecha_acuerdo;
+  private String jd_resuelve;
+  private String fecha_jd_resuelve;
+  private String direccion;
+  private String autorizacion;
   private String acta_toma_posecion;
   private String fecha_acta_toma_posecion;
   private String estado;
-  @Lob
-  private String imagen_carnet;
-  @Lob
-  private String imagen_acta_toma_posecion;
-  @Lob
-  private String imagen_fotografia;
-  @Lob
-  private String imagen_firma;
-  private Integer id_municipalidad;
+  // @Lob
+  // private String imagen_carnet;
+  // @Lob
+  // private String imagen_acta_toma_posecion;
+  // @Lob
+  // private String imagen_fotografia;
+  // @Lob
+  // private String imagen_firma;
+  private Integer id_regional;
   private Integer id_puesto;
   private Integer id_profesion;
   private Integer id_estado_civil;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)
-  private Municipalidad municipalidad;
+  @JoinColumn(name = "id_regional", insertable = false, updatable = false)
+  private Regional regional;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_puesto", insertable = false, updatable = false)

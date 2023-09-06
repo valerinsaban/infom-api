@@ -23,5 +23,6 @@ public class Garantia {
   private Integer id;
   private String codigo;
   private String nombre;
+  private String porcentaje;
 
 }

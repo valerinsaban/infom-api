@@ -15,13 +15,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tipos_prestamos")
-public class TipoPrestamo {
+@Table(name = "configuraciones")
+public class Configuracion {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String codigo;
-  private String nombre;
+  private String portada;
+  private String logo;
+  private String porcentaje_intereses;
+  private String porcentaje_iva;
 
 }

@@ -78,12 +78,11 @@ public class PrestamoController {
         .oficioaj(p.getOficioaj())
         .oficioaj2(p.getOficioaj2())
         .estado(p.getEstado())
-        .id_tipo_prestamo(p.getId_tipo_prestamo())
+        .id_garantia(p.getId_garantia())
         .id_municipalidad(p.getId_municipalidad())
         .id_funcionario(p.getId_funcionario())
         .id_regional(p.getId_regional())
         .id_usuario(p.getId_usuario())
-
         .build();
     repository.save(prestamo);
     return ResponseController.success("Prestamo Agregado Correctamente", prestamo);
@@ -115,7 +114,7 @@ public class PrestamoController {
       prestamo.setOficioaj(p.getOficioaj());
       prestamo.setOficioaj2(p.getOficioaj2());
       prestamo.setEstado(p.getEstado());
-      prestamo.setId_tipo_prestamo(p.getId_tipo_prestamo());
+      prestamo.setId_garantia(p.getId_garantia());
       prestamo.setId_municipalidad(p.getId_municipalidad());
       prestamo.setId_funcionario(p.getId_funcionario());
       prestamo.setId_regional(p.getId_regional());

@@ -40,9 +40,10 @@ public class GarantiaController {
     Garantia garantia = Garantia.builder()
         .codigo(g.getCodigo())
         .nombre(g.getNombre())
+        .porcentaje(g.getPorcentaje())
         .build();
     repository.save(garantia);
-    return ResponseController.success("Garantia Agregado Correctamente", garantia);
+    return ResponseController.success("Garantia Agregada Correctamente", garantia);
   }
 
   @PutMapping("/garantias/{id}")
@@ -52,8 +53,9 @@ public class GarantiaController {
       Garantia garantia = data.get();
       garantia.setCodigo(g.getCodigo());
       garantia.setNombre(g.getNombre());
+      garantia.setPorcentaje(g.getPorcentaje());
       repository.save(garantia);
-      return ResponseController.success("Garantia Actualizado Correctamente", garantia);
+      return ResponseController.success("Garantia Actualizada Correctamente", garantia);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -64,7 +66,7 @@ public class GarantiaController {
     Optional<Garantia> garantia = repository.findById(id);
     if (garantia.isPresent()) {
       repository.deleteById(id);
-      return ResponseController.success("Garantia Eliminado Correctamente", garantia);
+      return ResponseController.success("Garantia Eliminada Correctamente", garantia);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

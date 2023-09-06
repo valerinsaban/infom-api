@@ -1,3 +1,12 @@
+-- Configuraciones
+
+CREATE TABLE [dbo].[configuraciones] (
+  [portada] varchar(255),
+  [logo] varchar(255),
+  [porcentaje_intereses] varchar(255),
+  [porcentaje_iva] varchar(255)
+);
+
 -- Catalogos
 
 CREATE TABLE [dbo].[departamentos] (
@@ -17,7 +26,8 @@ CREATE TABLE [dbo].[municipios] (
 CREATE TABLE [dbo].[garantias] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [codigo] varchar(255),
-  [nombre] varchar(255)
+  [nombre] varchar(255),
+  [porcentaje] varchar(255) -- 75% o 90%
 );
 
 CREATE TABLE [dbo].[profesiones] (
@@ -200,6 +210,38 @@ CREATE TABLE [dbo].[funcionarios] (
   CONSTRAINT [fk_funcionarios_estados_civiles] FOREIGN KEY ([id_estado_civil]) REFERENCES [dbo].[estados_civiles] ([id])
 );
 
+CREATE TABLE [dbo].[representantes] (
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [codigo] varchar(255),
+  [nombre] varchar(255),
+  [apellido] varchar(255),
+  [fecha_nacimiento] date,
+  [dpi] varchar(255),
+  [resolucion] varchar(255),
+  [fecha_resolucion] date,
+  [acuerdo] varchar(255),
+  [fecha_acuerdo] date,
+  [jd_resuelve] varchar(255),
+  [fecha_jd_resuelve] varchar(255),
+  [direccion] varchar(255),
+  [autorizacion] varchar(255),
+  [acta_toma_posecion] varchar(255),
+  [fecha_acta_toma_posecion] date,
+  [estado] varchar(255),
+  -- [imagen_carnet] varchar(max),
+  -- [imagen_acta_toma_posecion] varchar(max),
+  -- [imagen_fotografia] varchar(max),
+  -- [imagen_firma] varchar(max),
+  [id_regional] int,
+  [id_puesto] int,
+  [id_profesion] int,
+  [id_estado_civil] int,
+  CONSTRAINT [fk_representantes_regionales] FOREIGN KEY ([id_regional]) REFERENCES [dbo].[regionales] ([id]),
+  CONSTRAINT [fk_representantes_puestos] FOREIGN KEY ([id_puesto]) REFERENCES [dbo].[puestos] ([id]),
+  CONSTRAINT [fk_representantes_profesiones] FOREIGN KEY ([id_profesion]) REFERENCES [dbo].[profesiones] ([id]),
+  CONSTRAINT [fk_representantes_estados_civiles] FOREIGN KEY ([id_estado_civil]) REFERENCES [dbo].[estados_civiles] ([id])
+);
+
 CREATE TABLE [dbo].[prestamos] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [no_dictamen] varchar(255),
@@ -223,12 +265,12 @@ CREATE TABLE [dbo].[prestamos] (
   [oficioaj] date,
   [oficioaj2] varchar(255),
   [estado] varchar(255),
-  [id_tipo_prestamo] int,
+  [id_garantia] int,
   [id_municipalidad] int,
   [id_funcionario] int,
   [id_regional] int,
   [id_usuario] int,
-  CONSTRAINT [fk_prestamos_tipos_prestamos] FOREIGN KEY ([id_tipo_prestamo]) REFERENCES [dbo].[tipos_prestamos] ([id]),
+  CONSTRAINT [fk_prestamos_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
   CONSTRAINT [fk_prestamos_municipalidades] FOREIGN KEY ([id_municipalidad]) REFERENCES [dbo].[municipalidades] ([id]),
   CONSTRAINT [fk_prestamos_funcionarios] FOREIGN KEY ([id_funcionario]) REFERENCES [dbo].[funcionarios] ([id]),
   CONSTRAINT [fk_prestamos_regionales] FOREIGN KEY ([id_regional]) REFERENCES [dbo].[regionales] ([id]),
@@ -611,9 +653,9 @@ INSERT INTO [estados_civiles] ([codigo], [nombre]) VALUES
 ('01', 'Soltero'),
 ('02', 'Casado');
 
-INSERT INTO [garantias] ([codigo], [nombre]) VALUES 
-('01', 'Aporte IVA PAZ'),
-('02', 'Aporte Constitucional');
+INSERT INTO [garantias] ([codigo], [nombre], [porcentaje]) VALUES 
+('01', 'Aporte IVA PAZ', '0.75'),
+('02', 'Aporte Constitucional', '0.90');
 
 INSERT INTO [profesiones] ([codigo], [nombre]) VALUES 
 ('01', 'Profesion 1'),
@@ -644,11 +686,12 @@ INSERT INTO [usuarios] ([nombre], [apellido], [dpi], [usuario], [clave], [id_reg
 
 INSERT INTO [menus] ([nombre], [url], [icono], [orden]) VALUES 
 ('Municipalidades', 'municipalidades', 'fad fa-house-building', 1),
-('Funcionarios', 'funcionarios', 'fad fa-user-group-crown', 2),
-('Aportes', 'aportes', 'fad fa-coins', 3);
+('Funcionarios', 'funcionarios', 'fad fa-building-user', 2),
+('Aportes', 'aportes', 'fad fa-coins', 4);
 ('Catalogos', NULL, 'fad fa-house-building', 9),
 ('Seguridad', NULL, 'fad fa-shield-check', 10),
-('Prestamos', 'prestamos', 'fad fa-money-check-dollar-pen', 4),
+('Prestamos', 'prestamos', 'fad fa-money-check-dollar-pen', 5),
+('Representantes', 'representantes', 'fad fa-user-group-crown', 3),
 
 INSERT INTO [submenus] ([nombre], [url], [orden], [id_menu]) VALUES 
 ('Departamentos', 'departamentos', 1, 4),
