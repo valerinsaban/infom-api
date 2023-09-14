@@ -27,6 +27,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 @RestController
 public class ReporteController {
@@ -72,11 +73,12 @@ public class ReporteController {
   }
 
   @GetMapping("/reportes/{formato}/prestamo/resumen/{id}")
-  public ResponseEntity<?> reportePrestamoResumen(@PathVariable String formato, @PathVariable Integer id) throws JRException, IOException {
+  public ResponseEntity<?> reportePrestamoResumen(@PathVariable String formato, @PathVariable Integer id)
+      throws JRException, IOException {
     try {
 
       Optional<Prestamo> prestamo = prestamoRepository.findById(id);
-      
+
       Map<String, Object> params = new HashMap<String, Object>();
       params.put("data", prestamo);
       // params.put("no_dictamen", prestamo.get().getNo_dictamen());
@@ -94,7 +96,6 @@ public class ReporteController {
       // params.put("intereses", prestamo.get().getIntereses());
       // params.put("intereses_fecha_fin", prestamo.get().getIntereses_fecha_fin());
 
-
       Resource resource = resourceLoader.getResource("classpath:reports/prestamo-resumen.jrxml");
       JasperReport jr = JasperCompileManager.compileReport(resource.getInputStream());
       JasperPrint report = JasperFillManager.fillReport(jr, params, new JREmptyDataSource());
@@ -104,6 +105,34 @@ public class ReporteController {
           return ResponseController.pdf(report, "departamentos");
         case "XLS":
           return ResponseController.xls(report, "departamentos");
+        default:
+          return ResponseController.error("Formato invalido", null);
+      }
+
+    } catch (Exception e) {
+      return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+  }
+
+  @GetMapping("/reportes/{formato}/maqueta")
+  public ResponseEntity<?> reporteMaqueta(@PathVariable String formato) throws JRException, IOException {
+    try {
+
+      Resource resource = resourceLoader.getResource("classpath:reports/maqueta.jrxml");
+      JasperReport jr = JasperCompileManager.compileReport(resource.getInputStream());
+      JasperPrint report = JasperFillManager.fillReport(jr, null, new JREmptyDataSource());
+
+      // // Visualizando el Reporte
+      // JasperViewer viewer = new JasperViewer(re, false);
+      // viewer.setTitle("REPORTE DE CLIENTES");
+      // viewer.setVisible(true);
+
+      switch (formato) {
+        case "PDF":
+          return ResponseController.pdf(report, "Mequeta");
+        case "XLS":
+          return ResponseController.xls(report, "Mequeta");
         default:
           return ResponseController.error("Formato invalido", null);
       }

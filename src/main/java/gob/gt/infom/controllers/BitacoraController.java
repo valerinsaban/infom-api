@@ -31,6 +31,9 @@ public class BitacoraController {
 
   @GetMapping("/bitacoras/{fecha_inicio}/{fecha_fin}")
   public Iterable<Bitacora> findAllByFechaBetween(@PathVariable String fecha_inicio, @PathVariable String fecha_fin) {
+    // System.out.println(accion);
+    // System.out.println(tipo);
+    // System.out.println(id_usuario);
     return repository.findAllByFechaBetween(fecha_inicio, fecha_fin);
   }
 

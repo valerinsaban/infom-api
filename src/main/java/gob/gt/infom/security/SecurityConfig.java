@@ -40,6 +40,8 @@ public class SecurityConfig {
     jwtAuthenticationFilter.setFilterProcessesUrl("/auth/login");
 
     http
+        .headers(headers -> headers.frameOptions().disable())
+        .cors(Customizer.withDefaults())
         .cors(Customizer.withDefaults())
         .csrf(config -> config.disable())
         .authorizeHttpRequests(auth -> {

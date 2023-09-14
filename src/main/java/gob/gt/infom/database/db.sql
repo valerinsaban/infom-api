@@ -42,12 +42,6 @@ CREATE TABLE [dbo].[regiones] (
   [nombre] varchar(255)
 );
 
-CREATE TABLE [dbo].[tipos_prestamos] (
-  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-  [codigo] varchar(255),
-  [nombre] varchar(255)
-);
-
 CREATE TABLE [dbo].[regionales] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [codigo] varchar(255),
@@ -664,9 +658,6 @@ INSERT INTO [profesiones] ([codigo], [nombre]) VALUES
 INSERT INTO [regiones] ([codigo], [nombre]) VALUES 
 ('01', 'Occidental');
 
-INSERT INTO [tipos_prestamos] ([codigo], [nombre]) VALUES 
-('01', 'Tipo Prestamo 1');
-
 INSERT INTO [puestos] ([codigo], [nombre]) VALUES 
 ('01', 'Alcalde');
 
@@ -703,7 +694,6 @@ INSERT INTO [submenus] ([nombre], [url], [orden], [id_menu]) VALUES
 ('Regionales', 'regionales', 7, 4),
 ('Profesiones', 'profesiones', 8, 4),
 ('Bancos', 'bancos', 9, 4),
-('Tipos Prestamos', 'tipos-prestamos', 10, 4),
 ('Usuarios', 'usuarios', 1, 5),
 ('Roles', 'roles', 2, 5),
 ('Permisos', 'permisos', 3, 5);
