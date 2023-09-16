@@ -27,7 +27,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.view.JasperViewer;
 
 @RestController
 public class ReporteController {
@@ -54,6 +53,33 @@ public class ReporteController {
       params.put("data", new JRBeanCollectionDataSource(list));
 
       Resource resource = resourceLoader.getResource("classpath:reports/departamentos.jrxml");
+      JasperReport jr = JasperCompileManager.compileReport(resource.getInputStream());
+      JasperPrint report = JasperFillManager.fillReport(jr, params, new JREmptyDataSource());
+
+      switch (formato) {
+        case "PDF":
+          return ResponseController.pdf(report, "departamentos");
+        case "XLS":
+          return ResponseController.xls(report, "departamentos");
+        default:
+          return ResponseController.error("Formato invalido", null);
+      }
+
+    } catch (Exception e) {
+      return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+  }
+
+  @GetMapping("/reportes/{formato}/disponibilidad")
+  public ResponseEntity<?> reporteDisponibilidad(@PathVariable String formato) throws JRException, IOException {
+    try {
+
+      Map<String, Object> params = new HashMap<String, Object>();
+      params.put("reporte", "Reporte Disponibilidad");
+      // params.put("data", new JRBeanCollectionDataSource(list));
+
+      Resource resource = resourceLoader.getResource("classpath:reports/disponibilidad.jrxml");
       JasperReport jr = JasperCompileManager.compileReport(resource.getInputStream());
       JasperPrint report = JasperFillManager.fillReport(jr, params, new JREmptyDataSource());
 
