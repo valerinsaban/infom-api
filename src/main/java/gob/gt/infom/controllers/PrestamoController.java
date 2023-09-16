@@ -29,7 +29,7 @@ public class PrestamoController {
   public List<Prestamo> all(
       @PathVariable String fecha_inicio,
       @PathVariable String fecha_fin) {
-  return repository.findAllByFechaBetween(fecha_inicio, fecha_fin);
+    return repository.findAllByFechaBetween(fecha_inicio, fecha_fin);
   }
 
   @GetMapping("/prestamos/{estado}/{fecha_inicio}/{fecha_fin}")
@@ -46,6 +46,11 @@ public class PrestamoController {
       @PathVariable String fecha_inicio,
       @PathVariable String fecha_fin) {
     return repository.countByEstadoAndFechaBetween(estado, fecha_inicio, fecha_fin);
+  }
+
+  @GetMapping("/prestamos/municipalidad/{estado}/{id_municipalidad}")
+  public List<Prestamo> findAllByEstadoAndMunicipalidadId(@PathVariable String estado, @PathVariable Integer id_municipalidad) {
+    return repository.findAllByEstadoAndMunicipalidadId(estado, id_municipalidad);
   }
 
   @GetMapping("/prestamos/{id}")
@@ -78,7 +83,6 @@ public class PrestamoController {
         .oficioaj(p.getOficioaj())
         .oficioaj2(p.getOficioaj2())
         .estado(p.getEstado())
-        .id_garantia(p.getId_garantia())
         .id_municipalidad(p.getId_municipalidad())
         .id_funcionario(p.getId_funcionario())
         .id_regional(p.getId_regional())
@@ -114,7 +118,6 @@ public class PrestamoController {
       prestamo.setOficioaj(p.getOficioaj());
       prestamo.setOficioaj2(p.getOficioaj2());
       prestamo.setEstado(p.getEstado());
-      prestamo.setId_garantia(p.getId_garantia());
       prestamo.setId_municipalidad(p.getId_municipalidad());
       prestamo.setId_funcionario(p.getId_funcionario());
       prestamo.setId_regional(p.getId_regional());

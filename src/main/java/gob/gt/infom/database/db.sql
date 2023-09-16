@@ -259,16 +259,23 @@ CREATE TABLE [dbo].[prestamos] (
   [oficioaj] date,
   [oficioaj2] varchar(255),
   [estado] varchar(255),
-  [id_garantia] int,
   [id_municipalidad] int,
   [id_funcionario] int,
   [id_regional] int,
   [id_usuario] int,
-  CONSTRAINT [fk_prestamos_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
   CONSTRAINT [fk_prestamos_municipalidades] FOREIGN KEY ([id_municipalidad]) REFERENCES [dbo].[municipalidades] ([id]),
   CONSTRAINT [fk_prestamos_funcionarios] FOREIGN KEY ([id_funcionario]) REFERENCES [dbo].[funcionarios] ([id]),
   CONSTRAINT [fk_prestamos_regionales] FOREIGN KEY ([id_regional]) REFERENCES [dbo].[regionales] ([id]),
   CONSTRAINT [fk_prestamos_usuarios] FOREIGN KEY ([id_usuario]) REFERENCES [dbo].[usuarios] ([id])
+);
+
+CREATE TABLE [dbo].[prestamos_garantias] (
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [monto] varchar(255),
+  [id_garantia] int,
+  [id_prestamo] int,
+  CONSTRAINT [fk_prestamos_garantias_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
+  CONSTRAINT [fk_prestamos_garantias_prestamos] FOREIGN KEY ([id_prestamo]) REFERENCES [dbo].[prestamos] ([id])
 );
 
 CREATE TABLE [dbo].[amortizaciones] (

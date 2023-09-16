@@ -28,7 +28,7 @@ public class Prestamo {
   private String no_pagare;
   private String fecha;
   private String fecha_vencimiento;
-  private Double monto;
+  private String monto;
   private Integer plazo_meses;
   private String fecha_acta;
   private Double deposito_intereses;
@@ -45,15 +45,10 @@ public class Prestamo {
   private String oficioaj;
   private String oficioaj2;
   private String estado;
-  private Integer id_garantia;
   private Integer id_municipalidad;
   private Integer id_funcionario;
   private Integer id_regional;
   private Integer id_usuario;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_garantia", insertable = false, updatable = false)
-  private Garantia garantia;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)
