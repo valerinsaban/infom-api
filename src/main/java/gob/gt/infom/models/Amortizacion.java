@@ -24,14 +24,14 @@ public class Amortizacion {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String capital;
-  private String intereses;
-  private String iva_intereses;
-  private String cuota;
-  private String saldo;
   private String fecha_inicio;
   private String fecha_fin;
   private Integer dias;
+  private String capital;
+  private String interes;
+  private String iva;
+  private String cuota;
+  private String saldo;
   private Integer id_prestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)

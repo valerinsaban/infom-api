@@ -43,14 +43,14 @@ public class AmortizacionController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Amortizacion a) {
     Amortizacion amortizacion = Amortizacion.builder()
-        .capital(a.getCapital())
-        .intereses(a.getIntereses())
-        .iva_intereses(a.getIva_intereses())
-        .cuota(a.getCuota())
-        .saldo(a.getSaldo())
         .fecha_inicio(a.getFecha_inicio())
         .fecha_fin(a.getFecha_fin())
         .dias(a.getDias())
+        .capital(a.getCapital())
+        .interes(a.getInteres())
+        .iva(a.getIva())
+        .cuota(a.getCuota())
+        .saldo(a.getSaldo())
         .id_prestamo(a.getId_prestamo())
         .build();
     repository.save(amortizacion);
@@ -62,14 +62,14 @@ public class AmortizacionController {
     Optional<Amortizacion> data = repository.findById(id);
     if (data.isPresent()) {
       Amortizacion amortizacion = data.get();
-      amortizacion.setCapital(a.getCapital());
-      amortizacion.setIntereses(a.getIntereses());
-      amortizacion.setIva_intereses(a.getIva_intereses());
-      amortizacion.setCuota(a.getCuota());
-      amortizacion.setSaldo(a.getSaldo());
       amortizacion.setFecha_inicio(a.getFecha_inicio());
       amortizacion.setFecha_fin(a.getFecha_fin());
       amortizacion.setDias(a.getDias());
+      amortizacion.setCapital(a.getCapital());
+      amortizacion.setInteres(a.getInteres());
+      amortizacion.setIva(a.getIva());
+      amortizacion.setCuota(a.getCuota());
+      amortizacion.setSaldo(a.getSaldo());
       amortizacion.setId_prestamo(a.getId_prestamo());
       repository.save(amortizacion);
       return ResponseController.success("Amortizacion Actualizado Correctamente", amortizacion);

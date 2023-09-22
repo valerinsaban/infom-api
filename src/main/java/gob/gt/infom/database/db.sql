@@ -272,6 +272,7 @@ CREATE TABLE [dbo].[prestamos] (
 CREATE TABLE [dbo].[prestamos_garantias] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [monto] varchar(255),
+  [porcentaje] varchar(255),
   [id_garantia] int,
   [id_prestamo] int,
   CONSTRAINT [fk_prestamos_garantias_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
@@ -284,8 +285,8 @@ CREATE TABLE [dbo].[amortizaciones] (
   [fecha_fin] date,
   [dias] int,
   [capital] varchar(255),
-  [intereses] varchar(255),
-  [iva_intereses] varchar(255),
+  [interes] varchar(255),
+  [iva] varchar(255),
   [cuota] varchar(255),
   [saldo] varchar(255),
   [id_prestamo] int,

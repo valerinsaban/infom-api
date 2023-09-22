@@ -25,6 +25,7 @@ public class PrestamoGarantia {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String monto;
+  private String porcentaje;
   private Integer id_garantia;
   private Integer id_prestamo;
 

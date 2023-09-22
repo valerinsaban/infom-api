@@ -35,6 +35,7 @@ public class PrestamoGarantiaController {
   public ResponseEntity<Object> create(@RequestBody @Valid PrestamoGarantia p) {
     PrestamoGarantia prestamo = PrestamoGarantia.builder()
         .monto(p.getMonto())
+        .porcentaje(p.getPorcentaje())
         .id_garantia(p.getId_garantia())
         .id_prestamo(p.getId_prestamo())
         .build();
@@ -48,6 +49,7 @@ public class PrestamoGarantiaController {
     if (data.isPresent()) {
       PrestamoGarantia prestamo = data.get();
       prestamo.setMonto(p.getMonto());
+      prestamo.setPorcentaje(p.getPorcentaje());
       prestamo.setId_garantia(p.getId_garantia());
       prestamo.setId_prestamo(p.getId_prestamo());
       repository.save(prestamo);
