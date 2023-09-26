@@ -1,9 +1,15 @@
 -- Configuraciones
 
 CREATE TABLE [dbo].[configuraciones] (
-  [portada] varchar(255),
-  [logo] varchar(255),
-  [porcentaje_intereses] varchar(255),
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [logo] varchar(max),
+  [portada] varchar(max),
+  [nombre] varchar(255),
+  [correo] varchar(255),
+  [telefono] varchar(255),
+  [direccion] varchar(255),
+  [sitio_web] varchar(255),
+  [porcentaje_interes] varchar(255),
   [porcentaje_iva] varchar(255)
 );
 
@@ -28,6 +34,20 @@ CREATE TABLE [dbo].[garantias] (
   [codigo] varchar(255),
   [nombre] varchar(255),
   [porcentaje] varchar(255) -- 75% o 90%
+);
+
+CREATE TABLE [dbo].[tipos_prestamos] (
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [codigo] varchar(255),
+  [nombre] varchar(255),
+);
+
+CREATE TABLE [dbo].[tipos_prestamos_garantias] (
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [id_garantia] int,
+  [id_tipo_prestamo] int,
+  CONSTRAINT [fk_tipos_prestamo_garantias_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
+  CONSTRAINT [fk_tipos_prestamo_garantias_tipos_prestamos] FOREIGN KEY ([id_tipo_prestamo]) REFERENCES [dbo].[tipos_prestamos] ([id])
 );
 
 CREATE TABLE [dbo].[profesiones] (
@@ -242,27 +262,26 @@ CREATE TABLE [dbo].[prestamos] (
   [no_pagare] varchar(255),
   [fecha] datetime,
   [fecha_vencimiento] date,
+  [fecha_amortizacion] date,
   [monto] varchar(255),
   [plazo_meses] int,
   [fecha_acta] date,
-  [deposito_intereses] varchar(255),
   [intereses] varchar(255),
-  [intereses_fecha_fin] date,
-  [tiempo_gracia] int,
+  [periodo_gracia] int,
   [destino_prestamo] varchar(255),
-  [cobro_intereses] bit,
   [acta] varchar(255),
   [punto] varchar(255),
   [fecha_memorial] date,
-  [autorizacion] varchar(255),
   [certficacion] varchar(255),
   [oficioaj] date,
   [oficioaj2] varchar(255),
   [estado] varchar(255),
+  [id_tipo_prestamo] int,
   [id_municipalidad] int,
   [id_funcionario] int,
   [id_regional] int,
   [id_usuario] int,
+  CONSTRAINT [fk_prestamos_tipos_prestamos] FOREIGN KEY ([id_tipo_prestamo]) REFERENCES [dbo].[tipos_prestamos] ([id]),
   CONSTRAINT [fk_prestamos_municipalidades] FOREIGN KEY ([id_municipalidad]) REFERENCES [dbo].[municipalidades] ([id]),
   CONSTRAINT [fk_prestamos_funcionarios] FOREIGN KEY ([id_funcionario]) REFERENCES [dbo].[funcionarios] ([id]),
   CONSTRAINT [fk_prestamos_regionales] FOREIGN KEY ([id_regional]) REFERENCES [dbo].[regionales] ([id]),

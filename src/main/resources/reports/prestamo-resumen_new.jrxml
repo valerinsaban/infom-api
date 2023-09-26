@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumen" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff65a86d-f07d-4037-b2d3-2466bfe8e8b0">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Crosstab_CH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CG" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CT" mode="Opaque" backcolor="#005FB3">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="prestamos" uuid="c699fb3a-d9da-403d-82c3-d7ef602374e4">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="INFOM"/>
+		<queryString language="SQL">
+			<![CDATA[select * from prestamos]]>
+		</queryString>
+		<field name="id" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id"/>
+			<property name="com.jaspersoft.studio.field.label" value="id"/>
+		</field>
+		<field name="no_dictamen" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="no_dictamen"/>
+			<property name="com.jaspersoft.studio.field.label" value="no_dictamen"/>
+		</field>
+		<field name="no_pagare" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="no_pagare"/>
+			<property name="com.jaspersoft.studio.field.label" value="no_pagare"/>
+		</field>
+		<field name="fecha" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+			<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		</field>
+		<field name="fecha_vencimiento" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="fecha_vencimiento"/>
+			<property name="com.jaspersoft.studio.field.label" value="fecha_vencimiento"/>
+		</field>
+		<field name="monto" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="monto"/>
+			<property name="com.jaspersoft.studio.field.label" value="monto"/>
+		</field>
+		<field name="plazo_meses" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="plazo_meses"/>
+			<property name="com.jaspersoft.studio.field.label" value="plazo_meses"/>
+		</field>
+		<field name="fecha_acta" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="fecha_acta"/>
+			<property name="com.jaspersoft.studio.field.label" value="fecha_acta"/>
+		</field>
+		<field name="deposito_intereses" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="deposito_intereses"/>
+			<property name="com.jaspersoft.studio.field.label" value="deposito_intereses"/>
+		</field>
+		<field name="intereses" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="intereses"/>
+			<property name="com.jaspersoft.studio.field.label" value="intereses"/>
+		</field>
+		<field name="intereses_fecha_fin" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="intereses_fecha_fin"/>
+			<property name="com.jaspersoft.studio.field.label" value="intereses_fecha_fin"/>
+		</field>
+		<field name="tiempo_gracia" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="tiempo_gracia"/>
+			<property name="com.jaspersoft.studio.field.label" value="tiempo_gracia"/>
+		</field>
+		<field name="destino_prestamo" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="destino_prestamo"/>
+			<property name="com.jaspersoft.studio.field.label" value="destino_prestamo"/>
+		</field>
+		<field name="cobro_intereses" class="java.lang.Boolean">
+			<property name="com.jaspersoft.studio.field.name" value="cobro_intereses"/>
+			<property name="com.jaspersoft.studio.field.label" value="cobro_intereses"/>
+		</field>
+		<field name="acta" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="acta"/>
+			<property name="com.jaspersoft.studio.field.label" value="acta"/>
+		</field>
+		<field name="punto" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="punto"/>
+			<property name="com.jaspersoft.studio.field.label" value="punto"/>
+		</field>
+		<field name="fecha_memorial" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="fecha_memorial"/>
+			<property name="com.jaspersoft.studio.field.label" value="fecha_memorial"/>
+		</field>
+		<field name="autorizacion" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="autorizacion"/>
+			<property name="com.jaspersoft.studio.field.label" value="autorizacion"/>
+		</field>
+		<field name="certficacion" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="certficacion"/>
+			<property name="com.jaspersoft.studio.field.label" value="certficacion"/>
+		</field>
+		<field name="oficioaj" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="oficioaj"/>
+			<property name="com.jaspersoft.studio.field.label" value="oficioaj"/>
+		</field>
+		<field name="oficioaj2" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="oficioaj2"/>
+			<property name="com.jaspersoft.studio.field.label" value="oficioaj2"/>
+		</field>
+		<field name="estado" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="estado"/>
+			<property name="com.jaspersoft.studio.field.label" value="estado"/>
+		</field>
+		<field name="id_tipo_prestamo" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_tipo_prestamo"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_tipo_prestamo"/>
+		</field>
+		<field name="id_municipalidad" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_municipalidad"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_municipalidad"/>
+		</field>
+		<field name="id_funcionario" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_funcionario"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_funcionario"/>
+		</field>
+		<field name="id_regional" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_regional"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_regional"/>
+		</field>
+		<field name="id_usuario" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_usuario"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_usuario"/>
+		</field>
+		<group name="id_municipalidad">
+			<groupExpression><![CDATA[$F{id_municipalidad}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="fecha" class="java.lang.String">
+		<parameterDescription><![CDATA[fecha]]></parameterDescription>
+	</parameter>
+	<parameter name="pagina" class="java.lang.String">
+		<parameterDescription><![CDATA[pagina]]></parameterDescription>
+	</parameter>
+	<parameter name="tipo_prestamo" class="java.lang.String">
+		<parameterDescription><![CDATA[data.tipo_prestamo.nombre]]></parameterDescription>
+	</parameter>
+	<parameter name="municipalidad" class="java.lang.String">
+		<parameterDescription><![CDATA[data.municipalidad.nombre]]></parameterDescription>
+	</parameter>
+	<parameter name="funcionario" class="java.lang.String">
+		<parameterDescription><![CDATA[data.funcionario.nombre]]></parameterDescription>
+	</parameter>
+	<parameter name="resolucion" class="java.lang.String">
+		<parameterDescription><![CDATA[data.resolucion]]></parameterDescription>
+	</parameter>
+	<parameter name="convenio" class="java.lang.String">
+		<parameterDescription><![CDATA[data.convenio]]></parameterDescription>
+	</parameter>
+	<parameter name="codigo_municipalidad" class="java.lang.String">
+		<parameterDescription><![CDATA[data.municipalidad.codigo]]></parameterDescription>
+	</parameter>
+	<parameter name="codigo_funcionario" class="java.lang.String">
+		<parameterDescription><![CDATA[data.funcionario.codigo]]></parameterDescription>
+	</parameter>
+	<parameter name="codigo_tipo_prestamo" class="java.lang.String">
+		<parameterDescription><![CDATA[data.tipo_prestamo.codigo]]></parameterDescription>
+	</parameter>
+	<parameter name="fecha_fin" class="java.lang.String">
+		<parameterDescription><![CDATA[data.fecha_fin]]></parameterDescription>
+	</parameter>
+	<parameter name="plazo_pago" class="java.lang.String">
+		<parameterDescription><![CDATA[data.fecha_fin]]></parameterDescription>
+	</parameter>
+	<parameter name="monto_credito" class="java.lang.String">
+		<parameterDescription><![CDATA[data.monto_credito]]></parameterDescription>
+	</parameter>
+	<parameter name="intereses" class="java.lang.String">
+		<parameterDescription><![CDATA[data.intereses]]></parameterDescription>
+	</parameter>
+	<parameter name="codigo_departamento" class="java.lang.String">
+		<parameterDescription><![CDATA[data.departamento.codigo]]></parameterDescription>
+	</parameter>
+	<parameter name="departamento" class="java.lang.String">
+		<parameterDescription><![CDATA[data.departamento.nombre]]></parameterDescription>
+	</parameter>
+	<parameter name="analista" class="java.lang.String">
+		<parameterDescription><![CDATA[data.nombre_analista]]></parameterDescription>
+	</parameter>
+	<parameter name="supervisor" class="java.lang.String">
+		<parameterDescription><![CDATA[data.nombre_supervisor_cred]]></parameterDescription>
+	</parameter>
+	<parameter name="subdirector" class="java.lang.String">
+		<parameterDescription><![CDATA[data.nombre_subdirector]]></parameterDescription>
+	</parameter>
+	<parameter name="director_financiero" class="java.lang.String">
+		<parameterDescription><![CDATA[data.nombre_director]]></parameterDescription>
+	</parameter>
+	<parameter name="gerente_administrativo" class="java.lang.String">
+		<parameterDescription><![CDATA[data.nombre_gerente_ad]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="10" width="200" height="40" uuid="ca3f0265-1aaa-47f4-911b-0cf7cb20a38d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="501" y="10" width="61" height="20" uuid="da86b3ec-ba19-4fc5-b68a-191e39c0c684"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pagina}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="0" width="401" height="31" uuid="7e549a48-d61a-4c69-b5dd-a0989e6a404d"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<text><![CDATA[ Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="1" width="100" height="30" uuid="1c2ae088-44fe-4dd2-9425-fc1cd83c819c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="40" width="130" height="19" uuid="0b9249f9-07ef-4536-82d4-3329388f2f90"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{codigo_departamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="40" width="137" height="19" uuid="1a47bbc3-3332-48a4-8a97-2a7a2f734b83"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$P{departamento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="289" y="39" width="21" height="21" uuid="0be458ff-5b6f-479c-a07a-c65d8b307233"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="21" uuid="32d2d03b-07d6-4cee-86ae-7a7b1d5b16b3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Resolución:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="80" height="21" uuid="9e2fdbdc-f53c-4873-8109-5c22f5fc1263"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Convenio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="3" width="170" height="18" uuid="0c0debc3-0727-4828-b6b4-e52ca4fd55fe"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{resolucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="2" width="171" height="19" uuid="0814705b-0386-478f-b992-f5a9beebdb71"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{convenio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="633" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="-1" width="81" height="30" uuid="400b0ab1-9456-41ec-b2c3-e66c373ccb6d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Municipalidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="81" height="31" uuid="b1c4e6d2-9cf4-49bc-9dbc-ff6ddcb8c6ab"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Solicitante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="81" height="29" uuid="1b11de9c-5f73-4311-a49b-cc86e5880447"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Tipo Préstamo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="109" height="30" uuid="7399942c-413a-4aaf-8edf-720176e50b39"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Recursos de los Fondos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="170" width="101" height="21" uuid="f8b02dba-367d-48cb-b928-70aa9a28434d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha Vencimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="170" width="101" height="21" uuid="bb28a3ac-b8b8-4aa8-aaf6-b31e80e5fe5d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Plazo en Mes(es)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="210" width="471" height="50" uuid="6572c888-6a02-480a-b42d-2a3aa9f0fbd0"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="223" width="246" height="18" uuid="f97e2568-5e3e-46e3-ad2b-35a4f4215971"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Monto del Crédito:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="220" width="21" height="21" uuid="3d62bd69-719d-474b-8e56-6253b5045b5d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Q.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="267" width="130" height="21" uuid="6a750f94-52a7-420d-835e-730476b808e3"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Tasa de Intereses (%):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="112" y="80" width="461" height="30" uuid="c7399023-aaa7-4f74-80bb-d0f093fc40dc"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tipo_prestamo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="-1" width="459" height="30" uuid="ab9c3e12-b623-479a-9bda-73e543fce256"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{municipalidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="41" width="462" height="30" uuid="a49d6774-0f95-40ff-9853-385dcd7a2082"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{funcionario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="32" height="30" uuid="dfed0fb6-a4a4-431f-9432-d07220a1c00e"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{codigo_municipalidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="43" width="32" height="28" uuid="8baf04f9-90f4-4afd-823c-9cb7a163e15a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{codigo_funcionario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="170" width="120" height="21" uuid="fc8fabb5-a022-4d86-93b0-afcd6068a57d"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_fin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="170" width="120" height="21" uuid="06e12136-ae35-4285-9510-07e378243ac9"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{plazo_pago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="221" width="156" height="18" uuid="a29679d3-d9c1-4ee3-89ef-61befbf95433"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{monto_credito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="268" width="100" height="20" uuid="6c0c4bcd-a72c-4cd5-a401-80e41c1fe492"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{intereses}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="80" width="32" height="30" uuid="00cd3135-0c34-4960-833f-fde99a9e532b"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{codigo_tipo_prestamo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="81" y="310" width="470" height="21" uuid="58e5985f-799f-48d2-9130-6106657f69e0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amortizaciones Mensuales en Reporte Adjunto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="340" width="231" height="31" uuid="f77cad3d-a5f0-4e66-9255-985c77d1c7c0"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="400" width="201" height="12" uuid="651cc268-dbd7-49c5-8e63-66216b240a1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[ANALISTA DE CRÉDITOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="340" width="231" height="31" uuid="59467a37-c868-4370-804d-6c1088e296ab"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="400" width="201" height="12" uuid="02fbd86f-902e-4589-8d55-3f3acb756fa1"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[SUPERVISOR ÁREA DE CRÉDITOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="447" width="231" height="31" uuid="c543e695-256b-466c-9568-259e1ef13673"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="500" width="207" height="30" uuid="3cd7e30f-5690-4c43-9ec8-6b0b75c4afa1"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[SUBDIRECTOR DE ASISTENCIA FINANCIERA MUNICIPAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="447" width="231" height="31" uuid="99dd63de-8e55-4f37-8425-9215fc8ebbee"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="518" width="231" height="12" uuid="7accb185-5050-4a92-89cc-46116606b747"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[DIRECTOR FINANCIERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="559" width="231" height="31" uuid="03ab2a61-a49d-4947-8097-eb5f65e78836"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="620" width="231" height="12" uuid="702a7aaa-cac9-4702-ae3b-a15f8fa5b33f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[GERENTE ADMINISTRATIVO FINANCIERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="120" width="461" height="28" uuid="00c0d610-567e-4b28-a07d-b61837d1de55"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FONDO PATRIMONIAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="73" y="370" width="207" height="19" uuid="5b9b3b0d-33a8-431a-8cfa-790f66ad67f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{analista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="370" width="211" height="19" uuid="5b1a0aa1-25a0-43cf-a5f6-55f6fca97932"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{supervisor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="73" y="478" width="208" height="22" uuid="ea4d99a7-3990-4449-8aeb-df3c7d709f2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{subdirector}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="481" width="191" height="29" uuid="b91c833d-d450-4293-8a85-ba9d3e7aa3af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{director_financiero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="323" y="480" width="38" height="31" uuid="4fbd4c20-7760-45e7-8bb4-f3b948f4a3ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Vo.Bo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="591" width="40" height="29" uuid="366878c0-cfdc-4d03-bc3e-8382648232af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Vo.Bo.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="218" y="590" width="188" height="30" uuid="defb19b2-664c-4f40-a86b-f20c67cf140a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{gerente_administrativo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="11" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

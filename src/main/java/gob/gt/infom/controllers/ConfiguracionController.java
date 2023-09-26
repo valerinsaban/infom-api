@@ -38,9 +38,14 @@ public class ConfiguracionController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Configuracion c) {
     Configuracion configuracion = Configuracion.builder()
-        .portada(c.getPortada())
         .logo(c.getLogo())
-        .porcentaje_intereses(c.getPorcentaje_intereses())
+        .portada(c.getPortada())
+        .nombre(c.getNombre())
+        .correo(c.getCorreo())
+        .telefono(c.getTelefono())
+        .direccion(c.getDireccion())
+        .sitio_web(c.getSitio_web())
+        .porcentaje_interes(c.getPorcentaje_interes())
         .porcentaje_iva(c.getPorcentaje_iva())
         .build();
     repository.save(configuracion);
@@ -52,9 +57,14 @@ public class ConfiguracionController {
     Optional<Configuracion> data = repository.findById(id);
     if (data.isPresent()) {
       Configuracion configuracion = data.get();
-      configuracion.setPortada(c.getPortada());
       configuracion.setLogo(c.getLogo());
-      configuracion.setPorcentaje_intereses(c.getPorcentaje_intereses());
+      configuracion.setPortada(c.getPortada());
+      configuracion.setNombre(c.getNombre());
+      configuracion.setCorreo(c.getCorreo());
+      configuracion.setTelefono(c.getTelefono());
+      configuracion.setDireccion(c.getDireccion());
+      configuracion.setSitio_web(c.getSitio_web());
+      configuracion.setPorcentaje_interes(c.getPorcentaje_interes());
       configuracion.setPorcentaje_iva(c.getPorcentaje_iva());
       repository.save(configuracion);
       return ResponseController.success("Configuracion Actualizado Correctamente", configuracion);

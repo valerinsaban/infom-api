@@ -28,27 +28,29 @@ public class Prestamo {
   private String no_pagare;
   private String fecha;
   private String fecha_vencimiento;
+  private String fecha_amortizacion;
   private String monto;
   private Integer plazo_meses;
   private String fecha_acta;
-  private Double deposito_intereses;
   private Double intereses;
-  private String intereses_fecha_fin;
-  private Integer tiempo_gracia;
+  private Integer periodo_gracia;
   private String destino_prestamo;
-  private Boolean cobro_intereses;
   private String acta;
   private String punto;
   private String fecha_memorial;
-  private String autorizacion;
   private String certficacion;
   private String oficioaj;
   private String oficioaj2;
   private String estado;
+  private Integer id_tipo_prestamo;
   private Integer id_municipalidad;
   private Integer id_funcionario;
   private Integer id_regional;
   private Integer id_usuario;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_tipo_prestamo", insertable = false, updatable = false)
+  private TipoPrestamo tipo_prestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)

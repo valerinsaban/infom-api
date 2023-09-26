@@ -15,4 +15,7 @@ public interface PrestamoRepository extends CrudRepository<Prestamo, Integer> {
   Optional<Prestamo> countByEstadoAndFechaBetween(String estado, String start, String end);
 
   List<Prestamo> findAllByEstadoAndMunicipalidadId(String estado, Integer id_municipalidad);
+
+  List<Prestamo> findAllByUsuarioId(Integer id_usuario);
+
 }
