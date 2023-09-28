@@ -25,9 +25,9 @@ public class Prestamo {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String no_dictamen;
-  private String no_pagare;
+  private String no_convenio;
+  private String no_prestamo;
   private String fecha;
-  private String fecha_vencimiento;
   private String fecha_amortizacion;
   private String monto;
   private Integer plazo_meses;
@@ -39,10 +39,13 @@ public class Prestamo {
   private String punto;
   private String fecha_memorial;
   private String certficacion;
-  private String oficioaj;
-  private String oficioaj2;
+  private String no_oficio_aj;
+  private String fecha_oficio_aj;
+  private String no_oficio_ger;
+  private String fecha_oficio_ger;
   private String estado;
   private Integer id_tipo_prestamo;
+  private Integer id_clase_prestamo;
   private Integer id_municipalidad;
   private Integer id_funcionario;
   private Integer id_regional;
@@ -51,6 +54,10 @@ public class Prestamo {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_tipo_prestamo", insertable = false, updatable = false)
   private TipoPrestamo tipo_prestamo;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_clase_prestamo", insertable = false, updatable = false)
+  private ClasePrestamo clase_prestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)

@@ -68,9 +68,9 @@ public class PrestamoController {
   public ResponseEntity<Object> create(@RequestBody @Valid Prestamo p) {
     Prestamo prestamo = Prestamo.builder()
         .no_dictamen(p.getNo_dictamen())
-        .no_pagare(p.getNo_pagare())
+        .no_convenio(p.getNo_convenio())
+        .no_prestamo(p.getNo_prestamo())
         .fecha(p.getFecha())
-        .fecha_vencimiento(p.getFecha_vencimiento())
         .fecha_amortizacion(p.getFecha_amortizacion())
         .monto(p.getMonto())
         .plazo_meses(p.getPlazo_meses())
@@ -82,10 +82,13 @@ public class PrestamoController {
         .punto(p.getPunto())
         .fecha_memorial(p.getFecha_memorial())
         .certficacion(p.getCertficacion())
-        .oficioaj(p.getOficioaj())
-        .oficioaj2(p.getOficioaj2())
+        .no_oficio_aj(p.getNo_oficio_aj())
+        .fecha_oficio_aj(p.getFecha_oficio_aj())
+        .no_oficio_ger(p.getNo_oficio_ger())
+        .fecha_oficio_ger(p.getFecha_oficio_ger())
         .estado(p.getEstado())
         .id_tipo_prestamo(p.getId_tipo_prestamo())
+        .id_clase_prestamo(p.getId_clase_prestamo())
         .id_municipalidad(p.getId_municipalidad())
         .id_funcionario(p.getId_funcionario())
         .id_regional(p.getId_regional())
@@ -101,9 +104,9 @@ public class PrestamoController {
     if (data.isPresent()) {
       Prestamo prestamo = data.get();
       prestamo.setNo_dictamen(p.getNo_dictamen());
-      prestamo.setNo_pagare(p.getNo_pagare());
+      prestamo.setNo_convenio(p.getNo_convenio());
+      prestamo.setNo_prestamo(p.getNo_prestamo());
       prestamo.setFecha(p.getFecha());
-      prestamo.setFecha_vencimiento(p.getFecha_vencimiento());
       prestamo.setFecha_amortizacion(p.getFecha_amortizacion());
       prestamo.setMonto(p.getMonto());
       prestamo.setPlazo_meses(p.getPlazo_meses());
@@ -115,10 +118,13 @@ public class PrestamoController {
       prestamo.setPunto(p.getPunto());
       prestamo.setFecha_memorial(p.getFecha_memorial());
       prestamo.setCertficacion(p.getCertficacion());
-      prestamo.setOficioaj(p.getOficioaj());
-      prestamo.setOficioaj2(p.getOficioaj2());
+      prestamo.setNo_oficio_aj(p.getNo_oficio_aj());
+      prestamo.setFecha_oficio_aj(p.getFecha_oficio_aj());
+      prestamo.setNo_oficio_ger(p.getNo_oficio_ger());
+      prestamo.setFecha_oficio_ger(p.getFecha_oficio_ger());
       prestamo.setEstado(p.getEstado());
       prestamo.setId_tipo_prestamo(p.getId_tipo_prestamo());
+      prestamo.setId_clase_prestamo(p.getId_clase_prestamo());
       prestamo.setId_municipalidad(p.getId_municipalidad());
       prestamo.setId_funcionario(p.getId_funcionario());
       prestamo.setId_regional(p.getId_regional());

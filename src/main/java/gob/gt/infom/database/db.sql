@@ -36,6 +36,14 @@ CREATE TABLE [dbo].[garantias] (
   [porcentaje] varchar(255) -- 75% o 90%
 );
 
+CREATE TABLE [dbo].[clases_prestamos] (
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [codigo] varchar(255),
+  [nombre] varchar(255),
+  [monto_min] varchar(255),
+  [monto_max] varchar(255),
+);
+
 CREATE TABLE [dbo].[tipos_prestamos] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [codigo] varchar(255),
@@ -259,9 +267,9 @@ CREATE TABLE [dbo].[representantes] (
 CREATE TABLE [dbo].[prestamos] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [no_dictamen] varchar(255),
-  [no_pagare] varchar(255),
+  [no_convenio] varchar(255),
+  [no_prestamo] varchar(255),
   [fecha] datetime,
-  [fecha_vencimiento] date,
   [fecha_amortizacion] date,
   [monto] varchar(255),
   [plazo_meses] int,
@@ -273,15 +281,19 @@ CREATE TABLE [dbo].[prestamos] (
   [punto] varchar(255),
   [fecha_memorial] date,
   [certficacion] varchar(255),
-  [oficioaj] date,
-  [oficioaj2] varchar(255),
+  [fecha_oficio_aj] date,
+  [no_oficio_aj] varchar(255),
+  [fecha_oficio_ger] date,
+  [no_oficio_ger] varchar(255),
   [estado] varchar(255),
   [id_tipo_prestamo] int,
+  [id_clase_prestamo] int,
   [id_municipalidad] int,
   [id_funcionario] int,
   [id_regional] int,
   [id_usuario] int,
   CONSTRAINT [fk_prestamos_tipos_prestamos] FOREIGN KEY ([id_tipo_prestamo]) REFERENCES [dbo].[tipos_prestamos] ([id]),
+  CONSTRAINT [fk_prestamos_clases_prestamos] FOREIGN KEY ([id_clase_prestamo]) REFERENCES [dbo].[clases_prestamos] ([id]),
   CONSTRAINT [fk_prestamos_municipalidades] FOREIGN KEY ([id_municipalidad]) REFERENCES [dbo].[municipalidades] ([id]),
   CONSTRAINT [fk_prestamos_funcionarios] FOREIGN KEY ([id_funcionario]) REFERENCES [dbo].[funcionarios] ([id]),
   CONSTRAINT [fk_prestamos_regionales] FOREIGN KEY ([id_regional]) REFERENCES [dbo].[regionales] ([id]),
