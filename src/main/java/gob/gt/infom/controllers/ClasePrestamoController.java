@@ -40,8 +40,7 @@ public class ClasePrestamoController {
     ClasePrestamo clase_prestamo = ClasePrestamo.builder()
         .codigo(g.getCodigo())
         .nombre(g.getNombre())
-        .monto_min(g.getMonto_min())
-        .monto_max(g.getMonto_max())
+        .siglas(g.getSiglas())
         .build();
     repository.save(clase_prestamo);
     return ResponseController.success("ClasePrestamo Agregada Correctamente", clase_prestamo);
@@ -54,8 +53,7 @@ public class ClasePrestamoController {
       ClasePrestamo clase_prestamo = data.get();
       clase_prestamo.setCodigo(g.getCodigo());
       clase_prestamo.setNombre(g.getNombre());
-      clase_prestamo.setMonto_min(g.getMonto_min());
-      clase_prestamo.setMonto_max(g.getMonto_max());
+      clase_prestamo.setSiglas(g.getSiglas());
       repository.save(clase_prestamo);
       return ResponseController.success("ClasePrestamo Actualizada Correctamente", clase_prestamo);
     } else {

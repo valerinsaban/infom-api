@@ -40,6 +40,9 @@ public class TipoPrestamoController {
     TipoPrestamo tipo_prestamo = TipoPrestamo.builder()
         .codigo(g.getCodigo())
         .nombre(g.getNombre())
+        .siglas(g.getSiglas())
+        .monto_min(g.getMonto_min())
+        .monto_max(g.getMonto_max())
         .build();
     repository.save(tipo_prestamo);
     return ResponseController.success("TipoPrestamo Agregada Correctamente", tipo_prestamo);
@@ -52,6 +55,9 @@ public class TipoPrestamoController {
       TipoPrestamo tipo_prestamo = data.get();
       tipo_prestamo.setCodigo(g.getCodigo());
       tipo_prestamo.setNombre(g.getNombre());
+      tipo_prestamo.setSiglas(g.getSiglas());
+      tipo_prestamo.setMonto_min(g.getMonto_min());
+      tipo_prestamo.setMonto_max(g.getMonto_max());
       repository.save(tipo_prestamo);
       return ResponseController.success("TipoPrestamo Actualizada Correctamente", tipo_prestamo);
     } else {

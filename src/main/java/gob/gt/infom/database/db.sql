@@ -36,26 +36,28 @@ CREATE TABLE [dbo].[garantias] (
   [porcentaje] varchar(255) -- 75% o 90%
 );
 
-CREATE TABLE [dbo].[clases_prestamos] (
-  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-  [codigo] varchar(255),
-  [nombre] varchar(255),
-  [monto_min] varchar(255),
-  [monto_max] varchar(255),
-);
-
 CREATE TABLE [dbo].[tipos_prestamos] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [codigo] varchar(255),
   [nombre] varchar(255),
+  [siglas] varchar(255),
+  [monto_min] varchar(255),
+  [monto_max] varchar(255),
 );
 
-CREATE TABLE [dbo].[tipos_prestamos_garantias] (
+CREATE TABLE [dbo].[clases_prestamos] (
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [codigo] varchar(255),
+  [nombre] varchar(255),
+  [siglas] varchar(255),
+);
+
+CREATE TABLE [dbo].[clases_prestamos_garantias] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [id_garantia] int,
-  [id_tipo_prestamo] int,
-  CONSTRAINT [fk_tipos_prestamo_garantias_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
-  CONSTRAINT [fk_tipos_prestamo_garantias_tipos_prestamos] FOREIGN KEY ([id_tipo_prestamo]) REFERENCES [dbo].[tipos_prestamos] ([id])
+  [id_clase_prestamo] int,
+  CONSTRAINT [fk_clases_prestamos_garantias_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
+  CONSTRAINT [fk_clases_prestamos_garantias_clases_prestamos] FOREIGN KEY ([id_clase_prestamo]) REFERENCES [dbo].[clases_prestamos] ([id])
 );
 
 CREATE TABLE [dbo].[profesiones] (
@@ -286,14 +288,14 @@ CREATE TABLE [dbo].[prestamos] (
   [fecha_oficio_ger] date,
   [no_oficio_ger] varchar(255),
   [estado] varchar(255),
-  [id_tipo_prestamo] int,
   [id_clase_prestamo] int,
+  [id_tipo_prestamo] int,
   [id_municipalidad] int,
   [id_funcionario] int,
   [id_regional] int,
   [id_usuario] int,
-  CONSTRAINT [fk_prestamos_tipos_prestamos] FOREIGN KEY ([id_tipo_prestamo]) REFERENCES [dbo].[tipos_prestamos] ([id]),
   CONSTRAINT [fk_prestamos_clases_prestamos] FOREIGN KEY ([id_clase_prestamo]) REFERENCES [dbo].[clases_prestamos] ([id]),
+  CONSTRAINT [fk_prestamos_tipos_prestamos] FOREIGN KEY ([id_tipo_prestamo]) REFERENCES [dbo].[tipos_prestamos] ([id]),
   CONSTRAINT [fk_prestamos_municipalidades] FOREIGN KEY ([id_municipalidad]) REFERENCES [dbo].[municipalidades] ([id]),
   CONSTRAINT [fk_prestamos_funcionarios] FOREIGN KEY ([id_funcionario]) REFERENCES [dbo].[funcionarios] ([id]),
   CONSTRAINT [fk_prestamos_regionales] FOREIGN KEY ([id_regional]) REFERENCES [dbo].[regionales] ([id]),
@@ -310,6 +312,13 @@ CREATE TABLE [dbo].[prestamos_garantias] (
   CONSTRAINT [fk_prestamos_garantias_prestamos] FOREIGN KEY ([id_prestamo]) REFERENCES [dbo].[prestamos] ([id])
 );
 
+CREATE TABLE [dbo].[cobros] (
+  [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [codigo] varchar(255),
+  [fecha] varchar(255),
+  [mes] varchar(255)
+);
+
 CREATE TABLE [dbo].[amortizaciones] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [fecha_inicio] date,
@@ -321,7 +330,9 @@ CREATE TABLE [dbo].[amortizaciones] (
   [cuota] varchar(255),
   [saldo] varchar(255),
   [id_prestamo] int,
-  CONSTRAINT [fk_amortizaciones_prestamos] FOREIGN KEY ([id_prestamo]) REFERENCES [dbo].[prestamos] ([id])
+  [id_cobro] int,
+  CONSTRAINT [fk_amortizaciones_prestamos] FOREIGN KEY ([id_prestamo]) REFERENCES [dbo].[prestamos] ([id]),
+  CONSTRAINT [fk_amortizaciones_cobros] FOREIGN KEY ([id_cobro]) REFERENCES [dbo].[cobros] ([id])
 );
 
 -- Data

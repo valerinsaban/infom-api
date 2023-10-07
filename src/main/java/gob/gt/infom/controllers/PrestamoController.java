@@ -25,6 +25,12 @@ public class PrestamoController {
   @Autowired
   private PrestamoRepository repository;
 
+  @GetMapping("/prestamos/estado/{estado}")
+  public List<Prestamo> allByEstado(
+      @PathVariable String estado) {
+    return repository.findAllByEstado(estado);
+  }
+
   @GetMapping("/prestamos/{fecha_inicio}/{fecha_fin}")
   public List<Prestamo> all(
       @PathVariable String fecha_inicio,
@@ -33,7 +39,7 @@ public class PrestamoController {
   }
 
   @GetMapping("/prestamos/{estado}/{fecha_inicio}/{fecha_fin}")
-  public List<Prestamo> allByEstado(
+  public List<Prestamo> allByEstadoFecha(
       @PathVariable String estado,
       @PathVariable String fecha_inicio,
       @PathVariable String fecha_fin) {
@@ -49,8 +55,20 @@ public class PrestamoController {
   }
 
   @GetMapping("/prestamos/municipalidad/{estado}/{id_municipalidad}")
-  public List<Prestamo> findAllByEstadoAndMunicipalidadId(@PathVariable String estado, @PathVariable Integer id_municipalidad) {
+  public List<Prestamo> findAllByEstadoAndMunicipalidadId(@PathVariable String estado,
+      @PathVariable Integer id_municipalidad) {
     return repository.findAllByEstadoAndMunicipalidadId(estado, id_municipalidad);
+  }
+
+  @GetMapping("/prestamos/tipo_prestamo/{id_tipo_prestamo}/clase_prestamo/{id_clase_prestamo}")
+  public Optional<Prestamo> countByTipoPrestamoIdAndClasePrestamoId(@PathVariable Integer id_tipo_prestamo,
+      @PathVariable Integer id_clase_prestamo) {
+    return repository.countByTipoPrestamoIdAndClasePrestamoId(id_tipo_prestamo, id_clase_prestamo);
+  }
+
+  @GetMapping("/prestamos/municipalidad/{id_municipalidad}")
+  public Optional<Prestamo> countByMunicipalidadId(@PathVariable Integer id_municipalidad) {
+    return repository.countByMunicipalidadId(id_municipalidad);
   }
 
   @PostMapping("/prestamos/filtros")

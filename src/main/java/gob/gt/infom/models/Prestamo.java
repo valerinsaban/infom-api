@@ -53,11 +53,11 @@ public class Prestamo {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_tipo_prestamo", insertable = false, updatable = false)
-  private TipoPrestamo tipo_prestamo;
+  private TipoPrestamo tipoPrestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_clase_prestamo", insertable = false, updatable = false)
-  private ClasePrestamo clase_prestamo;
+  private ClasePrestamo clasePrestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)

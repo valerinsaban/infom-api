@@ -15,39 +15,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import gob.gt.infom.models.TipoPrestamoGarantia;
-import gob.gt.infom.repositories.TipoPrestamoGarantiaRepository;
+import gob.gt.infom.models.ClasePrestamoGarantia;
+import gob.gt.infom.repositories.ClasePrestamoGarantiaRepository;
 import jakarta.validation.Valid;
 
 @RestController
-public class TipoPrestamoGarantiaController {
+public class ClasePrestamoGarantiaController {
 
   @Autowired
-  private TipoPrestamoGarantiaRepository repository;
+  private ClasePrestamoGarantiaRepository repository;
 
-  @GetMapping("/tipos_prestamos_garantias/tipo_prestamo/{id_tipo_prestamo}")
-  public List<TipoPrestamoGarantia> one(@PathVariable Integer id_tipo_prestamo) {
-    return repository.findAllByTipoPrestamoId(id_tipo_prestamo);
+  @GetMapping("/clases_prestamos_garantias/clase_prestamo/{id_clase_prestamo}")
+  public List<ClasePrestamoGarantia> one(@PathVariable Integer id_clase_prestamo) {
+    return repository.findAllByClasePrestamoId(id_clase_prestamo);
   }
 
-  @PostMapping("/tipos_prestamos_garantias")
+  @PostMapping("/clases_prestamos_garantias")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid TipoPrestamoGarantia p) {
-    TipoPrestamoGarantia prestamo = TipoPrestamoGarantia.builder()
+  public ResponseEntity<Object> create(@RequestBody @Valid ClasePrestamoGarantia p) {
+    ClasePrestamoGarantia prestamo = ClasePrestamoGarantia.builder()
         .id_garantia(p.getId_garantia())
-        .id_tipo_prestamo(p.getId_tipo_prestamo())
+        .id_clase_prestamo(p.getId_clase_prestamo())
         .build();
     repository.save(prestamo);
     return ResponseController.success("Prestamo Garantia Agregado Correctamente", prestamo);
   }
 
-  @PutMapping("/tipos_prestamos_garantias/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody TipoPrestamoGarantia p) {
-    Optional<TipoPrestamoGarantia> data = repository.findById(id);
+  @PutMapping("/clases_prestamos_garantias/{id}")
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody ClasePrestamoGarantia p) {
+    Optional<ClasePrestamoGarantia> data = repository.findById(id);
     if (data.isPresent()) {
-      TipoPrestamoGarantia prestamo = data.get();
+      ClasePrestamoGarantia prestamo = data.get();
       prestamo.setId_garantia(p.getId_garantia());
-      prestamo.setId_tipo_prestamo(p.getId_tipo_prestamo());
+      prestamo.setId_clase_prestamo(p.getId_clase_prestamo());
       repository.save(prestamo);
       return ResponseController.success("Prestamo Garantia Actualizado Correctamente", prestamo);
     } else {
@@ -55,9 +55,9 @@ public class TipoPrestamoGarantiaController {
     }
   }
 
-  @DeleteMapping("/tipos_prestamos_garantias/{id}")
+  @DeleteMapping("/clases_prestamos_garantias/{id}")
   public ResponseEntity<?> delete(@PathVariable Integer id) {
-    Optional<TipoPrestamoGarantia> prestamo = repository.findById(id);
+    Optional<ClasePrestamoGarantia> prestamo = repository.findById(id);
     if (prestamo.isPresent()) {
       repository.deleteById(id);
       return ResponseController.success("Prestamo Garantia Eliminado Correctamente", prestamo);

@@ -23,5 +23,8 @@ public class TipoPrestamo {
   private Integer id;
   private String codigo;
   private String nombre;
+  private String siglas;
+  private String monto_min;
+  private String monto_max;
 
 }
