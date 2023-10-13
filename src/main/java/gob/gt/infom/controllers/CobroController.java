@@ -29,6 +29,16 @@ public class CobroController {
     return repository.findAll();
   }
 
+  @GetMapping("/cobros/ultimo")
+  public Optional<Cobro> findTopByOrderByMesDesc() {
+    return repository.findTopByOrderByMesDesc();
+  }
+
+  @GetMapping("/cobros/mes/{mes}")
+  public Optional<Cobro> findByMes(@PathVariable String mes) {
+    return repository.findByMes(mes);
+  }
+
   @GetMapping("/cobros/{id}")
   public Optional<Cobro> one(@PathVariable Integer id) {
     return repository.findById(id);

@@ -9,4 +9,6 @@ public interface AmortizacionRepository extends CrudRepository<Amortizacion, Int
 
   Iterable<Amortizacion> findAllByPrestamoId(Integer id_prestamo);
 
+  Iterable<Amortizacion> findAllByCobroId(Integer id_cobro);
+
 }

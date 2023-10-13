@@ -34,6 +34,11 @@ public class AmortizacionController {
     return repository.findById(id);
   }
 
+  @GetMapping("/amortizaciones/cobro/{id_cobro}")
+  public Iterable<Amortizacion> findAllByCobroId(@PathVariable Integer id_cobro) {
+    return repository.findAllByCobroId(id_cobro);
+  }
+
   @GetMapping("/amortizaciones/prestamo/{id_prestamo}")
   public Iterable<Amortizacion> findAllById_prestamo(@PathVariable Integer id_prestamo) {
     return repository.findAllByPrestamoId(id_prestamo);
@@ -52,6 +57,7 @@ public class AmortizacionController {
         .cuota(a.getCuota())
         .saldo(a.getSaldo())
         .id_prestamo(a.getId_prestamo())
+        .id_cobro(a.getId_cobro())
         .build();
     repository.save(amortizacion);
     return ResponseController.success("Amortizacion Agregado Correctamente", amortizacion);
@@ -71,6 +77,7 @@ public class AmortizacionController {
       amortizacion.setCuota(a.getCuota());
       amortizacion.setSaldo(a.getSaldo());
       amortizacion.setId_prestamo(a.getId_prestamo());
+      amortizacion.setId_cobro(a.getId_cobro());
       repository.save(amortizacion);
       return ResponseController.success("Amortizacion Actualizado Correctamente", amortizacion);
     } else {

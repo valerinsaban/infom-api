@@ -33,9 +33,14 @@ public class Amortizacion {
   private String cuota;
   private String saldo;
   private Integer id_prestamo;
+  private Integer id_cobro;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_prestamo", insertable = false, updatable = false)
   private Prestamo prestamo;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_cobro", insertable = false, updatable = false)
+  private Cobro cobro;
 
 }
