@@ -10,7 +10,8 @@ CREATE TABLE [dbo].[configuraciones] (
   [direccion] varchar(255),
   [sitio_web] varchar(255),
   [porcentaje_interes] varchar(255),
-  [porcentaje_iva] varchar(255)
+  [porcentaje_iva] varchar(255),
+  [periodo_fin] date
 );
 
 -- Catalogos

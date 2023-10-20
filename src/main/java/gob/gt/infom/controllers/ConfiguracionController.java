@@ -47,6 +47,7 @@ public class ConfiguracionController {
         .sitio_web(c.getSitio_web())
         .porcentaje_interes(c.getPorcentaje_interes())
         .porcentaje_iva(c.getPorcentaje_iva())
+        .periodo_fin(c.getPeriodo_fin())
         .build();
     repository.save(configuracion);
     return ResponseController.success("Configuracion Agregado Correctamente", configuracion);
@@ -66,6 +67,7 @@ public class ConfiguracionController {
       configuracion.setSitio_web(c.getSitio_web());
       configuracion.setPorcentaje_interes(c.getPorcentaje_interes());
       configuracion.setPorcentaje_iva(c.getPorcentaje_iva());
+      configuracion.setPeriodo_fin(c.getPeriodo_fin());
       repository.save(configuracion);
       return ResponseController.success("Configuracion Actualizado Correctamente", configuracion);
     } else {

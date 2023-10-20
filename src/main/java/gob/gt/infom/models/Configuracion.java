@@ -33,5 +33,6 @@ public class Configuracion {
   private String sitio_web;
   private String porcentaje_interes;
   private String porcentaje_iva;
+  private String periodo_fin;
 
 }
