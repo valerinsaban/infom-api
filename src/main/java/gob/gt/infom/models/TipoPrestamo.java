@@ -21,7 +21,6 @@ public class TipoPrestamo {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String codigo;
   private String nombre;
   private String siglas;
   private String monto_min;

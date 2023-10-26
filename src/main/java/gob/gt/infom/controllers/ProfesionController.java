@@ -38,7 +38,6 @@ public class ProfesionController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Profesion p) {
     Profesion profesion = Profesion.builder()
-        .codigo(p.getCodigo())
         .nombre(p.getNombre())
         .build();
     repository.save(profesion);
@@ -50,7 +49,6 @@ public class ProfesionController {
     Optional<Profesion> data = repository.findById(id);
     if (data.isPresent()) {
       Profesion profesion = data.get();
-      profesion.setCodigo(p.getCodigo());
       profesion.setNombre(p.getNombre());
       repository.save(profesion);
       return ResponseController.success("Profesion Actualizado Correctamente", profesion);

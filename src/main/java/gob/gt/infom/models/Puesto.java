@@ -21,7 +21,6 @@ public class Puesto {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String codigo;
   private String nombre;
 
 }

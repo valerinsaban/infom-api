@@ -38,7 +38,6 @@ public class PuestoController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Puesto p) {
     Puesto puesto = Puesto.builder()
-        .codigo(p.getCodigo())
         .nombre(p.getNombre())
         .build();
     repository.save(puesto);
@@ -50,7 +49,6 @@ public class PuestoController {
     Optional<Puesto> data = repository.findById(id);
     if (data.isPresent()) {
       Puesto puesto = data.get();
-      puesto.setCodigo(p.getCodigo());
       puesto.setNombre(p.getNombre());
       repository.save(puesto);
       return ResponseController.success("Puesto Actualizado Correctamente", puesto);

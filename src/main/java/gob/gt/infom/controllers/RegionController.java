@@ -38,7 +38,6 @@ public class RegionController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Region r) {
     Region region = Region.builder()
-        .codigo(r.getCodigo())
         .nombre(r.getNombre())
         .build();
     repository.save(region);
@@ -50,7 +49,6 @@ public class RegionController {
     Optional<Region> data = repository.findById(id);
     if (data.isPresent()) {
       Region region = data.get();
-      region.setCodigo(r.getCodigo());
       region.setNombre(r.getNombre());
       repository.save(region);
       return ResponseController.success("Region Actualizado Correctamente", region);

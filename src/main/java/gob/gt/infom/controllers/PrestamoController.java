@@ -60,7 +60,7 @@ public class PrestamoController {
     return repository.findAllByEstadoAndMunicipalidadId(estado, id_municipalidad);
   }
 
-  @GetMapping("/prestamos/tipo_prestamo/{id_tipo_prestamo}/id_programa/{id_programa}")
+  @GetMapping("/prestamos/tipo_prestamo/{id_tipo_prestamo}/programa/{id_programa}")
   public Optional<Prestamo> countByTipoPrestamoIdAndProgramaId(@PathVariable Integer id_tipo_prestamo,
       @PathVariable Integer id_programa) {
     return repository.countByTipoPrestamoIdAndProgramaId(id_tipo_prestamo, id_programa);

@@ -38,7 +38,6 @@ public class RegionalController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Regional r) {
     Regional regional = Regional.builder()
-        .codigo(r.getCodigo())
         .nombre(r.getNombre())
         .direccion(r.getDireccion())
         .telefono(r.getTelefono())
@@ -54,7 +53,6 @@ public class RegionalController {
     Optional<Regional> data = repository.findById(id);
     if (data.isPresent()) {
       Regional regional = data.get();
-      regional.setCodigo(r.getCodigo());
       regional.setNombre(r.getNombre());
       regional.setDireccion(r.getDireccion());
       regional.setTelefono(r.getTelefono());

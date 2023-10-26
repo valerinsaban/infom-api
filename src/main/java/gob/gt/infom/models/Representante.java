@@ -24,7 +24,6 @@ public class Representante {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String codigo;
   private String nombre;
   private String apellido;
   private String fecha_nacimiento;

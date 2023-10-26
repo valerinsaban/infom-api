@@ -38,7 +38,6 @@ public class TipoPrestamoController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid TipoPrestamo g) {
     TipoPrestamo tipo_prestamo = TipoPrestamo.builder()
-        .codigo(g.getCodigo())
         .nombre(g.getNombre())
         .siglas(g.getSiglas())
         .monto_min(g.getMonto_min())
@@ -53,7 +52,6 @@ public class TipoPrestamoController {
     Optional<TipoPrestamo> data = repository.findById(id);
     if (data.isPresent()) {
       TipoPrestamo tipo_prestamo = data.get();
-      tipo_prestamo.setCodigo(g.getCodigo());
       tipo_prestamo.setNombre(g.getNombre());
       tipo_prestamo.setSiglas(g.getSiglas());
       tipo_prestamo.setMonto_min(g.getMonto_min());

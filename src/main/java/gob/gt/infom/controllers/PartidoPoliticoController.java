@@ -38,7 +38,6 @@ public class PartidoPoliticoController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid PartidoPolitico p) {
     PartidoPolitico partido_politico = PartidoPolitico.builder()
-        .codigo(p.getCodigo())
         .nombre(p.getNombre())
         .build();
     repository.save(partido_politico);
@@ -50,7 +49,6 @@ public class PartidoPoliticoController {
     Optional<PartidoPolitico> data = repository.findById(id);
     if (data.isPresent()) {
       PartidoPolitico partido_politico = data.get();
-      partido_politico.setCodigo(p.getCodigo());
       partido_politico.setNombre(p.getNombre());
       repository.save(partido_politico);
       return ResponseController.success("PartidoPolitico Actualizado Correctamente", partido_politico);

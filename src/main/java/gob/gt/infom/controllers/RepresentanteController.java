@@ -38,7 +38,6 @@ public class RepresentanteController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Representante p) {
     Representante representante = Representante.builder()
-        .codigo(p.getCodigo())
         .nombre(p.getNombre())
         .apellido(p.getApellido())
         .fecha_nacimiento(p.getFecha_nacimiento())
@@ -72,7 +71,6 @@ public class RepresentanteController {
     Optional<Representante> data = repository.findById(id);
     if (data.isPresent()) {
       Representante representante = data.get();
-      representante.setCodigo(p.getCodigo());
       representante.setNombre(p.getNombre());
       representante.setApellido(p.getApellido());
       representante.setFecha_nacimiento(p.getFecha_nacimiento());

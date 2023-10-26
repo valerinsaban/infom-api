@@ -52,7 +52,7 @@ public class UsuarioController {
         .dpi(u.getDpi())
         .usuario(u.getUsuario())
         .clave(passwordEncoder.encode(u.getClave()))
-        .estado(u.getEstado())
+        .acceso(u.getAcceso())
         .id_regional(u.getId_regional())
         .id_rol(u.getId_rol())
         .build();
@@ -70,7 +70,7 @@ public class UsuarioController {
       usuario.setDpi(u.getDpi());
       usuario.setUsuario(u.getUsuario());
       // usuario.setClave(passwordEncoder.encode(u.getClave()));
-      usuario.setEstado(u.getEstado());
+      usuario.setAcceso(u.getAcceso());
       usuario.setId_regional(u.getId_regional());
       usuario.setId_rol(u.getId_rol());
       repository.save(usuario);
