@@ -38,7 +38,6 @@ public class GarantiaController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Garantia g) {
     Garantia garantia = Garantia.builder()
-        .codigo(g.getCodigo())
         .nombre(g.getNombre())
         .porcentaje(g.getPorcentaje())
         .build();
@@ -51,7 +50,6 @@ public class GarantiaController {
     Optional<Garantia> data = repository.findById(id);
     if (data.isPresent()) {
       Garantia garantia = data.get();
-      garantia.setCodigo(g.getCodigo());
       garantia.setNombre(g.getNombre());
       garantia.setPorcentaje(g.getPorcentaje());
       repository.save(garantia);

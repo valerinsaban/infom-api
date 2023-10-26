@@ -27,10 +27,12 @@ public class Municipalidad {
   private String direccion;
   private String correo;
   private String telefono;
+  private String nit;
   private String no_cuenta;
   private Integer id_departamento;
   private Integer id_municipio;
   private Integer id_banco;
+  private Integer id_partido_politico;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_departamento", insertable = false, updatable = false)
@@ -43,5 +45,9 @@ public class Municipalidad {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_banco", insertable = false, updatable = false)
   private Banco banco;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_partido_politico", insertable = false, updatable = false)
+  private PartidoPolitico partido_politico;
 
 }

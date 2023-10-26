@@ -34,6 +34,7 @@ public class Usuario {
   private String dpi;
   private String usuario;
   private String clave;
+  private Boolean estado;
   private Integer id_regional;
   private Integer id_rol;
 

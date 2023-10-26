@@ -46,10 +46,12 @@ public class MunicipalidadController {
         .direccion(m.getDireccion())
         .correo(m.getCorreo())
         .telefono(m.getTelefono())
+        .nit(m.getNit())
         .no_cuenta(m.getNo_cuenta())
         .id_departamento(m.getId_departamento())
         .id_municipio(m.getId_municipio())
         .id_banco(m.getId_banco())
+        .id_partido_politico(m.getId_partido_politico())
         .build();
     repository.save(municipalidad);
     return ResponseController.success("Municipalidad Agregado Correctamente", municipalidad);
@@ -63,10 +65,12 @@ public class MunicipalidadController {
       municipalidad.setDireccion(m.getDireccion());
       municipalidad.setCorreo(m.getCorreo());
       municipalidad.setTelefono(m.getTelefono());
+      municipalidad.setNit(m.getNit());
       municipalidad.setNo_cuenta(m.getNo_cuenta());
       municipalidad.setId_departamento(m.getId_departamento());
       municipalidad.setId_municipio(m.getId_municipio());
       municipalidad.setId_banco(m.getId_banco());
+      municipalidad.setId_partido_politico(m.getId_partido_politico());
       repository.save(municipalidad);
       return ResponseController.success("Municipalidad Actualizado Correctamente", municipalidad);
     } else {

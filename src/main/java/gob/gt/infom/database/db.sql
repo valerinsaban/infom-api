@@ -46,19 +46,19 @@ CREATE TABLE [dbo].[tipos_prestamos] (
   [monto_max] varchar(255),
 );
 
-CREATE TABLE [dbo].[clases_prestamos] (
+CREATE TABLE [dbo].[programas] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [codigo] varchar(255),
   [nombre] varchar(255),
   [siglas] varchar(255),
 );
 
-CREATE TABLE [dbo].[clases_prestamos_garantias] (
+CREATE TABLE [dbo].[programas_garantias] (
   [id] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [id_garantia] int,
-  [id_clase_prestamo] int,
-  CONSTRAINT [fk_clases_prestamos_garantias_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
-  CONSTRAINT [fk_clases_prestamos_garantias_clases_prestamos] FOREIGN KEY ([id_clase_prestamo]) REFERENCES [dbo].[clases_prestamos] ([id])
+  [id_programa] int,
+  CONSTRAINT [fk_programas_garantias_garantias] FOREIGN KEY ([id_garantia]) REFERENCES [dbo].[garantias] ([id]),
+  CONSTRAINT [fk_programas_garantias_programas] FOREIGN KEY ([id_programa]) REFERENCES [dbo].[programas] ([id])
 );
 
 CREATE TABLE [dbo].[profesiones] (
@@ -134,6 +134,7 @@ CREATE TABLE [dbo].[usuarios] (
   [dpi] varchar(255),
   [usuario] varchar(255),
   [clave] varchar(255),
+  [estado] tinyint,
   [id_regional] int,
   [id_rol] int,
   CONSTRAINT [fk_usuarios_regionales] FOREIGN KEY ([id_regional]) REFERENCES [dbo].[regionales] ([id]),
@@ -289,13 +290,13 @@ CREATE TABLE [dbo].[prestamos] (
   [fecha_oficio_ger] date,
   [no_oficio_ger] varchar(255),
   [estado] varchar(255),
-  [id_clase_prestamo] int,
+  [id_programa] int,
   [id_tipo_prestamo] int,
   [id_municipalidad] int,
   [id_funcionario] int,
   [id_regional] int,
   [id_usuario] int,
-  CONSTRAINT [fk_prestamos_clases_prestamos] FOREIGN KEY ([id_clase_prestamo]) REFERENCES [dbo].[clases_prestamos] ([id]),
+  CONSTRAINT [fk_prestamos_programas] FOREIGN KEY ([id_programa]) REFERENCES [dbo].[programas] ([id]),
   CONSTRAINT [fk_prestamos_tipos_prestamos] FOREIGN KEY ([id_tipo_prestamo]) REFERENCES [dbo].[tipos_prestamos] ([id]),
   CONSTRAINT [fk_prestamos_municipalidades] FOREIGN KEY ([id_municipalidad]) REFERENCES [dbo].[municipalidades] ([id]),
   CONSTRAINT [fk_prestamos_funcionarios] FOREIGN KEY ([id_funcionario]) REFERENCES [dbo].[funcionarios] ([id]),

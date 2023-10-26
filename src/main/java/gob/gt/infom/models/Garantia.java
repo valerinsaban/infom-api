@@ -21,7 +21,6 @@ public class Garantia {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String codigo;
   private String nombre;
   private String porcentaje;
 

@@ -15,12 +15,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "bancos")
-public class Banco {
+@Table(name = "programas")
+public class Programa {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  private String codigo;
   private String nombre;
   private String siglas;
 

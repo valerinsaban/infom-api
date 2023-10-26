@@ -38,7 +38,6 @@ public class BancoController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Banco p) {
     Banco banco = Banco.builder()
-        .codigo(p.getCodigo())
         .nombre(p.getNombre())
         .siglas(p.getSiglas())
         .build();
@@ -51,7 +50,6 @@ public class BancoController {
     Optional<Banco> data = repository.findById(id);
     if (data.isPresent()) {
       Banco banco = data.get();
-      banco.setCodigo(p.getCodigo());
       banco.setNombre(p.getNombre());
       banco.setSiglas(p.getSiglas());
       repository.save(banco);

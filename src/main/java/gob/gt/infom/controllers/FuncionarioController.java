@@ -38,7 +38,6 @@ public class FuncionarioController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Funcionario p) {
     Funcionario funcionario = Funcionario.builder()
-        .codigo(p.getCodigo())
         .nombre(p.getNombre())
         .apellido(p.getApellido())
         .fecha_nacimiento(p.getFecha_nacimiento())
@@ -50,7 +49,7 @@ public class FuncionarioController {
         .estado(p.getEstado())
         .imagen_carnet(p.getImagen_carnet())
         .imagen_acta_toma_posecion(p.getImagen_acta_toma_posecion())
-        .imagen_fotografia(p.getImagen_fotografia())
+        .imagen_dpi(p.getImagen_dpi())
         .imagen_firma(p.getImagen_firma())
         .id_municipalidad(p.getId_municipalidad())
         .id_puesto(p.getId_puesto())
@@ -66,7 +65,6 @@ public class FuncionarioController {
     Optional<Funcionario> data = repository.findById(id);
     if (data.isPresent()) {
       Funcionario funcionario = data.get();
-      funcionario.setCodigo(p.getCodigo());
       funcionario.setNombre(p.getNombre());
       funcionario.setApellido(p.getApellido());
       funcionario.setFecha_nacimiento(p.getFecha_nacimiento());
@@ -78,8 +76,9 @@ public class FuncionarioController {
       funcionario.setEstado(p.getEstado());
       funcionario.setImagen_carnet(p.getImagen_carnet());
       funcionario.setImagen_acta_toma_posecion(p.getImagen_acta_toma_posecion());
-      funcionario.setImagen_fotografia(p.getImagen_fotografia());
+      funcionario.setDpi(p.getDpi());
       funcionario.setImagen_firma(p.getImagen_firma());
+      funcionario.setImagen_sello(p.getImagen_sello());
       funcionario.setId_municipalidad(p.getId_municipalidad());
       funcionario.setId_puesto(p.getId_puesto());
       funcionario.setId_profesion(p.getId_profesion());

@@ -45,7 +45,7 @@ public class Prestamo {
   private String fecha_oficio_ger;
   private String estado;
   private Integer id_tipo_prestamo;
-  private Integer id_clase_prestamo;
+  private Integer id_programa;
   private Integer id_municipalidad;
   private Integer id_funcionario;
   private Integer id_regional;
@@ -56,8 +56,8 @@ public class Prestamo {
   private TipoPrestamo tipoPrestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_clase_prestamo", insertable = false, updatable = false)
-  private ClasePrestamo clasePrestamo;
+  @JoinColumn(name = "id_programa", insertable = false, updatable = false)
+  private Programa programa;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)

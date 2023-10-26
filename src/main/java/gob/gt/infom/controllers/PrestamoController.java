@@ -60,10 +60,10 @@ public class PrestamoController {
     return repository.findAllByEstadoAndMunicipalidadId(estado, id_municipalidad);
   }
 
-  @GetMapping("/prestamos/tipo_prestamo/{id_tipo_prestamo}/clase_prestamo/{id_clase_prestamo}")
-  public Optional<Prestamo> countByTipoPrestamoIdAndClasePrestamoId(@PathVariable Integer id_tipo_prestamo,
-      @PathVariable Integer id_clase_prestamo) {
-    return repository.countByTipoPrestamoIdAndClasePrestamoId(id_tipo_prestamo, id_clase_prestamo);
+  @GetMapping("/prestamos/tipo_prestamo/{id_tipo_prestamo}/id_programa/{id_programa}")
+  public Optional<Prestamo> countByTipoPrestamoIdAndProgramaId(@PathVariable Integer id_tipo_prestamo,
+      @PathVariable Integer id_programa) {
+    return repository.countByTipoPrestamoIdAndProgramaId(id_tipo_prestamo, id_programa);
   }
 
   @GetMapping("/prestamos/municipalidad/{id_municipalidad}")
@@ -106,7 +106,7 @@ public class PrestamoController {
         .fecha_oficio_ger(p.getFecha_oficio_ger())
         .estado(p.getEstado())
         .id_tipo_prestamo(p.getId_tipo_prestamo())
-        .id_clase_prestamo(p.getId_clase_prestamo())
+        .id_programa(p.getId_programa())
         .id_municipalidad(p.getId_municipalidad())
         .id_funcionario(p.getId_funcionario())
         .id_regional(p.getId_regional())
@@ -142,7 +142,7 @@ public class PrestamoController {
       prestamo.setFecha_oficio_ger(p.getFecha_oficio_ger());
       prestamo.setEstado(p.getEstado());
       prestamo.setId_tipo_prestamo(p.getId_tipo_prestamo());
-      prestamo.setId_clase_prestamo(p.getId_clase_prestamo());
+      prestamo.setId_programa(p.getId_programa());
       prestamo.setId_municipalidad(p.getId_municipalidad());
       prestamo.setId_funcionario(p.getId_funcionario());
       prestamo.setId_regional(p.getId_regional());

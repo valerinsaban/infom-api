@@ -18,21 +18,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "clases_prestamos_garantias")
-public class ClasePrestamoGarantia {
+@Table(name = "programas_garantias")
+public class ProgramaGarantia {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private Integer id_garantia;
-  private Integer id_clase_prestamo;
+  private Integer id_programa;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_garantia", insertable = false, updatable = false)
   private Garantia garantia;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_clase_prestamo", insertable = false, updatable = false)
-  private ClasePrestamo clasePrestamo;
+  @JoinColumn(name = "id_programa", insertable = false, updatable = false)
+  private Programa programa;
 
 }

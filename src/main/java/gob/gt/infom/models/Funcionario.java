@@ -25,7 +25,6 @@ public class Funcionario {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String codigo;
   private String nombre;
   private String apellido;
   private String fecha_nacimiento;
@@ -40,9 +39,11 @@ public class Funcionario {
   @Lob
   private String imagen_acta_toma_posecion;
   @Lob
-  private String imagen_fotografia;
+  private String imagen_dpi;
   @Lob
   private String imagen_firma;
+  @Lob
+  private String imagen_sello;
   private Integer id_municipalidad;
   private Integer id_puesto;
   private Integer id_profesion;

@@ -38,7 +38,6 @@ public class EstadoCivilController {
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid EstadoCivil e) {
     EstadoCivil estado_civil = EstadoCivil.builder()
-        .codigo(e.getCodigo())
         .nombre(e.getNombre())
         .build();
     repository.save(estado_civil);
@@ -50,7 +49,6 @@ public class EstadoCivilController {
     Optional<EstadoCivil> data = repository.findById(id);
     if (data.isPresent()) {
       EstadoCivil estado_civil = data.get();
-      estado_civil.setCodigo(e.getCodigo());
       estado_civil.setNombre(e.getNombre());
       repository.save(estado_civil);
       return ResponseController.success("EstadoCivil Actualizado Correctamente", estado_civil);

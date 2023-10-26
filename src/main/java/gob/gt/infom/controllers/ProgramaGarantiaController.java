@@ -15,39 +15,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import gob.gt.infom.models.ClasePrestamoGarantia;
-import gob.gt.infom.repositories.ClasePrestamoGarantiaRepository;
+import gob.gt.infom.models.ProgramaGarantia;
+import gob.gt.infom.repositories.ProgramaGarantiaRepository;
 import jakarta.validation.Valid;
 
 @RestController
-public class ClasePrestamoGarantiaController {
+public class ProgramaGarantiaController {
 
   @Autowired
-  private ClasePrestamoGarantiaRepository repository;
+  private ProgramaGarantiaRepository repository;
 
-  @GetMapping("/clases_prestamos_garantias/clase_prestamo/{id_clase_prestamo}")
-  public List<ClasePrestamoGarantia> one(@PathVariable Integer id_clase_prestamo) {
-    return repository.findAllByClasePrestamoId(id_clase_prestamo);
+  @GetMapping("/programas_garantias/programa/{id_programa}")
+  public List<ProgramaGarantia> one(@PathVariable Integer id_programa) {
+    return repository.findAllByProgramaId(id_programa);
   }
 
-  @PostMapping("/clases_prestamos_garantias")
+  @PostMapping("/programas_garantias")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid ClasePrestamoGarantia p) {
-    ClasePrestamoGarantia prestamo = ClasePrestamoGarantia.builder()
+  public ResponseEntity<Object> create(@RequestBody @Valid ProgramaGarantia p) {
+    ProgramaGarantia prestamo = ProgramaGarantia.builder()
         .id_garantia(p.getId_garantia())
-        .id_clase_prestamo(p.getId_clase_prestamo())
+        .id_programa(p.getId_programa())
         .build();
     repository.save(prestamo);
     return ResponseController.success("Prestamo Garantia Agregado Correctamente", prestamo);
   }
 
-  @PutMapping("/clases_prestamos_garantias/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody ClasePrestamoGarantia p) {
-    Optional<ClasePrestamoGarantia> data = repository.findById(id);
+  @PutMapping("/programas_garantias/{id}")
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody ProgramaGarantia p) {
+    Optional<ProgramaGarantia> data = repository.findById(id);
     if (data.isPresent()) {
-      ClasePrestamoGarantia prestamo = data.get();
+      ProgramaGarantia prestamo = data.get();
       prestamo.setId_garantia(p.getId_garantia());
-      prestamo.setId_clase_prestamo(p.getId_clase_prestamo());
+      prestamo.setId_programa(p.getId_programa());
       repository.save(prestamo);
       return ResponseController.success("Prestamo Garantia Actualizado Correctamente", prestamo);
     } else {
@@ -55,9 +55,9 @@ public class ClasePrestamoGarantiaController {
     }
   }
 
-  @DeleteMapping("/clases_prestamos_garantias/{id}")
+  @DeleteMapping("/programas_garantias/{id}")
   public ResponseEntity<?> delete(@PathVariable Integer id) {
-    Optional<ClasePrestamoGarantia> prestamo = repository.findById(id);
+    Optional<ProgramaGarantia> prestamo = repository.findById(id);
     if (prestamo.isPresent()) {
       repository.deleteById(id);
       return ResponseController.success("Prestamo Garantia Eliminado Correctamente", prestamo);
