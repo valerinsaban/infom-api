@@ -95,7 +95,8 @@ public class PrestamoController {
         .fecha_acta(p.getFecha_acta())
         .intereses(p.getIntereses())
         .periodo_gracia(p.getPeriodo_gracia())
-        .destino_prestamo(p.getDestino_prestamo())
+        .destino(p.getDestino())
+        .no_destinos(p.getNo_destinos())
         .acta(p.getActa())
         .punto(p.getPunto())
         .fecha_memorial(p.getFecha_memorial())
@@ -131,7 +132,8 @@ public class PrestamoController {
       prestamo.setFecha_acta(p.getFecha_acta());
       prestamo.setIntereses(p.getIntereses());
       prestamo.setPeriodo_gracia(p.getPeriodo_gracia());
-      prestamo.setDestino_prestamo(p.getDestino_prestamo());
+      prestamo.setDestino(p.getDestino());
+      prestamo.setNo_destinos(p.getNo_destinos());
       prestamo.setActa(p.getActa());
       prestamo.setPunto(p.getPunto());
       prestamo.setFecha_memorial(p.getFecha_memorial());

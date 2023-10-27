@@ -34,7 +34,8 @@ public class Prestamo {
   private String fecha_acta;
   private Double intereses;
   private Integer periodo_gracia;
-  private String destino_prestamo;
+  private String destino;
+  private Integer no_destinos;
   private String acta;
   private String punto;
   private String fecha_memorial;
