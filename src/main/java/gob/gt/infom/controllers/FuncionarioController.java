@@ -29,6 +29,11 @@ public class FuncionarioController {
     return repository.findAll();
   }
 
+  @GetMapping("/funcionarios/municipalidad/{id_municipalidad}")
+  public Iterable<Funcionario> findAllByMunicipalidadId(@PathVariable Integer id_municipalidad) {
+    return repository.findAllByMunicipalidadId(id_municipalidad);
+  }
+
   @GetMapping("/funcionarios/{id}")
   public Optional<Funcionario> one(@PathVariable Integer id) {
     return repository.findById(id);
@@ -51,6 +56,7 @@ public class FuncionarioController {
         .imagen_acta_toma_posecion(p.getImagen_acta_toma_posecion())
         .imagen_dpi(p.getImagen_dpi())
         .imagen_firma(p.getImagen_firma())
+        .imagen_sello(p.getImagen_sello())
         .id_municipalidad(p.getId_municipalidad())
         .id_puesto(p.getId_puesto())
         .id_profesion(p.getId_profesion())

@@ -48,6 +48,11 @@ public class MunicipalidadController {
         .telefono(m.getTelefono())
         .nit(m.getNit())
         .no_cuenta(m.getNo_cuenta())
+        .no_acta(m.getNo_acta())
+        .punto_acta(m.getPunto_acta())
+        .fecha_acta(m.getFecha_acta())
+        .no_convenio(m.getNo_convenio())
+        .fecha_convenio(m.getFecha_convenio())
         .id_departamento(m.getId_departamento())
         .id_municipio(m.getId_municipio())
         .id_banco(m.getId_banco())
@@ -67,6 +72,11 @@ public class MunicipalidadController {
       municipalidad.setTelefono(m.getTelefono());
       municipalidad.setNit(m.getNit());
       municipalidad.setNo_cuenta(m.getNo_cuenta());
+      municipalidad.setNo_acta(m.getNo_acta());
+      municipalidad.setPunto_acta(m.getPunto_acta());
+      municipalidad.setFecha_acta(m.getFecha_acta());
+      municipalidad.setNo_convenio(m.getNo_convenio());
+      municipalidad.setFecha_convenio(m.getFecha_convenio());
       municipalidad.setId_departamento(m.getId_departamento());
       municipalidad.setId_municipio(m.getId_municipio());
       municipalidad.setId_banco(m.getId_banco());

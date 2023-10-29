@@ -20,7 +20,7 @@ public interface PrestamoRepository extends CrudRepository<Prestamo, Integer> {
 
   List<Prestamo> findAllByUsuarioId(Integer id_usuario);
 
-  Optional<Prestamo> countByTipoPrestamoIdAndProgramaId(Integer id_tipo_prestamo, Integer id_programa);
+  Optional<Prestamo> countByTipoPrestamoIdAndProgramaIdAndFechaBetween(Integer id_tipo_prestamo, Integer id_programa, String start, String end);
 
   Optional<Prestamo> countByMunicipalidadId(Integer id_municipalidad);
 

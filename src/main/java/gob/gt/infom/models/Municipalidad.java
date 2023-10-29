@@ -29,6 +29,11 @@ public class Municipalidad {
   private String telefono;
   private String nit;
   private String no_cuenta;
+  private String no_acta;
+  private String punto_acta;
+  private String fecha_acta;
+  private String no_convenio;
+  private String fecha_convenio;
   private Integer id_departamento;
   private Integer id_municipio;
   private Integer id_banco;

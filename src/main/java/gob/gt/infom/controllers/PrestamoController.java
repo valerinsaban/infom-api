@@ -55,15 +55,20 @@ public class PrestamoController {
   }
 
   @GetMapping("/prestamos/municipalidad/{estado}/{id_municipalidad}")
-  public List<Prestamo> findAllByEstadoAndMunicipalidadId(@PathVariable String estado,
+  public List<Prestamo> findAllByEstadoAndMunicipalidadId(
+      @PathVariable String estado,
       @PathVariable Integer id_municipalidad) {
     return repository.findAllByEstadoAndMunicipalidadId(estado, id_municipalidad);
   }
 
-  @GetMapping("/prestamos/tipo_prestamo/{id_tipo_prestamo}/programa/{id_programa}")
-  public Optional<Prestamo> countByTipoPrestamoIdAndProgramaId(@PathVariable Integer id_tipo_prestamo,
-      @PathVariable Integer id_programa) {
-    return repository.countByTipoPrestamoIdAndProgramaId(id_tipo_prestamo, id_programa);
+  @GetMapping("/prestamos/tipo_prestamo/{id_tipo_prestamo}/programa/{id_programa}/rango/{fecha_inicio}/{fecha_fin}")
+  public Optional<Prestamo> countByTipoPrestamoIdAndProgramaIdAndFechaBetween(
+      @PathVariable Integer id_tipo_prestamo,
+      @PathVariable Integer id_programa,
+      @PathVariable String fecha_inicio,
+      @PathVariable String fecha_fin) {
+    return repository.countByTipoPrestamoIdAndProgramaIdAndFechaBetween(id_tipo_prestamo, id_programa, fecha_inicio,
+        fecha_fin);
   }
 
   @GetMapping("/prestamos/municipalidad/{id_municipalidad}")
@@ -109,6 +114,7 @@ public class PrestamoController {
         .id_tipo_prestamo(p.getId_tipo_prestamo())
         .id_programa(p.getId_programa())
         .id_municipalidad(p.getId_municipalidad())
+        .id_resolucion(p.getId_resolucion())
         .id_funcionario(p.getId_funcionario())
         .id_regional(p.getId_regional())
         .id_usuario(p.getId_usuario())
@@ -145,6 +151,7 @@ public class PrestamoController {
       prestamo.setEstado(p.getEstado());
       prestamo.setId_tipo_prestamo(p.getId_tipo_prestamo());
       prestamo.setId_programa(p.getId_programa());
+      prestamo.setId_resolucion(p.getId_resolucion());
       prestamo.setId_municipalidad(p.getId_municipalidad());
       prestamo.setId_funcionario(p.getId_funcionario());
       prestamo.setId_regional(p.getId_regional());

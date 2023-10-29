@@ -179,9 +179,11 @@ CREATE TABLE [dbo].[municipalidades] (
   [id_departamento] int,
   [id_municipio] int,
   [id_banco] int,
+  [id_partido_politico] int,
   CONSTRAINT [fk_municipalidades_departamentos] FOREIGN KEY ([id_departamento]) REFERENCES [dbo].[departamentos] ([id]),
   CONSTRAINT [fk_municipalidades_municipios] FOREIGN KEY ([id_municipio]) REFERENCES [dbo].[municipios] ([id]),
-  CONSTRAINT [fk_municipalidades_bancos] FOREIGN KEY ([id_banco]) REFERENCES [dbo].[bancos] ([id])
+  CONSTRAINT [fk_municipalidades_bancos] FOREIGN KEY ([id_banco]) REFERENCES [dbo].[bancos] ([id]),
+  CONSTRAINT [fk_municipalidades_partidos_politicos] FOREIGN KEY ([id_partido_politico]) REFERENCES [dbo].[partidos_politicos] ([id])
 );
 
 CREATE TABLE [dbo].[importes] (

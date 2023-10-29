@@ -48,6 +48,7 @@ public class Prestamo {
   private Integer id_tipo_prestamo;
   private Integer id_programa;
   private Integer id_municipalidad;
+  private Integer id_resolucion;
   private Integer id_funcionario;
   private Integer id_regional;
   private Integer id_usuario;
@@ -63,6 +64,10 @@ public class Prestamo {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_municipalidad", insertable = false, updatable = false)
   private Municipalidad municipalidad;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_resolucion", insertable = false, updatable = false)
+  private Resolucion resolucion;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_funcionario", insertable = false, updatable = false)
