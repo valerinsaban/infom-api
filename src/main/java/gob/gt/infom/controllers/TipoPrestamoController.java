@@ -36,26 +36,32 @@ public class TipoPrestamoController {
 
   @PostMapping("/tipos_prestamos")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid TipoPrestamo g) {
+  public ResponseEntity<Object> create(@RequestBody @Valid TipoPrestamo t) {
     TipoPrestamo tipo_prestamo = TipoPrestamo.builder()
-        .nombre(g.getNombre())
-        .siglas(g.getSiglas())
-        .monto_min(g.getMonto_min())
-        .monto_max(g.getMonto_max())
+        .nombre(t.getNombre())
+        .siglas(t.getSiglas())
+        .monto_min(t.getMonto_min())
+        .monto_max(t.getMonto_max())
+        .centro_costo(t.getCentro_costo())
+        .producto(t.getProducto())
+        .subproducto(t.getSubproducto())
         .build();
     repository.save(tipo_prestamo);
     return ResponseController.success("TipoPrestamo Agregada Correctamente", tipo_prestamo);
   }
 
   @PutMapping("/tipos_prestamos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody TipoPrestamo g) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody TipoPrestamo t) {
     Optional<TipoPrestamo> data = repository.findById(id);
     if (data.isPresent()) {
       TipoPrestamo tipo_prestamo = data.get();
-      tipo_prestamo.setNombre(g.getNombre());
-      tipo_prestamo.setSiglas(g.getSiglas());
-      tipo_prestamo.setMonto_min(g.getMonto_min());
-      tipo_prestamo.setMonto_max(g.getMonto_max());
+      tipo_prestamo.setNombre(t.getNombre());
+      tipo_prestamo.setSiglas(t.getSiglas());
+      tipo_prestamo.setMonto_min(t.getMonto_min());
+      tipo_prestamo.setMonto_max(t.getMonto_max());
+      tipo_prestamo.setCentro_costo(t.getCentro_costo());
+      tipo_prestamo.setProducto(t.getProducto());
+      tipo_prestamo.setSubproducto(t.getSubproducto());
       repository.save(tipo_prestamo);
       return ResponseController.success("TipoPrestamo Actualizada Correctamente", tipo_prestamo);
     } else {

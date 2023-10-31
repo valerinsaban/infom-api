@@ -42,27 +42,27 @@ public class DesembolsoController {
   @PostMapping("/desembolsos")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Desembolso d) {
-    Desembolso destino = Desembolso.builder()
+    Desembolso desembolso = Desembolso.builder()
         .numero(d.getNumero())
         .mes(d.getMes())
         .monto(d.getMonto())
         .id_prestamo(d.getId_prestamo())
         .build();
-    repository.save(destino);
-    return ResponseController.success("Desembolso Agregado Correctamente", destino);
+    repository.save(desembolso);
+    return ResponseController.success("Desembolso Agregado Correctamente", desembolso);
   }
 
   @PutMapping("/desembolsos/{id}")
   public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Desembolso d) {
     Optional<Desembolso> data = repository.findById(id);
     if (data.isPresent()) {
-      Desembolso destino = data.get();
-      destino.setNumero(d.getNumero());
-      destino.setMes(d.getMes());
-      destino.setMonto(d.getMonto());
-      destino.setId_prestamo(d.getId_prestamo());
-      repository.save(destino);
-      return ResponseController.success("Desembolso Actualizado Correctamente", destino);
+      Desembolso desembolso = data.get();
+      desembolso.setNumero(d.getNumero());
+      desembolso.setMes(d.getMes());
+      desembolso.setMonto(d.getMonto());
+      desembolso.setId_prestamo(d.getId_prestamo());
+      repository.save(desembolso);
+      return ResponseController.success("Desembolso Actualizado Correctamente", desembolso);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -70,10 +70,10 @@ public class DesembolsoController {
 
   @DeleteMapping("/desembolsos/{id}")
   public ResponseEntity<?> delete(@PathVariable Integer id) {
-    Optional<Desembolso> destino = repository.findById(id);
-    if (destino.isPresent()) {
+    Optional<Desembolso> desembolso = repository.findById(id);
+    if (desembolso.isPresent()) {
       repository.deleteById(id);
-      return ResponseController.success("Desembolso Eliminado Correctamente", destino);
+      return ResponseController.success("Desembolso Eliminado Correctamente", desembolso);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
