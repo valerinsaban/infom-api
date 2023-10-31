@@ -41,6 +41,7 @@ public class FacturaController {
         .numero(f.getNumero())
         .fecha(f.getFecha())
         .nit(f.getNit())
+        .nombre(f.getNombre())
         .monto(f.getMonto())
         .estado(f.getEstado())
         .autorizacion(f.getAutorizacion())
@@ -59,6 +60,7 @@ public class FacturaController {
       factura.setNumero(f.getNumero());
       factura.setFecha(f.getFecha());
       factura.setNit(f.getNit());
+      factura.setNombre(f.getNombre());
       factura.setMonto(f.getMonto());
       factura.setEstado(f.getEstado());
       factura.setAutorizacion(f.getAutorizacion());
