@@ -49,7 +49,7 @@ public class FacturaController {
         .numero_fel(f.getNumero_fel())
         .build();
     repository.save(factura);
-    return ResponseController.success("Factura Agregado Correctamente", factura);
+    return ResponseController.success("Factura Agregada Correctamente", factura);
   }
 
   @PutMapping("/facturas/{id}")
@@ -67,7 +67,20 @@ public class FacturaController {
       factura.setSerie_fel(f.getSerie_fel());
       factura.setNumero_fel(f.getNumero_fel());
       repository.save(factura);
-      return ResponseController.success("Factura Actualizado Correctamente", factura);
+      return ResponseController.success("Factura Actualizada Correctamente", factura);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  @PutMapping("/facturas/anular/{id}")
+  public ResponseEntity<?> anular(@PathVariable("id") Integer id, @RequestBody Factura f) {
+    Optional<Factura> data = repository.findById(id);
+    if (data.isPresent()) {
+      Factura factura = data.get();
+      factura.setEstado(f.getEstado());
+      repository.save(factura);
+      return ResponseController.success("Factura Anulada Correctamente", factura);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -78,7 +91,7 @@ public class FacturaController {
     Optional<Factura> factura = repository.findById(id);
     if (factura.isPresent()) {
       repository.deleteById(id);
-      return ResponseController.success("Factura Eliminado Correctamente", factura);
+      return ResponseController.success("Factura Eliminada Correctamente", factura);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

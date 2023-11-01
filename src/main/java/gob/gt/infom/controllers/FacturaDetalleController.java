@@ -48,7 +48,7 @@ public class FacturaDetalleController {
         .id_factura(f.getId_factura())
         .build();
     repository.save(factura);
-    return ResponseController.success("FacturaDetalle Agregado Correctamente", factura);
+    return ResponseController.success("Factura Detalle Agregado Correctamente", factura);
   }
 
   @PutMapping("/facturas_detalles/{id}")
@@ -65,7 +65,7 @@ public class FacturaDetalleController {
       factura.setSubtotal(f.getSubtotal());
       factura.setId_factura(f.getId_factura());
       repository.save(factura);
-      return ResponseController.success("FacturaDetalle Actualizado Correctamente", factura);
+      return ResponseController.success("Factura Detalle Actualizado Correctamente", factura);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -76,7 +76,7 @@ public class FacturaDetalleController {
     Optional<FacturaDetalle> factura = repository.findById(id);
     if (factura.isPresent()) {
       repository.deleteById(id);
-      return ResponseController.success("FacturaDetalle Eliminado Correctamente", factura);
+      return ResponseController.success("Factura Detalle Eliminado Correctamente", factura);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

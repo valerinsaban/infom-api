@@ -48,7 +48,7 @@ public class ReciboDetalleController {
         .id_recibo(f.getId_recibo())
         .build();
     repository.save(recibo);
-    return ResponseController.success("ReciboDetalle Agregado Correctamente", recibo);
+    return ResponseController.success("Recibo Detalle Agregado Correctamente", recibo);
   }
 
   @PutMapping("/recibos_detalles/{id}")
@@ -65,7 +65,7 @@ public class ReciboDetalleController {
       recibo.setSubtotal(f.getSubtotal());
       recibo.setId_recibo(f.getId_recibo());
       repository.save(recibo);
-      return ResponseController.success("ReciboDetalle Actualizado Correctamente", recibo);
+      return ResponseController.success("Recibo Detalle Actualizado Correctamente", recibo);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -76,7 +76,7 @@ public class ReciboDetalleController {
     Optional<ReciboDetalle> recibo = repository.findById(id);
     if (recibo.isPresent()) {
       repository.deleteById(id);
-      return ResponseController.success("ReciboDetalle Eliminado Correctamente", recibo);
+      return ResponseController.success("Recibo Detalle Eliminado Correctamente", recibo);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
