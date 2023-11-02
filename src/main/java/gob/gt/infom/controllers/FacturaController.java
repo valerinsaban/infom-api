@@ -24,9 +24,11 @@ public class FacturaController {
   @Autowired
   private FacturaRepository repository;
 
-  @GetMapping("/facturas")
-  public Iterable<Factura> all() {
-    return repository.findAll();
+  @GetMapping("/facturas/{fecha_inicio}/{fecha_fin}")
+  public Iterable<Factura> all(
+      @PathVariable String fecha_inicio,
+      @PathVariable String fecha_fin) {
+    return repository.findAllByFechaBetween(fecha_inicio, fecha_fin);
   }
 
   @GetMapping("/facturas/{id}")
@@ -47,6 +49,7 @@ public class FacturaController {
         .autorizacion(f.getAutorizacion())
         .serie_fel(f.getSerie_fel())
         .numero_fel(f.getNumero_fel())
+        .uuid(f.getUuid())
         .build();
     repository.save(factura);
     return ResponseController.success("Factura Agregada Correctamente", factura);
@@ -66,6 +69,7 @@ public class FacturaController {
       factura.setAutorizacion(f.getAutorizacion());
       factura.setSerie_fel(f.getSerie_fel());
       factura.setNumero_fel(f.getNumero_fel());
+      factura.setUuid(f.getUuid());
       repository.save(factura);
       return ResponseController.success("Factura Actualizada Correctamente", factura);
     } else {

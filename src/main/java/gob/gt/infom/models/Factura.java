@@ -30,5 +30,6 @@ public class Factura {
   private String autorizacion;
   private String serie_fel;
   private String numero_fel;
+  private String uuid;
 
 }
