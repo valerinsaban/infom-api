@@ -44,11 +44,20 @@ public class OrdenPagoController {
     return repository.findAllByPrestamoId(id_prestamo);
   }
 
+  @GetMapping("/ordenes_pagos/prestamo/{id_prestamo}/fecha/{fecha_inicio}/{fecha_fin}")
+  public Iterable<OrdenPago> findAllByPrestamoId(
+      @PathVariable Integer id_prestamo,
+      @PathVariable String fecha_inicio,
+      @PathVariable String fecha_fin) {
+    return repository.findAllByPrestamoIdAndFechaBetween(id_prestamo, fecha_inicio, fecha_fin);
+  }
+
   @PostMapping("/ordenes_pagos")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid OrdenPago o) {
     OrdenPago orden_pago = OrdenPago.builder()
         .numero(o.getNumero())
+        .no_desembolso(o.getNo_desembolso())
         .fecha(o.getFecha())
         .monto(o.getMonto())
         .no_recibo(o.getNo_recibo())
@@ -67,6 +76,7 @@ public class OrdenPagoController {
     if (data.isPresent()) {
       OrdenPago orden_pago = data.get();
       orden_pago.setNumero(o.getNumero());
+      orden_pago.setNo_desembolso(o.getNo_desembolso());
       orden_pago.setFecha(o.getFecha());
       orden_pago.setMonto(o.getMonto());
       orden_pago.setNo_recibo(o.getNo_recibo());

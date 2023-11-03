@@ -25,6 +25,7 @@ public class OrdenPago {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String numero;
+  private String no_desembolso;
   private String fecha;
   private String monto;
   private String no_recibo;

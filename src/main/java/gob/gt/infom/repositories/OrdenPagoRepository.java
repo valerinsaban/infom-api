@@ -12,4 +12,6 @@ public interface OrdenPagoRepository extends CrudRepository<OrdenPago, Integer> 
 
     Optional<OrdenPago> countByFechaBetween(String start, String end);
 
+    Iterable<OrdenPago> findAllByPrestamoIdAndFechaBetween(Integer id_prestamo, String start, String end);
+
 }

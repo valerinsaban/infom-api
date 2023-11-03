@@ -51,11 +51,12 @@ public class AmortizacionController {
         .fecha_inicio(a.getFecha_inicio())
         .fecha_fin(a.getFecha_fin())
         .dias(a.getDias())
+        .saldo_inicial(a.getSaldo_inicial())
         .capital(a.getCapital())
         .interes(a.getInteres())
         .iva(a.getIva())
         .cuota(a.getCuota())
-        .saldo(a.getSaldo())
+        .saldo_final(a.getSaldo_final())
         .id_prestamo(a.getId_prestamo())
         .id_cobro(a.getId_cobro())
         .build();
@@ -71,11 +72,12 @@ public class AmortizacionController {
       amortizacion.setFecha_inicio(a.getFecha_inicio());
       amortizacion.setFecha_fin(a.getFecha_fin());
       amortizacion.setDias(a.getDias());
+      amortizacion.setSaldo_inicial(a.getSaldo_inicial());
       amortizacion.setCapital(a.getCapital());
       amortizacion.setInteres(a.getInteres());
       amortizacion.setIva(a.getIva());
       amortizacion.setCuota(a.getCuota());
-      amortizacion.setSaldo(a.getSaldo());
+      amortizacion.setSaldo_final(a.getSaldo_final());
       amortizacion.setId_prestamo(a.getId_prestamo());
       amortizacion.setId_cobro(a.getId_cobro());
       repository.save(amortizacion);
