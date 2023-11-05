@@ -91,4 +91,10 @@ public class ProyeccionController {
     }
   }
 
+  @DeleteMapping("/proyecciones/prestamo/{id_prestamo}")
+  public ResponseEntity<?> deleteByPrestamo(@PathVariable Integer id_prestamo) {
+    Optional<Proyeccion> proyeccion = repository.deleteByPrestamoId(id_prestamo);
+    return ResponseController.success("Proyecciones Eliminadas Correctamente", proyeccion);
+  }
+
 }

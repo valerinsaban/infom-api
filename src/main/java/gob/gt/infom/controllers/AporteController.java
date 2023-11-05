@@ -44,6 +44,11 @@ public class AporteController {
     return repository.findTopByCodigoDepartamentoAndCodigoMunicipioOrderByMesDesc(codigo_departamento, codigo_municipio);
   }
 
+  @GetMapping("/aportes/municipalidad/mes/{codigo_departamento}/{codigo_municipio}/{mes}")
+  public Optional<Aporte> findByCodigoDepartamentoAndCodigoMunicipioAndMes(@PathVariable String codigo_departamento, @PathVariable String codigo_municipio, @PathVariable String mes) {
+    return repository.findByCodigoDepartamentoAndCodigoMunicipioAndMes(codigo_departamento, codigo_municipio, mes);
+  }
+
   @GetMapping("/aportes/{id}")
   public Optional<Aporte> one(@PathVariable Integer id) {
     return repository.findById(id);

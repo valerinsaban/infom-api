@@ -127,7 +127,7 @@ public class PrestamoController {
         .id_usuario(p.getId_usuario())
         .build();
     repository.save(prestamo);
-    return ResponseController.success("Prestamo Agregado Correctamente", prestamo);
+    return ResponseController.success("Prestamo Creado Correctamente", prestamo);
   }
 
   @PutMapping("/prestamos/{id}")

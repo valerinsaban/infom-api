@@ -14,4 +14,6 @@ public interface AporteRepository extends CrudRepository<Aporte, Integer> {
 
   Optional<Aporte> findTopByCodigoDepartamentoAndCodigoMunicipioOrderByMesDesc(String codigo_departamento, String codigo_municipio);
 
+  Optional<Aporte> findByCodigoDepartamentoAndCodigoMunicipioAndMes(String codigo_departamento, String codigo_municipio, String mes);
+
 }
