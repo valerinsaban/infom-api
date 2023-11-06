@@ -24,9 +24,11 @@ public class ReciboController {
   @Autowired
   private ReciboRepository repository;
 
-  @GetMapping("/recibos")
-  public Iterable<Recibo> all() {
-    return repository.findAll();
+  @GetMapping("/recibos/{fecha_inicio}/{fecha_fin}")
+  public Iterable<Recibo> all(
+    @PathVariable String fecha_inicio,
+    @PathVariable String fecha_fin) {
+    return repository.findAllByFechaBetween(fecha_inicio, fecha_fin);
   }
 
   @GetMapping("/recibos/{id}")

@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -39,14 +40,16 @@ public class Representante {
   private String acta_toma_posecion;
   private String fecha_acta_toma_posecion;
   private String estado;
-  // @Lob
-  // private String imagen_carnet;
-  // @Lob
-  // private String imagen_acta_toma_posecion;
-  // @Lob
-  // private String imagen_fotografia;
-  // @Lob
-  // private String imagen_firma;
+  @Lob
+  private String imagen_carnet;
+  @Lob
+  private String imagen_acta_toma_posecion;
+  @Lob
+  private String imagen_dpi;
+  @Lob
+  private String imagen_firma;
+  @Lob
+  private String imagen_sello;
   private Integer id_regional;
   private Integer id_puesto;
   private Integer id_profesion;
