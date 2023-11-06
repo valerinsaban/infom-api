@@ -29,6 +29,10 @@ public class Movimiento {
   private String cargo;
   private String abono;
   private String saldo_final;
+  private String descripcion;
+  private String capital;
+  private String interes;
+  private String iva;
   private Integer id_prestamo;
   private Integer id_orden_pago;
   private Integer id_recibo;

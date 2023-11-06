@@ -15,6 +15,6 @@ public interface MovimientoRepository extends CrudRepository<Movimiento, Integer
 
   Iterable<Movimiento> findAllByOrdenPagoId(Integer id_cobro);
 
-  Optional<Movimiento> findTopByPrestamoId(Integer id_prestamo);
+  Optional<Movimiento> findTopByPrestamoIdOrderByIdDesc(Integer id_prestamo);
 
 }

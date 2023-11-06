@@ -39,7 +39,7 @@ public class Prestamo {
   private String acta;
   private String punto;
   private String fecha_memorial;
-  private String certficacion;
+  private String certificacion;
   private String no_oficio_aj;
   private String fecha_oficio_aj;
   private String no_oficio_ger;

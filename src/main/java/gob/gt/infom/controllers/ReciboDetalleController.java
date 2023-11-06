@@ -36,34 +36,34 @@ public class ReciboDetalleController {
 
   @PostMapping("/recibos_detalles")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid ReciboDetalle f) {
+  public ResponseEntity<Object> create(@RequestBody @Valid ReciboDetalle r) {
     ReciboDetalle recibo = ReciboDetalle.builder()
-        .cantidad(f.getCantidad())
-        .tipo(f.getTipo())
-        .descripcion(f.getDescripcion())
-        .precio_unitario(f.getPrecio_unitario())
-        .descuentos(f.getDescuentos())
-        .impuestos(f.getImpuestos())
-        .subtotal(f.getSubtotal())
-        .id_recibo(f.getId_recibo())
+        .cantidad(r.getCantidad())
+        .tipo(r.getTipo())
+        .descripcion(r.getDescripcion())
+        .precio_unitario(r.getPrecio_unitario())
+        .descuentos(r.getDescuentos())
+        .impuestos(r.getImpuestos())
+        .subtotal(r.getSubtotal())
+        .id_recibo(r.getId_recibo())
         .build();
     repository.save(recibo);
     return ResponseController.success("Recibo Detalle Agregado Correctamente", recibo);
   }
 
   @PutMapping("/recibos_detalles/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody ReciboDetalle f) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody ReciboDetalle r) {
     Optional<ReciboDetalle> data = repository.findById(id);
     if (data.isPresent()) {
       ReciboDetalle recibo = data.get();
-      recibo.setCantidad(f.getCantidad());
-      recibo.setTipo(f.getTipo());
-      recibo.setDescripcion(f.getDescripcion());
-      recibo.setPrecio_unitario(f.getPrecio_unitario());
-      recibo.setDescuentos(f.getDescuentos());
-      recibo.setImpuestos(f.getImpuestos());
-      recibo.setSubtotal(f.getSubtotal());
-      recibo.setId_recibo(f.getId_recibo());
+      recibo.setCantidad(r.getCantidad());
+      recibo.setTipo(r.getTipo());
+      recibo.setDescripcion(r.getDescripcion());
+      recibo.setPrecio_unitario(r.getPrecio_unitario());
+      recibo.setDescuentos(r.getDescuentos());
+      recibo.setImpuestos(r.getImpuestos());
+      recibo.setSubtotal(r.getSubtotal());
+      recibo.setId_recibo(r.getId_recibo());
       repository.save(recibo);
       return ResponseController.success("Recibo Detalle Actualizado Correctamente", recibo);
     } else {

@@ -127,7 +127,7 @@ public class PrestamoController {
         .acta(p.getActa())
         .punto(p.getPunto())
         .fecha_memorial(p.getFecha_memorial())
-        .certficacion(p.getCertficacion())
+        .certificacion(p.getCertificacion())
         .no_oficio_aj(p.getNo_oficio_aj())
         .fecha_oficio_aj(p.getFecha_oficio_aj())
         .no_oficio_ger(p.getNo_oficio_ger())
@@ -165,7 +165,7 @@ public class PrestamoController {
       prestamo.setActa(p.getActa());
       prestamo.setPunto(p.getPunto());
       prestamo.setFecha_memorial(p.getFecha_memorial());
-      prestamo.setCertficacion(p.getCertficacion());
+      prestamo.setCertificacion(p.getCertificacion());
       prestamo.setNo_oficio_aj(p.getNo_oficio_aj());
       prestamo.setFecha_oficio_aj(p.getFecha_oficio_aj());
       prestamo.setNo_oficio_ger(p.getNo_oficio_ger());

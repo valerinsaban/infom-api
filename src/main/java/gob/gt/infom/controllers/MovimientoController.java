@@ -35,8 +35,8 @@ public class MovimientoController {
   }
 
   @GetMapping("/movimientos/ultimo/{id_prestamo}")
-  public Optional<Movimiento> findTopByPrestamoId(@PathVariable Integer id_prestamo) {
-    return repository.findTopByPrestamoId(id_prestamo);
+  public Optional<Movimiento> findTopByPrestamoIdOrderByIdDesc(@PathVariable Integer id_prestamo) {
+    return repository.findTopByPrestamoIdOrderByIdDesc(id_prestamo);
   }
 
   @GetMapping("/movimientos/orden_pago/{id_orden_pago}")
@@ -63,6 +63,10 @@ public class MovimientoController {
         .cargo(m.getCargo())
         .abono(m.getAbono())
         .saldo_final(m.getSaldo_final())
+        .descripcion(m.getDescripcion())
+        .capital(m.getCapital())
+        .interes(m.getInteres())
+        .iva(m.getIva())
         .id_prestamo(m.getId_prestamo())
         .id_orden_pago(m.getId_orden_pago())
         .id_recibo(m.getId_recibo())
@@ -81,6 +85,10 @@ public class MovimientoController {
       movimiento.setCargo(m.getCargo());
       movimiento.setAbono(m.getAbono());
       movimiento.setSaldo_final(m.getSaldo_final());
+      movimiento.setDescripcion(m.getDescripcion());
+      movimiento.setCapital(m.getCapital());
+      movimiento.setInteres(m.getInteres());
+      movimiento.setIva(m.getIva());
       movimiento.setId_prestamo(m.getId_prestamo());
       movimiento.setId_orden_pago(m.getId_orden_pago());
       movimiento.setId_recibo(m.getId_recibo());

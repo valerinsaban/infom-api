@@ -8,6 +8,6 @@ import gob.gt.infom.models.PrestamoGarantia;
 
 public interface PrestamoGarantiaRepository extends CrudRepository<PrestamoGarantia, Integer> {
 
-    List<PrestamoGarantia> findAllByPrestamoId(Integer id_prestamo);
+  List<PrestamoGarantia> findAllByPrestamoId(Integer id_prestamo);
 
 }
