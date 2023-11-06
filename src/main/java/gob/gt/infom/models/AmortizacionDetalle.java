@@ -18,15 +18,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "amortizaciones")
-public class Amortizacion {
+@Table(name = "amortizaciones_detalles")
+public class AmortizacionDetalle {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  private String mes;
   private String fecha_inicio;
   private String fecha_fin;
-  private String mes;
   private Integer dias;
   private String saldo_inicial;
   private String capital;
@@ -35,20 +35,10 @@ public class Amortizacion {
   private String cuota;
   private String saldo_final;
   private String tasa;
-  private Integer id_cobro;
-  private Integer id_prestamo;
-  private Integer id_programa;
+  private Integer id_amortizacion;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_cobro", insertable = false, updatable = false)
-  private Cobro cobro;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_prestamo", insertable = false, updatable = false)
-  private Prestamo prestamo;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_programa", insertable = false, updatable = false)
-  private Programa programa;
+  @JoinColumn(name = "id_amortizacion", insertable = false, updatable = false)
+  private Amortizacion amortizacion;
 
 }

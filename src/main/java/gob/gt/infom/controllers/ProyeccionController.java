@@ -39,10 +39,18 @@ public class ProyeccionController {
     return repository.findAllByPrestamoId(id_prestamo);
   }
 
+  @GetMapping("/proyecciones/prestamo/{id_prestamo}/{mes}")
+  public Optional<Proyeccion> findByPrestamoIdAndMes(
+      @PathVariable Integer id_prestamo,
+      @PathVariable String mes) {
+    return repository.findByPrestamoIdAndMes(id_prestamo, mes);
+  }
+
   @PostMapping("/proyecciones")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Proyeccion a) {
     Proyeccion proyeccion = Proyeccion.builder()
+        .mes(a.getMes())
         .fecha_inicio(a.getFecha_inicio())
         .fecha_fin(a.getFecha_fin())
         .dias(a.getDias())
@@ -63,6 +71,7 @@ public class ProyeccionController {
     Optional<Proyeccion> data = repository.findById(id);
     if (data.isPresent()) {
       Proyeccion proyeccion = data.get();
+      proyeccion.setMes(a.getMes());
       proyeccion.setFecha_inicio(a.getFecha_inicio());
       proyeccion.setFecha_fin(a.getFecha_fin());
       proyeccion.setDias(a.getDias());
@@ -89,12 +98,6 @@ public class ProyeccionController {
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-  }
-
-  @DeleteMapping("/proyecciones/prestamo/{id_prestamo}")
-  public ResponseEntity<?> deleteByPrestamo(@PathVariable Integer id_prestamo) {
-    Optional<Proyeccion> proyeccion = repository.deleteByPrestamoId(id_prestamo);
-    return ResponseController.success("Proyecciones Eliminadas Correctamente", proyeccion);
   }
 
 }

@@ -29,39 +29,57 @@ public class AmortizacionController {
     return repository.findAll();
   }
 
-  @GetMapping("/amortizaciones/{id}")
-  public Optional<Amortizacion> one(@PathVariable Integer id) {
-    return repository.findById(id);
-  }
-
   @GetMapping("/amortizaciones/cobro/{id_cobro}")
   public Iterable<Amortizacion> findAllByCobroId(@PathVariable Integer id_cobro) {
     return repository.findAllByCobroId(id_cobro);
   }
 
+  @GetMapping("/amortizaciones/programa/{id_programa}")
+  public Iterable<Amortizacion> findAllByProgramaId(@PathVariable Integer id_programa) {
+    return repository.findAllByProgramaId(id_programa);
+  }
+
+  @GetMapping("/amortizaciones/programa/mes/{id_programa}/{mes}")
+  public Iterable<Amortizacion> findAllByProgramaIdAndMes(@PathVariable Integer id_programa, @PathVariable String mes) {
+    return repository.findAllByProgramaIdAndMes(id_programa, mes);
+  }
+
   @GetMapping("/amortizaciones/prestamo/{id_prestamo}")
-  public Iterable<Amortizacion> findAllById_prestamo(@PathVariable Integer id_prestamo) {
+  public Iterable<Amortizacion> findAllByPrestamoId(@PathVariable Integer id_prestamo) {
     return repository.findAllByPrestamoId(id_prestamo);
+  }
+
+  @GetMapping("/amortizaciones/prestamo/mes/{id_prestamo}/{mes}")
+  public Iterable<Amortizacion> findAllByPrestamoIdAndMes(@PathVariable Integer id_prestamo, @PathVariable String mes) {
+    return repository.findAllByPrestamoIdAndMes(id_prestamo, mes);
+  }
+
+  @GetMapping("/amortizaciones/{id}")
+  public Optional<Amortizacion> one(@PathVariable Integer id) {
+    return repository.findById(id);
   }
 
   @PostMapping("/amortizaciones")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Amortizacion a) {
     Amortizacion amortizacion = Amortizacion.builder()
+        .mes(a.getMes())
         .fecha_inicio(a.getFecha_inicio())
         .fecha_fin(a.getFecha_fin())
         .dias(a.getDias())
-        .saldo_inicial(a.getSaldo_inicial())
         .capital(a.getCapital())
         .interes(a.getInteres())
         .iva(a.getIva())
         .cuota(a.getCuota())
+        .saldo_inicial(a.getSaldo_inicial())
         .saldo_final(a.getSaldo_final())
-        .id_prestamo(a.getId_prestamo())
+        .tasa(a.getTasa())
         .id_cobro(a.getId_cobro())
+        .id_prestamo(a.getId_prestamo())
+        .id_programa(a.getId_programa())
         .build();
     repository.save(amortizacion);
-    return ResponseController.success("Amortizacion Agregado Correctamente", amortizacion);
+    return ResponseController.success("Amortizacion Agregada Correctamente", amortizacion);
   }
 
   @PutMapping("/amortizaciones/{id}")
@@ -69,19 +87,22 @@ public class AmortizacionController {
     Optional<Amortizacion> data = repository.findById(id);
     if (data.isPresent()) {
       Amortizacion amortizacion = data.get();
+      amortizacion.setMes(a.getMes());
       amortizacion.setFecha_inicio(a.getFecha_inicio());
       amortizacion.setFecha_fin(a.getFecha_fin());
       amortizacion.setDias(a.getDias());
-      amortizacion.setSaldo_inicial(a.getSaldo_inicial());
       amortizacion.setCapital(a.getCapital());
       amortizacion.setInteres(a.getInteres());
       amortizacion.setIva(a.getIva());
       amortizacion.setCuota(a.getCuota());
+      amortizacion.setSaldo_inicial(a.getSaldo_inicial());
       amortizacion.setSaldo_final(a.getSaldo_final());
-      amortizacion.setId_prestamo(a.getId_prestamo());
+      amortizacion.setTasa(a.getTasa());
       amortizacion.setId_cobro(a.getId_cobro());
+      amortizacion.setId_prestamo(a.getId_prestamo());
+      amortizacion.setId_programa(a.getId_programa());
       repository.save(amortizacion);
-      return ResponseController.success("Amortizacion Actualizado Correctamente", amortizacion);
+      return ResponseController.success("Amortizacion Actualizada Correctamente", amortizacion);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -92,7 +113,7 @@ public class AmortizacionController {
     Optional<Amortizacion> amortizacion = repository.findById(id);
     if (amortizacion.isPresent()) {
       repository.deleteById(id);
-      return ResponseController.success("Amortizacion Eliminado Correctamente", amortizacion);
+      return ResponseController.success("Amortizacion Eliminada Correctamente", amortizacion);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

@@ -31,7 +31,7 @@ public class Configuracion {
   private String telefono;
   private String direccion;
   private String sitio_web;
-  private String porcentaje_interes;
+  private String porcentaje_tasa;
   private String porcentaje_iva;
   private String periodo_fin;
 

@@ -68,6 +68,21 @@ public class PrestamoController {
     return repository.findAllByEstadoAndMunicipalidadId(estado, id_municipalidad);
   }
 
+  @GetMapping("/prestamos/programa/{estado}/{id_programa}")
+  public List<Prestamo> findAllByEstadoAndProgramaId(
+      @PathVariable String estado,
+      @PathVariable Integer id_programa) {
+    return repository.findAllByEstadoAndProgramaId(estado, id_programa);
+  }
+
+  @GetMapping("/prestamos/municipalidad/programa/{estado}/{id_municipalidad}/{id_programa}")
+  public List<Prestamo> findAllByEstadoAndMunicipalidadIdAndProgramaId(
+      @PathVariable String estado,
+      @PathVariable Integer id_municipalidad,
+      @PathVariable Integer id_programa) {
+    return repository.findAllByEstadoAndMunicipalidadIdAndProgramaId(estado, id_municipalidad, id_programa);
+  }
+
   @GetMapping("/prestamos/tipo_prestamo/{id_tipo_prestamo}/programa/{id_programa}/rango/{fecha_inicio}/{fecha_fin}")
   public Optional<Prestamo> countByTipoPrestamoIdAndProgramaIdAndFechaBetween(
       @PathVariable Integer id_tipo_prestamo,
@@ -105,7 +120,7 @@ public class PrestamoController {
         .monto(p.getMonto())
         .plazo_meses(p.getPlazo_meses())
         .fecha_acta(p.getFecha_acta())
-        .intereses(p.getIntereses())
+        .tasa(p.getTasa())
         .periodo_gracia(p.getPeriodo_gracia())
         .destino(p.getDestino())
         .no_destinos(p.getNo_destinos())
@@ -143,7 +158,7 @@ public class PrestamoController {
       prestamo.setMonto(p.getMonto());
       prestamo.setPlazo_meses(p.getPlazo_meses());
       prestamo.setFecha_acta(p.getFecha_acta());
-      prestamo.setIntereses(p.getIntereses());
+      prestamo.setTasa(p.getTasa());
       prestamo.setPeriodo_gracia(p.getPeriodo_gracia());
       prestamo.setDestino(p.getDestino());
       prestamo.setNo_destinos(p.getNo_destinos());

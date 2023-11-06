@@ -24,6 +24,7 @@ public class Proyeccion {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  private String mes;
   private String fecha_inicio;
   private String fecha_fin;
   private Integer dias;

@@ -45,7 +45,7 @@ public class ConfiguracionController {
         .telefono(c.getTelefono())
         .direccion(c.getDireccion())
         .sitio_web(c.getSitio_web())
-        .porcentaje_interes(c.getPorcentaje_interes())
+        .porcentaje_tasa(c.getPorcentaje_tasa())
         .porcentaje_iva(c.getPorcentaje_iva())
         .periodo_fin(c.getPeriodo_fin())
         .build();
@@ -65,7 +65,7 @@ public class ConfiguracionController {
       configuracion.setTelefono(c.getTelefono());
       configuracion.setDireccion(c.getDireccion());
       configuracion.setSitio_web(c.getSitio_web());
-      configuracion.setPorcentaje_interes(c.getPorcentaje_interes());
+      configuracion.setPorcentaje_tasa(c.getPorcentaje_tasa());
       configuracion.setPorcentaje_iva(c.getPorcentaje_iva());
       configuracion.setPeriodo_fin(c.getPeriodo_fin());
       repository.save(configuracion);

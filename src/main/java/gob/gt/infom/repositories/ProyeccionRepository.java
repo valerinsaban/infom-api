@@ -10,7 +10,7 @@ import gob.gt.infom.models.Proyeccion;
 public interface ProyeccionRepository extends CrudRepository<Proyeccion, Integer> {
 
   Iterable<Proyeccion> findAllByPrestamoId(Integer id_prestamo);
-  
-  Optional<Proyeccion> deleteByPrestamoId(Integer id_prestamo);
+
+  Optional<Proyeccion> findByPrestamoIdAndMes(Integer id_prestamo, String mes);
 
 }

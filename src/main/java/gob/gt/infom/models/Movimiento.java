@@ -18,37 +18,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "amortizaciones")
-public class Amortizacion {
+@Table(name = "movimientos")
+public class Movimiento {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String fecha_inicio;
-  private String fecha_fin;
-  private String mes;
-  private Integer dias;
+  private String fecha;
   private String saldo_inicial;
-  private String capital;
-  private String interes;
-  private String iva;
-  private String cuota;
+  private String cargo;
+  private String abono;
   private String saldo_final;
-  private String tasa;
-  private Integer id_cobro;
   private Integer id_prestamo;
-  private Integer id_programa;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_cobro", insertable = false, updatable = false)
-  private Cobro cobro;
+  private Integer id_orden_pago;
+  private Integer id_recibo;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_prestamo", insertable = false, updatable = false)
   private Prestamo prestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "id_programa", insertable = false, updatable = false)
-  private Programa programa;
+  @JoinColumn(name = "id_orden_pago", insertable = false, updatable = false)
+  private OrdenPago ordenPago;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_recibo", insertable = false, updatable = false)
+  private Recibo recibo;
 
 }

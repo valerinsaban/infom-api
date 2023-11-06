@@ -32,7 +32,7 @@ public class Prestamo {
   private String monto;
   private Integer plazo_meses;
   private String fecha_acta;
-  private Double intereses;
+  private Double tasa;
   private Integer periodo_gracia;
   private String destino;
   private Integer no_destinos;
