@@ -117,6 +117,7 @@ public class PrestamoController {
         .no_prestamo(p.getNo_prestamo())
         .fecha(p.getFecha())
         .fecha_amortizacion(p.getFecha_amortizacion())
+        .fecha_vencimiento(p.getFecha_vencimiento())
         .monto(p.getMonto())
         .plazo_meses(p.getPlazo_meses())
         .fecha_acta(p.getFecha_acta())
@@ -132,6 +133,7 @@ public class PrestamoController {
         .fecha_oficio_aj(p.getFecha_oficio_aj())
         .no_oficio_ger(p.getNo_oficio_ger())
         .fecha_oficio_ger(p.getFecha_oficio_ger())
+        .motivo_anulacion(p.getMotivo_anulacion())
         .estado(p.getEstado())
         .id_tipo_prestamo(p.getId_tipo_prestamo())
         .id_programa(p.getId_programa())
@@ -155,6 +157,7 @@ public class PrestamoController {
       prestamo.setNo_prestamo(p.getNo_prestamo());
       prestamo.setFecha(p.getFecha());
       prestamo.setFecha_amortizacion(p.getFecha_amortizacion());
+      prestamo.setFecha_vencimiento(p.getFecha_vencimiento());
       prestamo.setMonto(p.getMonto());
       prestamo.setPlazo_meses(p.getPlazo_meses());
       prestamo.setFecha_acta(p.getFecha_acta());
@@ -170,6 +173,7 @@ public class PrestamoController {
       prestamo.setFecha_oficio_aj(p.getFecha_oficio_aj());
       prestamo.setNo_oficio_ger(p.getNo_oficio_ger());
       prestamo.setFecha_oficio_ger(p.getFecha_oficio_ger());
+      prestamo.setMotivo_anulacion(p.getMotivo_anulacion());
       prestamo.setEstado(p.getEstado());
       prestamo.setId_tipo_prestamo(p.getId_tipo_prestamo());
       prestamo.setId_programa(p.getId_programa());

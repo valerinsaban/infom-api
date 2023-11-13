@@ -60,6 +60,7 @@ public class ProyeccionController {
         .iva(a.getIva())
         .cuota(a.getCuota())
         .saldo_final(a.getSaldo_final())
+        .disponible(a.getDisponible())
         .id_prestamo(a.getId_prestamo())
         .build();
     repository.save(proyeccion);
@@ -81,6 +82,7 @@ public class ProyeccionController {
       proyeccion.setIva(a.getIva());
       proyeccion.setCuota(a.getCuota());
       proyeccion.setSaldo_final(a.getSaldo_final());
+      proyeccion.setDisponible(a.getDisponible());
       proyeccion.setId_prestamo(a.getId_prestamo());
       repository.save(proyeccion);
       return ResponseController.success("Proyeccion Actualizado Correctamente", proyeccion);

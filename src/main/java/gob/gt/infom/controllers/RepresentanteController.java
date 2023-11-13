@@ -34,6 +34,11 @@ public class RepresentanteController {
     return repository.findById(id);
   }
 
+  @GetMapping("/representantes/ultimo/{estado}")
+  public Optional<Representante> findByEstado(@PathVariable String estado) {
+    return repository.findByEstado(estado);
+  }
+
   @PostMapping("/representantes")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid Representante r) {

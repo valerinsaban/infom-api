@@ -18,15 +18,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "prestamos")
-public class Prestamo {
+@Table(name = "servicios")
+public class Servicio {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String no_dictamen;
   private String no_convenio;
-  private String no_prestamo;
   private String fecha;
   private String fecha_amortizacion;
   private String fecha_vencimiento;
@@ -47,6 +46,7 @@ public class Prestamo {
   private String fecha_oficio_ger;
   private String motivo_anulacion;
   private String estado;
+  private Integer id_tipo_servicio;
   private Integer id_tipo_prestamo;
   private Integer id_programa;
   private Integer id_municipalidad;
@@ -54,6 +54,10 @@ public class Prestamo {
   private Integer id_funcionario;
   private Integer id_regional;
   private Integer id_usuario;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "id_tipo_servicio", insertable = false, updatable = false)
+  private TipoServicio tipoServicio;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "id_tipo_prestamo", insertable = false, updatable = false)

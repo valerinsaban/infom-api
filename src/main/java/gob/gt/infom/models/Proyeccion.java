@@ -34,6 +34,7 @@ public class Proyeccion {
   private String iva;
   private String cuota;
   private String saldo_final;
+  private String disponible;
   private Integer id_prestamo;
 
   @ManyToOne(fetch = FetchType.EAGER)
