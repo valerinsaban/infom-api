@@ -39,10 +39,7 @@ public class TipoServicioController {
   public ResponseEntity<Object> create(@RequestBody @Valid TipoServicio t) {
     TipoServicio tipo_servicio = TipoServicio.builder()
         .nombre(t.getNombre())
-        .siglas(t.getSiglas())
-        .centro_costo(t.getCentro_costo())
-        .producto(t.getProducto())
-        .subproducto(t.getSubproducto())
+        .iva(t.getIva())
         .build();
     repository.save(tipo_servicio);
     return ResponseController.success("TipoServicio Agregada Correctamente", tipo_servicio);
@@ -54,10 +51,7 @@ public class TipoServicioController {
     if (data.isPresent()) {
       TipoServicio tipo_servicio = data.get();
       tipo_servicio.setNombre(t.getNombre());
-      tipo_servicio.setSiglas(t.getSiglas());
-      tipo_servicio.setCentro_costo(t.getCentro_costo());
-      tipo_servicio.setProducto(t.getProducto());
-      tipo_servicio.setSubproducto(t.getSubproducto());
+      tipo_servicio.setIva(t.getIva());
       repository.save(tipo_servicio);
       return ResponseController.success("TipoServicio Actualizada Correctamente", tipo_servicio);
     } else {

@@ -22,9 +22,6 @@ public class TipoServicio {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String nombre;
-  private String siglas;
-  private String centro_costo;
-  private String producto;
-  private String subproducto;
+  private Boolean iva;
 
 }
