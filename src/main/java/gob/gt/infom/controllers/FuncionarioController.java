@@ -34,6 +34,11 @@ public class FuncionarioController {
     return repository.findAllByMunicipalidadId(id_municipalidad);
   }
 
+    @GetMapping("/funcionarios/ultimo/{id_municipalidad}/{estado}")
+  public Optional<Funcionario> findByMunicipalidadIdAndEstado(@PathVariable Integer id_municipalidad, @PathVariable String estado) {
+    return repository.findByMunicipalidadIdAndEstado(id_municipalidad, estado);
+  }
+
   @GetMapping("/funcionarios/{id}")
   public Optional<Funcionario> one(@PathVariable Integer id) {
     return repository.findById(id);
