@@ -46,54 +46,58 @@ public class FuncionarioController {
 
   @PostMapping("/funcionarios")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid Funcionario p) {
+  public ResponseEntity<Object> create(@RequestBody @Valid Funcionario f) {
     Funcionario funcionario = Funcionario.builder()
-        .nombre(p.getNombre())
-        .apellido(p.getApellido())
-        .fecha_nacimiento(p.getFecha_nacimiento())
-        .dpi(p.getDpi())
-        .carnet(p.getCarnet())
-        .fecha_carnet(p.getFecha_carnet())
-        .acta_toma_posecion(p.getActa_toma_posecion())
-        .fecha_acta_toma_posecion(p.getFecha_acta_toma_posecion())
-        .estado(p.getEstado())
-        .imagen_carnet(p.getImagen_carnet())
-        .imagen_acta_toma_posecion(p.getImagen_acta_toma_posecion())
-        .imagen_dpi(p.getImagen_dpi())
-        .imagen_firma(p.getImagen_firma())
-        .imagen_sello(p.getImagen_sello())
-        .id_municipalidad(p.getId_municipalidad())
-        .id_puesto(p.getId_puesto())
-        .id_profesion(p.getId_profesion())
-        .id_estado_civil(p.getId_estado_civil())
+        .nombre(f.getNombre())
+        .apellido(f.getApellido())
+        .fecha_nacimiento(f.getFecha_nacimiento())
+        .dpi(f.getDpi())
+        .carnet(f.getCarnet())
+        .fecha_carnet(f.getFecha_carnet())
+        .acuerdo(f.getAcuerdo())
+        .fecha_acuerdo(f.getFecha_acuerdo())
+        .acta_toma_posecion(f.getActa_toma_posecion())
+        .fecha_acta_toma_posecion(f.getFecha_acta_toma_posecion())
+        .estado(f.getEstado())
+        .imagen_carnet(f.getImagen_carnet())
+        .imagen_acta_toma_posecion(f.getImagen_acta_toma_posecion())
+        .imagen_dpi(f.getImagen_dpi())
+        .imagen_firma(f.getImagen_firma())
+        .imagen_sello(f.getImagen_sello())
+        .id_municipalidad(f.getId_municipalidad())
+        .id_puesto(f.getId_puesto())
+        .id_profesion(f.getId_profesion())
+        .id_estado_civil(f.getId_estado_civil())
         .build();
     repository.save(funcionario);
     return ResponseController.success("Funcionario Agregado Correctamente", funcionario);
   }
 
   @PutMapping("/funcionarios/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Funcionario p) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Funcionario f) {
     Optional<Funcionario> data = repository.findById(id);
     if (data.isPresent()) {
       Funcionario funcionario = data.get();
-      funcionario.setNombre(p.getNombre());
-      funcionario.setApellido(p.getApellido());
-      funcionario.setFecha_nacimiento(p.getFecha_nacimiento());
-      funcionario.setDpi(p.getDpi());
-      funcionario.setCarnet(p.getCarnet());
-      funcionario.setFecha_carnet(p.getFecha_carnet());
-      funcionario.setActa_toma_posecion(p.getActa_toma_posecion());
-      funcionario.setFecha_acta_toma_posecion(p.getFecha_acta_toma_posecion());
-      funcionario.setEstado(p.getEstado());
-      funcionario.setImagen_carnet(p.getImagen_carnet());
-      funcionario.setImagen_acta_toma_posecion(p.getImagen_acta_toma_posecion());
-      funcionario.setDpi(p.getDpi());
-      funcionario.setImagen_firma(p.getImagen_firma());
-      funcionario.setImagen_sello(p.getImagen_sello());
-      funcionario.setId_municipalidad(p.getId_municipalidad());
-      funcionario.setId_puesto(p.getId_puesto());
-      funcionario.setId_profesion(p.getId_profesion());
-      funcionario.setId_estado_civil(p.getId_estado_civil());
+      funcionario.setNombre(f.getNombre());
+      funcionario.setApellido(f.getApellido());
+      funcionario.setFecha_nacimiento(f.getFecha_nacimiento());
+      funcionario.setDpi(f.getDpi());
+      funcionario.setCarnet(f.getCarnet());
+      funcionario.setFecha_carnet(f.getFecha_carnet());
+      funcionario.setAcuerdo(f.getAcuerdo());
+      funcionario.setFecha_acuerdo(f.getFecha_acuerdo());
+      funcionario.setActa_toma_posecion(f.getActa_toma_posecion());
+      funcionario.setFecha_acta_toma_posecion(f.getFecha_acta_toma_posecion());
+      funcionario.setEstado(f.getEstado());
+      funcionario.setImagen_carnet(f.getImagen_carnet());
+      funcionario.setImagen_acta_toma_posecion(f.getImagen_acta_toma_posecion());
+      funcionario.setDpi(f.getDpi());
+      funcionario.setImagen_firma(f.getImagen_firma());
+      funcionario.setImagen_sello(f.getImagen_sello());
+      funcionario.setId_municipalidad(f.getId_municipalidad());
+      funcionario.setId_puesto(f.getId_puesto());
+      funcionario.setId_profesion(f.getId_profesion());
+      funcionario.setId_estado_civil(f.getId_estado_civil());
       repository.save(funcionario);
       return ResponseController.success("Funcionario Actualizado Correctamente", funcionario);
     } else {

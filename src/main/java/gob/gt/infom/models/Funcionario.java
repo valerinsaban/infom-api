@@ -31,6 +31,8 @@ public class Funcionario {
   private String dpi;
   private String carnet;
   private String fecha_carnet;
+  private String acuerdo;
+  private String fecha_acuerdo;
   private String acta_toma_posecion;
   private String fecha_acta_toma_posecion;
   private String estado;

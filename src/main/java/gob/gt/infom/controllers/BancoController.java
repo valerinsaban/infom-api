@@ -36,22 +36,44 @@ public class BancoController {
 
   @PostMapping("/bancos")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid Banco p) {
+  public ResponseEntity<Object> create(@RequestBody @Valid Banco b) {
     Banco banco = Banco.builder()
-        .nombre(p.getNombre())
-        .siglas(p.getSiglas())
+        .nombre(b.getNombre())
+        .siglas(b.getSiglas())
+        .r_nombre(b.getR_nombre())
+        .r_apellido(b.getR_apellido())
+        .fecha_nacimiento(b.getFecha_nacimiento())
+        .dpi(b.getDpi())
+        .notario_autoriza(b.getNotario_autoriza())
+        .acta_notarial(b.getActa_notarial())
+        .fecha_acta_notarial(b.getFecha_acta_notarial())
+        .libro(b.getLibro())
+        .folio(b.getFolio())
+        .id_profesion(b.getId_profesion())
+        .id_estado_civil(b.getId_estado_civil())
         .build();
     repository.save(banco);
     return ResponseController.success("Banco Agregado Correctamente", banco);
   }
 
   @PutMapping("/bancos/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Banco p) {
+  public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Banco b) {
     Optional<Banco> data = repository.findById(id);
     if (data.isPresent()) {
       Banco banco = data.get();
-      banco.setNombre(p.getNombre());
-      banco.setSiglas(p.getSiglas());
+      banco.setNombre(b.getNombre());
+      banco.setSiglas(b.getSiglas());
+      banco.setR_nombre(b.getR_nombre());
+      banco.setR_apellido(b.getR_apellido());
+      banco.setFecha_nacimiento(b.getFecha_nacimiento());
+      banco.setDpi(b.getDpi());
+      banco.setNotario_autoriza(b.getNotario_autoriza());
+      banco.setActa_notarial(b.getActa_notarial());
+      banco.setFecha_acta_notarial(b.getFecha_acta_notarial());
+      banco.setLibro(b.getLibro());
+      banco.setFolio(b.getFolio());
+      banco.setId_profesion(b.getId_profesion());
+      banco.setId_estado_civil(b.getId_estado_civil());
       repository.save(banco);
       return ResponseController.success("Banco Actualizado Correctamente", banco);
     } else {
