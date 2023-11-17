@@ -34,6 +34,11 @@ public class ReciboDetalleController {
     return repository.findById(id);
   }
 
+  @GetMapping("/recibos_detalles/recibo/{id_recibo}")
+  public Iterable<ReciboDetalle> findAllByReciboId(@PathVariable Integer id_recibo) {
+    return repository.findAllByReciboId(id_recibo);
+  }
+
   @PostMapping("/recibos_detalles")
   @ResponseBody
   public ResponseEntity<Object> create(@RequestBody @Valid ReciboDetalle r) {
