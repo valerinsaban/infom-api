@@ -50,6 +50,7 @@ public class FacturaController {
         .serie_fel(f.getSerie_fel())
         .numero_fel(f.getNumero_fel())
         .uuid(f.getUuid())
+        .id_amortizacion(f.getId_amortizacion())
         .build();
     repository.save(factura);
     return ResponseController.success("Factura Agregada Correctamente", factura);
@@ -70,6 +71,7 @@ public class FacturaController {
       factura.setSerie_fel(f.getSerie_fel());
       factura.setNumero_fel(f.getNumero_fel());
       factura.setUuid(f.getUuid());
+      factura.setId_amortizacion(f.getId_amortizacion());
       repository.save(factura);
       return ResponseController.success("Factura Actualizada Correctamente", factura);
     } else {
