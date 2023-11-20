@@ -38,15 +38,16 @@ public class ReciboController {
 
   @PostMapping("/recibos")
   @ResponseBody
-  public ResponseEntity<Object> create(@RequestBody @Valid Recibo f) {
+  public ResponseEntity<Object> create(@RequestBody @Valid Recibo r) {
     Recibo recibo = Recibo.builder()
-        .numero(f.getNumero())
-        .fecha(f.getFecha())
-        .nit(f.getNit())
-        .nombre(f.getNombre())
-        .monto(f.getMonto())
-        .estado(f.getEstado())
-        .id_factura(f.getId_factura())
+        .numero(r.getNumero())
+        .fecha(r.getFecha())
+        .nit(r.getNit())
+        .nombre(r.getNombre())
+        .monto(r.getMonto())
+        .estado(r.getEstado())
+        .descripcion(r.getDescripcion())
+        .id_factura(r.getId_factura())
         .build();
     repository.save(recibo);
     return ResponseController.success("Recibo Agregado Correctamente", recibo);
@@ -63,6 +64,7 @@ public class ReciboController {
       recibo.setNombre(f.getNombre());
       recibo.setMonto(f.getMonto());
       recibo.setEstado(f.getEstado());
+      recibo.setDescripcion(f.getDescripcion());
       recibo.setId_factura(f.getId_factura());
       repository.save(recibo);
       return ResponseController.success("Recibo Actualizado Correctamente", recibo);
