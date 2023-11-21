@@ -31,6 +31,7 @@ public class Recibo {
   private String monto;
   private String estado;
   private String descripcion;
+  private String firma;
   private Integer id_factura;
 
   @ManyToOne(fetch = FetchType.EAGER)

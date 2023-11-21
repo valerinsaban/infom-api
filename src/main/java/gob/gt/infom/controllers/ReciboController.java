@@ -47,6 +47,7 @@ public class ReciboController {
         .monto(r.getMonto())
         .estado(r.getEstado())
         .descripcion(r.getDescripcion())
+        .firma(r.getFirma())
         .id_factura(r.getId_factura())
         .build();
     repository.save(recibo);
@@ -65,6 +66,7 @@ public class ReciboController {
       recibo.setMonto(f.getMonto());
       recibo.setEstado(f.getEstado());
       recibo.setDescripcion(f.getDescripcion());
+      recibo.setFirma(f.getFirma());
       recibo.setId_factura(f.getId_factura());
       repository.save(recibo);
       return ResponseController.success("Recibo Actualizado Correctamente", recibo);

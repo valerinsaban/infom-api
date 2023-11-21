@@ -29,7 +29,10 @@ public class Factura {
   private String nit;
   private String nombre;
   private String monto;
+  private String subtotal;
+  private String impuestos;
   private String estado;
+  private String descripcion;
   private String autorizacion;
   private String serie_fel;
   private String numero_fel;
