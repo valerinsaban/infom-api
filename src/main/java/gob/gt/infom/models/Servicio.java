@@ -26,6 +26,7 @@ public class Servicio {
   private Integer id;
   private String no_dictamen;
   private String no_convenio;
+  private String no_servicio;
   private String fecha;
   private String fecha_amortizacion;
   private String fecha_vencimiento;

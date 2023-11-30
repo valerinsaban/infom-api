@@ -114,6 +114,7 @@ public class ServicioController {
     Servicio servicio = Servicio.builder()
         .no_dictamen(s.getNo_dictamen())
         .no_convenio(s.getNo_convenio())
+        .no_servicio(s.getNo_servicio())
         .fecha(s.getFecha())
         .fecha_amortizacion(s.getFecha_amortizacion())
         .fecha_vencimiento(s.getFecha_vencimiento())
@@ -154,6 +155,7 @@ public class ServicioController {
       Servicio servicio = data.get();
       servicio.setNo_dictamen(s.getNo_dictamen());
       servicio.setNo_convenio(s.getNo_convenio());
+      servicio.setNo_servicio(s.getNo_servicio());
       servicio.setFecha(s.getFecha());
       servicio.setFecha_amortizacion(s.getFecha_amortizacion());
       servicio.setFecha_vencimiento(s.getFecha_vencimiento());
